@@ -1,20 +1,23 @@
 using ScriptableArchitecture.Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using AYellowpaper.SerializedCollections;
 
 namespace ScriptableArchitecture.Data
 {
-    [System.Serializable]
+    [Serializable]
     public class BotData : IDataPoint
     {
-        private Dictionary<Vector3Int, BotPartData> _parts = new Dictionary<Vector3Int, BotPartData>();
+        [SerializeField, SerializedDictionary("Position", "Data")]
+        private SerializedDictionary<Vector3Int, BotPartDataReference> _parts;
 
-        public void AddPart(Vector3Int position, BotPartData botPartData)
+        public void AddPart(Vector3Int position, BotPartDataReference botPartData)
         {
             _parts.Add(position, botPartData);
         }
 
-        public void ChangePart(Vector3Int position, BotPartData newPartData)
+        public void ChangePart(Vector3Int position, BotPartDataReference newPartData)
         {
             if (_parts.ContainsKey(position))
                 _parts[position] = newPartData;
@@ -27,7 +30,7 @@ namespace ScriptableArchitecture.Data
             _parts.Remove(position);
         }
 
-        public BotPartData GetPartData(Vector3Int position)
+        public BotPartDataReference GetPartData(Vector3Int position)
         {
             return _parts[position];
         }

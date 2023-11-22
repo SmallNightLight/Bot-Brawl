@@ -12,4 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6dd0e9bbe998104884681b64478c707, type: 3}
   m_Name: BotDataVariable
   m_EditorClassIdentifier: 
+  Value:
+    _parts:
+      _serializedList:
+      - Key: {x: 0, y: 0, z: 0}
+        Value:
+          _isVariable: 1
+          _variable: {fileID: 11400000, guid: acff9fe2e2291be41a7cb2932296c541, type: 2}
+          _constant:
+            BasePart:
+              _isVariable: 0
+              _variable: {fileID: 0}
+              _constant:
+                PartName: 
+                PartDescription: 
+                PartType: 
+                BlockSize: {x: 0, y: 0, z: 0}
+                NeedsAttachment: 0
+                RelativeAttachmentPoints: []
+            Position: {x: 0, y: 0, z: 0}
   Type: 0
+  DefaultValue:
+    _parts:
+      _serializedList: []

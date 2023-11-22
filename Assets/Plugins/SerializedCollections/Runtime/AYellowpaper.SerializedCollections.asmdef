@@ -1,11 +1,6 @@
 {
-    "name": "ScriptableAssembly.Data",
-    "rootNamespace": "",
-    "references": [
-        "ScriptableAssembly.Core",
-        "Unity.TextMeshPro",
-        "AYellowpaper.SerializedCollections"
-    ],
+    "name": "AYellowpaper.SerializedCollections",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

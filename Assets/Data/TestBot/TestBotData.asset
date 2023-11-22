@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6dd0e9bbe998104884681b64478c707, type: 3}
-  m_Name: BotDataVariable
+  m_Name: TestBotData
   m_EditorClassIdentifier: 
   Value:
     _parts:
@@ -18,7 +18,7 @@ MonoBehaviour:
       - Key: {x: 0, y: 0, z: 0}
         Value:
           _isVariable: 1
-          _variable: {fileID: 11400000, guid: acff9fe2e2291be41a7cb2932296c541, type: 2}
+          _variable: {fileID: 11400000, guid: 29f92dc9aca6a8e4ebc9d56b4919ea61, type: 2}
           _constant:
             BasePart:
               _isVariable: 0
@@ -27,10 +27,30 @@ MonoBehaviour:
                 PartName: 
                 PartDescription: 
                 PartType: 
+                PartPrefab: {fileID: 0}
                 BlockSize: {x: 0, y: 0, z: 0}
                 NeedsAttachment: 0
                 RelativeAttachmentPoints: []
-            Position: {x: 0, y: 0, z: 0}
+            Material: 0
+            Cost: 0
+      - Key: {x: 1, y: 0, z: 0}
+        Value:
+          _isVariable: 1
+          _variable: {fileID: 11400000, guid: bf85cf9f991055749b1552d5e159db84, type: 2}
+          _constant:
+            BasePart:
+              _isVariable: 0
+              _variable: {fileID: 0}
+              _constant:
+                PartName: 
+                PartDescription: 
+                PartType: 
+                PartPrefab: {fileID: 0}
+                BlockSize: {x: 0, y: 0, z: 0}
+                NeedsAttachment: 0
+                RelativeAttachmentPoints: []
+            Material: 0
+            Cost: 0
   Type: 0
   DefaultValue:
     _parts:

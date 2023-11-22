@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cb261530f2ceef499726281b7ca2e21, type: 3}
-  m_Name: BaseBlock111Data
+  m_Name: BaseSingleBlockData
   m_EditorClassIdentifier: 
   Value:
     PartName: Wheel
     PartDescription: Can be attached to blocks and is used to move the bot
     PartType: 
+    PartPrefab: {fileID: 2854585310110272591, guid: 464016c58dd03b541a94ab4d37bd69ec,
+      type: 3}
     BlockSize: {x: 1, y: 1, z: 1}
     NeedsAttachment: 1
     RelativeAttachmentPoints:
@@ -30,6 +32,7 @@ MonoBehaviour:
     PartName: 
     PartDescription: 
     PartType: 
+    PartPrefab: {fileID: 0}
     BlockSize: {x: 0, y: 0, z: 0}
     NeedsAttachment: 0
     RelativeAttachmentPoints: []

@@ -16,15 +16,19 @@ MonoBehaviour:
     PartName: Wheel
     PartDescription: Can be attached to blocks and is used to move the bot
     PartType: 
+    PartPrefab: {fileID: 7719050582010592867, guid: f57eaec7a6fccdd4d95bdd76cb3b10de,
+      type: 3}
     BlockSize: {x: 3, y: 3, z: 1}
     NeedsAttachment: 1
     RelativeAttachmentPoints:
-    - {x: 0, y: 0, z: -1}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: 0, z: 0}
   Type: 0
   DefaultValue:
     PartName: 
     PartDescription: 
     PartType: 
+    PartPrefab: {fileID: 0}
     BlockSize: {x: 0, y: 0, z: 0}
     NeedsAttachment: 0
     RelativeAttachmentPoints: []

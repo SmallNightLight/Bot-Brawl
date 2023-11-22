@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
+using System.Linq;
 
 namespace ScriptableArchitecture.Data
 {
@@ -30,9 +31,20 @@ namespace ScriptableArchitecture.Data
             _parts.Remove(position);
         }
 
-        public BotPartDataReference GetPartData(Vector3Int position)
+        public bool TryGetPartData(Vector3Int position, out BotPartDataReference partData)
         {
-            return _parts[position];
+            if (_parts.TryGetValue(position, out partData))
+                return true;
+            else
+            {
+                partData = null;
+                return false;
+            }
+        }
+
+        public List<KeyValuePair<Vector3Int, BotPartDataReference>> GetParts()
+        {
+            return _parts.ToList();
         }
     }
 }

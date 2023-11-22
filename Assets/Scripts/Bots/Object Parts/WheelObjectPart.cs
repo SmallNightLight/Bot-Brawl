@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wheel : ObjectPart
+public class WheelObjectPart : ObjectPart
 {
     [Header("Components")]
     [SerializeField] private WheelCollider _wheelCollider;

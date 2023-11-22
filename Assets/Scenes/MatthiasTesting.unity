@@ -974,12 +974,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 147539281}
-  _meshTransform: {fileID: 709543136}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 147539281}
+  _meshTransform: {fileID: 709543136}
   _power: 30
   _maxAngle: 0
   _offset: 0
@@ -1490,11 +1491,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 377431810}
+  - component: {fileID: 377431814}
+  - component: {fileID: 377431811}
   - component: {fileID: 377431813}
   - component: {fileID: 377431812}
-  - component: {fileID: 377431811}
   m_Layer: 0
-  m_Name: BaseWheel (4)
+  m_Name: BaseWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1580,6 +1582,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &377431814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377431809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPowered:
+    _isVariable: 0
+    _variable: {fileID: 0}
+    _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 1422736378}
+  _meshTransform: {fileID: 1795949578}
+  _power: 3
+  _maxAngle: 0
+  _offset: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,12 +2457,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 1656398778}
-  _meshTransform: {fileID: 1347421043}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 1656398778}
+  _meshTransform: {fileID: 1347421043}
   _power: 30
   _maxAngle: 30
   _offset: 0
@@ -2686,12 +2711,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 1584381182}
-  _meshTransform: {fileID: 890739572}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 1584381182}
+  _meshTransform: {fileID: 890739572}
   _power: 30
   _maxAngle: 0
   _offset: 0
@@ -2856,12 +2882,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 1024093650}
-  _meshTransform: {fileID: 90264719}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 1024093650}
+  _meshTransform: {fileID: 90264719}
   _power: 30
   _maxAngle: 0
   _offset: 0
@@ -2874,7 +2901,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 812570766}
-  - component: {fileID: 812570767}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -2899,27 +2925,6 @@ Transform:
   - {fileID: 500712844}
   m_Father: {fileID: 1563592972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &812570767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812570765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 500712845}
-  _meshTransform: {fileID: 1606855516}
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
-  _power: 3
-  _maxAngle: 0
-  _offset: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,7 +3251,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994271571}
-  - component: {fileID: 994271572}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -3271,27 +3275,6 @@ Transform:
   - {fileID: 1422736377}
   m_Father: {fileID: 377431810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &994271572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994271570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 1422736378}
-  _meshTransform: {fileID: 1795949578}
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
-  _power: 3
-  _maxAngle: 0
-  _offset: 0
 --- !u!1 &1014235203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3608,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074662569}
-  - component: {fileID: 1074662570}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -3650,27 +3632,6 @@ Transform:
   - {fileID: 474547463}
   m_Father: {fileID: 1129068846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074662570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074662568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 474547464}
-  _meshTransform: {fileID: 760435204}
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
-  _power: 3
-  _maxAngle: 30
-  _offset: 0
 --- !u!1 &1087785949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,11 +3944,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1129068846}
+  - component: {fileID: 1129068850}
+  - component: {fileID: 1129068847}
   - component: {fileID: 1129068849}
   - component: {fileID: 1129068848}
-  - component: {fileID: 1129068847}
   m_Layer: 0
-  m_Name: BaseWheel (1)
+  m_Name: BaseWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4073,6 +4035,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1129068850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129068845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPowered:
+    _isVariable: 0
+    _variable: {fileID: 0}
+    _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 474547464}
+  _meshTransform: {fileID: 760435204}
+  _power: 3
+  _maxAngle: 30
+  _offset: 0
 --- !u!1 &1333534446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,11 +4577,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535769105}
+  - component: {fileID: 1535769109}
+  - component: {fileID: 1535769106}
   - component: {fileID: 1535769108}
   - component: {fileID: 1535769107}
-  - component: {fileID: 1535769106}
   m_Layer: 0
-  m_Name: BaseWheel (2)
+  m_Name: BaseWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4683,6 +4668,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1535769109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535769104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPowered:
+    _isVariable: 0
+    _variable: {fileID: 0}
+    _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 500059568}
+  _meshTransform: {fileID: 1595689123}
+  _power: 3
+  _maxAngle: 30
+  _offset: 0
 --- !u!1 &1563592971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,11 +4699,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1563592972}
+  - component: {fileID: 1563592976}
+  - component: {fileID: 1563592973}
   - component: {fileID: 1563592975}
   - component: {fileID: 1563592974}
-  - component: {fileID: 1563592973}
   m_Layer: 0
-  m_Name: BaseWheel (5)
+  m_Name: BaseWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4782,6 +4790,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1563592976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563592971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPowered:
+    _isVariable: 0
+    _variable: {fileID: 0}
+    _constant: 1
+  _fixedJoint: {fileID: 1563592973}
+  _wheelCollider: {fileID: 500712845}
+  _meshTransform: {fileID: 1606855516}
+  _power: 3
+  _maxAngle: 0
+  _offset: 0
 --- !u!1 &1584381180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,12 +4929,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 2121997270}
-  _meshTransform: {fileID: 1730008758}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 2121997270}
+  _meshTransform: {fileID: 1730008758}
   _power: 30
   _maxAngle: 30
   _offset: 0
@@ -5018,12 +5049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 2110580920}
-  _meshTransform: {fileID: 834685584}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 2110580920}
+  _meshTransform: {fileID: 834685584}
   _power: 30
   _maxAngle: 30
   _offset: 0
@@ -5176,12 +5208,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 208840038}
-  _meshTransform: {fileID: 1915200172}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 208840038}
+  _meshTransform: {fileID: 1915200172}
   _power: 30
   _maxAngle: 0
   _offset: 0
@@ -5231,12 +5264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 1481100695}
-  _meshTransform: {fileID: 1088706351}
   _isPowered:
     _isVariable: 0
     _variable: {fileID: 0}
     _constant: 1
+  _fixedJoint: {fileID: 0}
+  _wheelCollider: {fileID: 1481100695}
+  _meshTransform: {fileID: 1088706351}
   _power: 30
   _maxAngle: 30
   _offset: 0
@@ -5501,7 +5535,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1924740819}
-  - component: {fileID: 1924740820}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -5526,27 +5559,6 @@ Transform:
   - {fileID: 500059567}
   m_Father: {fileID: 1535769105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1924740820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924740818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wheelCollider: {fileID: 500059568}
-  _meshTransform: {fileID: 1595689123}
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
-  _power: 3
-  _maxAngle: 30
-  _offset: 0
 --- !u!1 &2012405048
 GameObject:
   m_ObjectHideFlags: 0

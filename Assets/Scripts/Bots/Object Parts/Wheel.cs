@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wheel : MonoBehaviour
+public class Wheel : ObjectPart
 {
     [Header("Components")]
     [SerializeField] private WheelCollider _wheelCollider;
     [SerializeField] private Transform _meshTransform;
 
     [Header("Settings")]
-    [SerializeField] private BoolReference _isPowered;
     [SerializeField] private float _power = 150f;
     [SerializeField] private float _maxAngle = 90f;
     [SerializeField] private float _offset = 0f;

@@ -8,5 +8,5 @@ public abstract class ObjectPart : MonoBehaviour
     [Header("Base")]
     [SerializeField] protected BoolReference _isPowered;
 
-    public virtual void Setup(BotPartData partData){ }
+    public virtual void Setup(PartData partData){ }
 }

@@ -35,7 +35,7 @@ public class Bot : MonoBehaviour
         foreach (var part in botData.GetParts())
         {
             Vector3Int partPosition = part.Key;
-            PartData partData = part.Value.Value;
+            PartData partData = part.Value;
 
             GameObject partObject = Instantiate(partData.BasePart.Value.PartPrefab, transform);
 
@@ -43,7 +43,7 @@ public class Bot : MonoBehaviour
 
             if (partObject.TryGetComponent(out ObjectPart objectPart))
             {
-                objectPart.Setup(part.Value.Value);
+                objectPart.Setup(partData);
             }
 
             partGameObjects.Add(partPosition, partObject);

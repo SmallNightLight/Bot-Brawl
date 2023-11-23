@@ -7,7 +7,7 @@ namespace ScriptableArchitecture.Data
     public class WheelPartSettings : IPartSettings
     {
         public float Power = 150f;
-        public float MaxAngle = 90f;
+        public float MaxAngle = 30f;
         public float Offset = 0f;
     }
 }

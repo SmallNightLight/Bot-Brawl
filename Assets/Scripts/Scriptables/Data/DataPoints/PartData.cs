@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ScriptableArchitecture.Data
 {
     [System.Serializable]
-    public class PartData
+    public abstract class PartData : ScriptableObject
     {
         public BasePartDataReference BasePart;
 

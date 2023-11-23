@@ -4,12 +4,13 @@ using UnityEngine;
 namespace ScriptableArchitecture.Data
 {
     [System.Serializable]
-    public class BotPartData : PartData
+    [CreateAssetMenu(fileName = "Default", menuName = "Scriptables/Variables/Parts/Default")]
+    public class BotPartDataD : PartData
     {
     }
 
     [System.Serializable]
-    public class BotPartData<T> : BotPartData where T : IPartSettings
+    public class BotPartData<T> : PartData where T : IPartSettings
     {
         public T PartSettings;
     }

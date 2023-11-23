@@ -14,7 +14,7 @@ public class WheelObjectPart : ObjectPart
     private Vector2 _input;
     private float _turnAngle;
 
-    public override void Setup(BotPartData partData)
+    public override void Setup(PartData partData)
     {
         var data = partData as BotPartData<WheelPartSettings>;
         Settings = data.PartSettings;

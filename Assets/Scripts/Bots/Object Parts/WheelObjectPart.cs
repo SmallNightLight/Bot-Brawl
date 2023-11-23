@@ -3,22 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelObjectPart : ObjectPart
+public class WheelObjectPart : ObjectPart<WheelPartSettings>
 {
     [Header("Components")]
     [SerializeField] private WheelCollider _wheelCollider;
     [SerializeField] private Transform _meshTransform;
 
-    public WheelPartSettings Settings;
-
     private Vector2 _input;
     private float _turnAngle;
-
-    public override void Setup(PartData partData)
-    {
-        var data = partData as BotPartData<WheelPartSettings>;
-        Settings = data.PartSettings;
-    }
 
     void Update()
     {
@@ -35,14 +27,14 @@ public class WheelObjectPart : ObjectPart
 
     private void Steer(float horizontalDirection)
     {
-        _turnAngle = horizontalDirection * Settings.MaxAngle + Settings.Offset;
+        _turnAngle = horizontalDirection * PartSettings.MaxAngle + PartSettings.Offset;
         _wheelCollider.steerAngle = _turnAngle;
     }
 
     private void Accelerate(float powerInput)
     {
         if (_isPowered.Value) 
-            _wheelCollider.motorTorque = powerInput * Settings.Power * 100;
+            _wheelCollider.motorTorque = powerInput * PartSettings.Power * 100 * (PartSettings.Inverted ? -1 : 1);
         else 
             _wheelCollider.brakeTorque = 0; //Or even go negative
     }

@@ -19,7 +19,7 @@ MonoBehaviour:
     PartPrefab: {fileID: 2288977799406177123, guid: 10618e2a82bcf174f9a36613b00c4860,
       type: 3}
     BlockSize: {x: 1, y: 1, z: 1}
-    NeedsAttachment: 1
+    NeedsAttachment: 0
     RelativeAttachmentPoints:
     - {x: 1, y: 0, z: 0}
     - {x: -1, y: 0, z: 0}

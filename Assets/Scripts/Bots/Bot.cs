@@ -1,8 +1,8 @@
 using ScriptableArchitecture.Data;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bot : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class Bot : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
+        CheckBotData(_botData.Value);
+#endif
         SetupBot(_botData.Value);
     }
 
@@ -38,12 +41,12 @@ public class Bot : MonoBehaviour
             PartData partData = part.Value;
 
             GameObject partObject = Instantiate(partData.BasePart.Value.PartPrefab, transform);
-
+            partObject.transform.rotation = Quaternion.Euler(partData.Rotation.x, partData.Rotation.y, partData.Rotation.z);
             partObject.transform.position = partPosition;
 
-            if (partObject.TryGetComponent(out ObjectPart objectPart))
+            if (partObject.TryGetComponent(out ObjectPart objectPartScript))
             {
-                objectPart.Setup(partData);
+                objectPartScript.SetPartData(partData);
             }
 
             partGameObjects.Add(partPosition, partObject);
@@ -53,13 +56,16 @@ public class Bot : MonoBehaviour
         {
             Vector3Int partPosition = part.Key;
             GameObject partObject = part.Value;
+            ObjectPart objectPartScript = partObject.GetComponent<ObjectPart>();
 
             foreach (var direction in _directions)
             {
                 Vector3Int otherPartPosition = partPosition + direction;
                 if (partGameObjects.TryGetValue(otherPartPosition, out GameObject otherObject))
                 {
-                    if (true) //Test if can attach
+                    ObjectPart otherOjectPartScript = otherObject.GetComponent<ObjectPart>();
+
+                    if (otherOjectPartScript == null || !otherOjectPartScript.PartData.BasePart.Value.NeedsAttachment)
                     {
                         Rigidbody otherRigidbody = otherObject.GetComponent<Rigidbody>();
                         FixedJoint connection = partObject.AddComponent<FixedJoint>();
@@ -69,4 +75,18 @@ public class Bot : MonoBehaviour
             }
         }
     }
+
+#if UNITY_EDITOR
+    public void CheckBotData(BotData botData)
+    {
+        foreach (var part in botData.GetParts())
+        {
+            Vector3Int partPosition = part.Key;
+            PartData partData = part.Value;
+            if (partData.BasePart.Value.PartPrefab == null)
+                Debug.LogError("No BasePart assigned: " + partData);
+        }
+            
+    }
+#endif
 }

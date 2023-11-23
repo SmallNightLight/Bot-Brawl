@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f675cb12f9fb9047a832b5be04224b9, type: 3}
-  m_Name: Wheel 1
+  m_Name: WheelBR
   m_EditorClassIdentifier: 
   BasePart:
-    _isVariable: 0
-    _variable: {fileID: 0}
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 318b27d33e677d94d9d474d74183cf38, type: 2}
     _constant:
       PartName: 
       PartDescription: 
@@ -23,10 +23,11 @@ MonoBehaviour:
       BlockSize: {x: 0, y: 0, z: 0}
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
-  Rotation: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 180, z: 0}
   Material: 0
   Cost: 0
   PartSettings:
     Power: 150
-    MaxAngle: 90
+    MaxAngle: 0
     Offset: 0
+    Inverted: 1

@@ -15,19 +15,19 @@ MonoBehaviour:
   Value:
     _parts:
       _serializedList:
-      - Key: {x: 2, y: 1, z: 0}
+      - Key: {x: 2, y: 2, z: 0}
         Value: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
-      - Key: {x: 2, y: 1, z: 1}
+      - Key: {x: 2, y: 2, z: 1}
         Value: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
-      - Key: {x: 2, y: 1, z: 2}
+      - Key: {x: 2, y: 2, z: 2}
         Value: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
-      - Key: {x: 1, y: 1, z: 0}
-        Value: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
-      - Key: {x: 1, y: 1, z: 2}
-        Value: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
-      - Key: {x: 3, y: 1, z: 0}
-        Value: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
-      - Key: {x: 3, y: 1, z: 2}
+      - Key: {x: 3, y: 2, z: 0}
+        Value: {fileID: 11400000, guid: c3c1f48701c334b49a52f2794f913fb1, type: 2}
+      - Key: {x: 1, y: 2, z: 0}
+        Value: {fileID: 11400000, guid: d6ac387f36d9ad344894a4e1bb4450ef, type: 2}
+      - Key: {x: 3, y: 2, z: 2}
+        Value: {fileID: 11400000, guid: 4823dbbcbf09ac542979356dfdb1bc0d, type: 2}
+      - Key: {x: 1, y: 2, z: 2}
         Value: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
   Type: 0
   DefaultValue:

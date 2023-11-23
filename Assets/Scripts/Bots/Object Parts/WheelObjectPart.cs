@@ -9,10 +9,7 @@ public class WheelObjectPart : ObjectPart
     [SerializeField] private WheelCollider _wheelCollider;
     [SerializeField] private Transform _meshTransform;
 
-    [Header("Settings")]
-    [SerializeField] private float _power = 150f;
-    [SerializeField] private float _maxAngle = 90f;
-    [SerializeField] private float _offset = 0f;
+    public WheelPartSettings Settings;
 
     private Vector2 _input;
     private float _turnAngle;
@@ -32,14 +29,14 @@ public class WheelObjectPart : ObjectPart
 
     private void Steer(float horizontalDirection)
     {
-        _turnAngle = horizontalDirection * _maxAngle + _offset;
+        _turnAngle = horizontalDirection * Settings.MaxAngle + Settings.Offset;
         _wheelCollider.steerAngle = _turnAngle;
     }
 
     private void Accelerate(float powerInput)
     {
         if (_isPowered.Value) 
-            _wheelCollider.motorTorque = powerInput * _power * 100;
+            _wheelCollider.motorTorque = powerInput * Settings.Power * 100;
         else 
             _wheelCollider.brakeTorque = 0; //Or even go negative
     }

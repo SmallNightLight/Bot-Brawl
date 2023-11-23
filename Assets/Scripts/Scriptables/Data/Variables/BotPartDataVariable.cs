@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace ScriptableArchitecture.Data
 {
-    [CreateAssetMenu(fileName = "BotPartDataVariable", menuName = "Scriptables/Variables/BotPartData")]
-    public class BotPartDataVariable : Variable<BotPartData>
+    [CreateAssetMenu(fileName = "BotPartWheelDataVariable", menuName = "Scriptables/Variables/BotPartData/Wheel")]
+    public class BotPartDataVariable : Variable<BotPartData<WheelPartSettings>>
     {
     }
 }

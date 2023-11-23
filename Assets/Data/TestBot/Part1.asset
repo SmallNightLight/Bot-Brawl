@@ -24,7 +24,8 @@ MonoBehaviour:
         BlockSize: {x: 0, y: 0, z: 0}
         NeedsAttachment: 0
         RelativeAttachmentPoints: []
-    Position: {x: 0, y: 0, z: 0}
+    PartSettings: {fileID: 0}
+    Rotation: {x: 0, y: 0, z: 0}
     Material: 0
     Cost: 0
   Type: 0
@@ -40,6 +41,7 @@ MonoBehaviour:
         BlockSize: {x: 0, y: 0, z: 0}
         NeedsAttachment: 0
         RelativeAttachmentPoints: []
-    Position: {x: 0, y: 0, z: 0}
+    PartSettings: {fileID: 0}
+    Rotation: {x: 0, y: 0, z: 0}
     Material: 0
     Cost: 0

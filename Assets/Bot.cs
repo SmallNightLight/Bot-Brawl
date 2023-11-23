@@ -40,7 +40,6 @@ public class Bot : MonoBehaviour
             GameObject partObject = Instantiate(partData.Value.BasePart.Value.PartPrefab, transform);
 
             partObject.transform.position = partPosition;
-           
             partGameObjects.Add(partPosition, partObject);
         }
 

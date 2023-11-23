@@ -24,6 +24,11 @@ MonoBehaviour:
         BlockSize: {x: 0, y: 0, z: 0}
         NeedsAttachment: 0
         RelativeAttachmentPoints: []
+    PartSettings:
+      Power: 150
+      MaxAngle: 90
+      Offset: 0
+    Rotation: {x: 0, y: 0, z: 0}
     Material: 0
     Cost: 0
   Type: 0
@@ -39,5 +44,10 @@ MonoBehaviour:
         BlockSize: {x: 0, y: 0, z: 0}
         NeedsAttachment: 0
         RelativeAttachmentPoints: []
+    PartSettings:
+      Power: 150
+      MaxAngle: 90
+      Offset: 0
+    Rotation: {x: 0, y: 0, z: 0}
     Material: 0
     Cost: 0

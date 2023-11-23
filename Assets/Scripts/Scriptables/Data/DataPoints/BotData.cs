@@ -11,14 +11,14 @@ namespace ScriptableArchitecture.Data
     public class BotData : IDataPoint
     {
         [SerializeField, SerializedDictionary("Position", "Data")]
-        private SerializedDictionary<Vector3Int, BotPartDataReference> _parts;
+        private SerializedDictionary<Vector3Int, BotPartData> _parts;
 
-        public void AddPart(Vector3Int position, BotPartDataReference botPartData)
+        public void AddPart(Vector3Int position, BotPartData botPartData)
         {
             _parts.Add(position, botPartData);
         }
 
-        public void ChangePart(Vector3Int position, BotPartDataReference newPartData)
+        public void ChangePart(Vector3Int position, BotPartData newPartData)
         {
             if (_parts.ContainsKey(position))
                 _parts[position] = newPartData;
@@ -31,7 +31,7 @@ namespace ScriptableArchitecture.Data
             _parts.Remove(position);
         }
 
-        public bool TryGetPartData(Vector3Int position, out BotPartDataReference partData)
+        public bool TryGetPartData(Vector3Int position, out BotPartData partData)
         {
             if (_parts.TryGetValue(position, out partData))
                 return true;
@@ -42,7 +42,7 @@ namespace ScriptableArchitecture.Data
             }
         }
 
-        public List<KeyValuePair<Vector3Int, BotPartDataReference>> GetParts()
+        public List<KeyValuePair<Vector3Int, BotPartData>> GetParts()
         {
             return _parts.ToList();
         }

@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 62f8b0131cba9934db7df52718accdb7
+guid: a2eeb331064dcc642a6735f9124ebe28
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Corners_materials
-    second: {fileID: 2100000, guid: c63022bb29cb972429cb018b771afb53, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cube_Material
-    second: {fileID: 2100000, guid: 606987a1d60575b4aaad466f819dca8b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: c63022bb29cb972429cb018b771afb53, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 606987a1d60575b4aaad466f819dca8b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -35,11 +35,17 @@ public class Bot : MonoBehaviour
         foreach (var part in botData.GetParts())
         {
             Vector3Int partPosition = part.Key;
-            BotPartDataReference partData = part.Value;
+            PartData partData = part.Value;
 
-            GameObject partObject = Instantiate(partData.Value.BasePart.Value.PartPrefab, transform);
+            GameObject partObject = Instantiate(partData.BasePart.Value.PartPrefab, transform);
 
             partObject.transform.position = partPosition;
+
+            if (partObject.TryGetComponent(out ObjectPart objectPart))
+            {
+                objectPart.Setup(part.Value);
+            }
+
             partGameObjects.Add(partPosition, partObject);
         }
 

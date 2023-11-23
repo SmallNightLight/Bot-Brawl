@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ScriptableArchitecture.Data
 {
     [System.Serializable]
-    public class WheelPartSettings : IDataPoint
+    public class WheelPartSettings : IPartSettings
     {
         public float Power = 150f;
         public float MaxAngle = 90f;

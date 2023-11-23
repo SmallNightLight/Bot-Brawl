@@ -17,130 +17,116 @@ MonoBehaviour:
       _serializedList:
       - Key: {x: 2, y: 1, z: 0}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: 29f92dc9aca6a8e4ebc9d56b4919ea61, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 1
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 2, y: 1, z: 1}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: 29f92dc9aca6a8e4ebc9d56b4919ea61, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 2, y: 1, z: 2}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: a89ffd9616c55be4e9362fcfc56a2806, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 1, y: 1, z: 0}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: fd0ea7bde260cd54381d73db8e8f7a45, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 1, y: 1, z: 2}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: a66497f3e6721b84db021291120bf2f5, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 3, y: 1, z: 0}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: 6e4ee8b0a546fed40a80cd865bc1b34d, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
       - Key: {x: 3, y: 1, z: 2}
         Value:
-          _isVariable: 1
-          _variable: {fileID: 11400000, guid: 987f2c79ffa3ffb4a9eb85f0adca65d4, type: 2}
-          _constant:
-            BasePart:
-              _isVariable: 0
-              _variable: {fileID: 0}
-              _constant:
-                PartName: 
-                PartDescription: 
-                PartType: 
-                PartPrefab: {fileID: 0}
-                BlockSize: {x: 0, y: 0, z: 0}
-                NeedsAttachment: 0
-                RelativeAttachmentPoints: []
-            Material: 0
-            Cost: 0
+          BasePart:
+            _isVariable: 0
+            _variable: {fileID: 0}
+            _constant:
+              PartName: 
+              PartDescription: 
+              PartType: 
+              PartPrefab: {fileID: 0}
+              BlockSize: {x: 0, y: 0, z: 0}
+              NeedsAttachment: 0
+              RelativeAttachmentPoints: []
+          Rotation: {x: 0, y: 0, z: 0}
+          Material: 0
+          Cost: 0
   Type: 0
   DefaultValue:
     _parts:

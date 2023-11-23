@@ -14,6 +14,12 @@ public class WheelObjectPart : ObjectPart
     private Vector2 _input;
     private float _turnAngle;
 
+    public override void Setup(BotPartData partData)
+    {
+        var data = partData as BotPartData<WheelPartSettings>;
+        Settings = data.PartSettings;
+    }
+
     void Update()
     {
         //Replace this with other movement in the future

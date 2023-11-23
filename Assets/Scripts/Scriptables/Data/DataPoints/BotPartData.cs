@@ -4,14 +4,13 @@ using UnityEngine;
 namespace ScriptableArchitecture.Data
 {
     [System.Serializable]
-    public struct BotPartData<T> : IDataPoint
+    public class BotPartData : PartData
     {
-        public BasePartDataReference BasePart;
-        
-        public Vector3 Rotation;
-        public int Material;
-        public int Cost;
+    }
 
+    [System.Serializable]
+    public class BotPartData<T> : BotPartData where T : IPartSettings
+    {
         public T PartSettings;
     }
 }

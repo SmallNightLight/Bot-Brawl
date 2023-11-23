@@ -37,9 +37,10 @@ public class Bot : MonoBehaviour
             Vector3Int partPosition = part.Key;
             BotPartDataReference partData = part.Value;
 
-            GameObject partObject = Instantiate(partData.Value.BasePart.Value.PartPrefab);
-            partObject.transform.SetParent(transform);
+            GameObject partObject = Instantiate(partData.Value.BasePart.Value.PartPrefab, transform);
+
             partObject.transform.position = partPosition;
+           
             partGameObjects.Add(partPosition, partObject);
         }
 

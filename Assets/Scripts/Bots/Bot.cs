@@ -2,11 +2,13 @@ using ScriptableArchitecture.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Bot : MonoBehaviour
 {
     [SerializeField] private BotDataReference _botData;
+    [SerializeField] private int _yOffset = 0;
 
     static Vector3Int[] _directions =
     { 
@@ -28,7 +30,9 @@ public class Bot : MonoBehaviour
 
     void Update()
     {
-        
+        //Remove
+        if (Input.GetKeyDown(KeyCode.P))
+            SceneManager.LoadScene("BotAssembleScene");
     }
 
     public void SetupBot(BotData botData)
@@ -42,7 +46,7 @@ public class Bot : MonoBehaviour
 
             GameObject partObject = Instantiate(partData.BasePart.Value.PartPrefab, transform);
             partObject.transform.rotation = Quaternion.Euler(partData.Rotation.x, partData.Rotation.y, partData.Rotation.z);
-            partObject.transform.position = partPosition;
+            partObject.transform.position = partPosition + new Vector3Int(0, _yOffset, 0);
 
             if (partObject.TryGetComponent(out ObjectPart objectPartScript))
             {

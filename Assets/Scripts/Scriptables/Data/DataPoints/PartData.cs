@@ -11,5 +11,7 @@ namespace ScriptableArchitecture.Data
         public Vector3 Rotation;
         public int Material;
         public int Cost;
+
+        [HideInInspector] public Vector3Int Position;
     }
 }

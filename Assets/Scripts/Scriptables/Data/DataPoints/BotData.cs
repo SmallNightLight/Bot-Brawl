@@ -46,5 +46,10 @@ namespace ScriptableArchitecture.Data
         {
             return _parts.ToList();
         }
+
+        public int GetPartCount()
+        {
+            return _parts.Count;
+        }
     }
 }

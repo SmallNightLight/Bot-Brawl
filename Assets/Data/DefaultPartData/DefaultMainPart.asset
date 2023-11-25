@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6099389838875640a0c71df8b7ea453, type: 3}
-  m_Name: Block1x1x1
+  m_Name: DefaultMainPart
   m_EditorClassIdentifier: 
   BasePart:
     _isVariable: 1
-    _variable: {fileID: 11400000, guid: 3c2a21f9e420edf40b23d53142d38165, type: 2}
+    _variable: {fileID: 11400000, guid: 0173032a12e0e7c4b833a0911665cf34, type: 2}
     _constant:
       PartName: 
       PartDescription: 
       PartType: 
+      DefaultData: {fileID: 0}
       PartPrefab: {fileID: 0}
       CreatorPrefab: {fileID: 0}
       BlockSize: {x: 0, y: 0, z: 0}
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
-  DefaultData: {fileID: 0}
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 0, z: 0}
   Material: 0
   Cost: 0

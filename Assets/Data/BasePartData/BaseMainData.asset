@@ -10,23 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cb261530f2ceef499726281b7ca2e21, type: 3}
-  m_Name: BaseWheelData
+  m_Name: BaseMainData
   m_EditorClassIdentifier: 
   Value:
-    PartName: Wheel
-    PartDescription: Can be attached to blocks and is used to move the bot
-    PartType: Wheel
-    DefaultData: {fileID: 11400000, guid: ee96302cbbfb0324cb81aa06d6de254b, type: 2}
-    PartPrefab: {fileID: 7719050582010592867, guid: f57eaec7a6fccdd4d95bdd76cb3b10de,
+    PartName: Main
+    PartDescription: Starting block
+    PartType: Block
+    DefaultData: {fileID: 11400000, guid: de0705375b0b48640b0b9e0dc7646aff, type: 2}
+    PartPrefab: {fileID: 6104115825073675406, guid: f3ad292019fb722488168e632cfc3e99,
       type: 3}
-    CreatorPrefab: {fileID: 1180067945870177502, guid: 86ade6ba609b73047b9971e466ad9f97,
+    CreatorPrefab: {fileID: 8305669283018129502, guid: 04a3c5d98e8a51b4cbeb1ce188ba8b99,
       type: 3}
     BlockSize: {x: 1, y: 1, z: 1}
-    NeedsAttachment: 1
+    NeedsAttachment: 0
     RelativeAttachmentPoints:
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: -1, z: 0}
     - {x: 0, y: 0, z: 1}
     - {x: 0, y: 0, z: -1}
-    DefaultAttachmentDirection: {x: 0, y: 0, z: 1}
+    DefaultAttachmentDirection: {x: 1, y: 0, z: 0}
   Type: 0
   DefaultValue:
     PartName: 

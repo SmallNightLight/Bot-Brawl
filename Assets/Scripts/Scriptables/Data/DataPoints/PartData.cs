@@ -1,4 +1,3 @@
-using ScriptableArchitecture.Data;
 using UnityEngine;
 
 namespace ScriptableArchitecture.Data

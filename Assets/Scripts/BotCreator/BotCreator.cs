@@ -9,24 +9,16 @@ public class BotCreator : MonoBehaviour
     [SerializeField] private BotDataReference _botData;
     [SerializeField] private TransformReference _cameraTarget;
 
-    private Dictionary<Vector3Int, GameObject> _parts = new Dictionary<Vector3Int, GameObject>();
-
-    int n = 0;
     [SerializeField] private BasePartDataReference _mainPartData;
-    [SerializeField] private List<BasePartDataReference> _basePartDataReferences = new List<BasePartDataReference>();
+    [SerializeField] private BoolReference _isPlacing;
 
-    [SerializeField] private BoolReference IsPlacing;
-
+    private Dictionary<Vector3Int, GameObject> _parts = new Dictionary<Vector3Int, GameObject>();
     private BasePartDataReference _selectedBasePart;
-
     private Vector3Int _mainPartPosition = new Vector3Int(0, 5, 0);
 
     private void Start()
     {
         SetupBot();
-
-        //Remove
-        _selectedBasePart = _basePartDataReferences[n];
     }
 
     private void SetupBot()
@@ -44,28 +36,16 @@ public class BotCreator : MonoBehaviour
         {
             //Setup bot from previous save
             foreach (var part in _botData.Value.GetParts())
-                AddUnit(part.Value, part.Value.BasePart.Value.Equals(_mainPartData.Value));
+                if (part.Value != null)
+                    AddUnit(part.Value, part.Value.BasePart.Value.Equals(_mainPartData.Value));
         }
 
-        _selectedBasePart = null;
-    }
-
-    private void Update()
-    {
-        //Remove
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            n++;
-            if (n == _basePartDataReferences.Count)
-                n = 0;
-
-            _selectedBasePart = _basePartDataReferences[n];
-        }
+        _isPlacing.Value = false;
     }
 
     public void PlacePart(PlacingInfo placingInfo)
     {
-        if (CanPlaceUnit(placingInfo))
+        if (_isPlacing.Value && CanPlaceUnit(placingInfo))
             PlacePart(placingInfo, false);
     }
 
@@ -74,31 +54,13 @@ public class BotCreator : MonoBehaviour
         if (_selectedBasePart == null)
             return false;
 
-        List<Vector3Int> attachmentPoints = _selectedBasePart.Value.DefaultData.BasePart.Value.RelativeAttachmentPoints;
         List<Vector3Int> otherAttachmentPoints = placingInfo.OtherPart.BasePart.Value.RelativeAttachmentPoints;
+        Vector3 localNormal = Quaternion.Euler(placingInfo.OtherPart.Rotation) * placingInfo.Normal;
 
+        for (int i = 0; i < otherAttachmentPoints.Count; i++)
+            if (localNormal == -otherAttachmentPoints[i])
+                return true;
 
-        Quaternion otherRotation = Quaternion.Euler(placingInfo.OtherPart.Rotation);
-
-
-
-        for (int i = 0, j = 0; i < otherAttachmentPoints.Count; i++)
-        {
-            Debug.Log(placingInfo.Normal == -1 * otherAttachmentPoints[i]);
-
-
-            //Vector3 rotation = (otherRotation * Quaternion.Euler(attachmentPoints[i])).eulerAngles;
-
-            //rotation.x = ClampAngle(rotation.x);
-            //rotation.y = ClampAngle(rotation.y);
-            //rotation.z = ClampAngle(rotation.z);
-
-            //Vector3Int r = Vector3Int.RoundToInt(rotation);
-
-            //Debug.Log(r.ToString());
-            //Debug.Log(placingInfo.Normal);
-        }
-        return true;
         return false;
     }
 
@@ -149,6 +111,11 @@ public class BotCreator : MonoBehaviour
 
         if (asCameraTarget)
             _cameraTarget.Value = newUnit.transform;
+    }
+
+    public void SetSelectionBasePartData(BasePartDataReference data)
+    {
+        _selectedBasePart = data;
     }
 
     public void Change(PartData partData)

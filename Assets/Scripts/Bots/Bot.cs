@@ -28,13 +28,6 @@ public class Bot : MonoBehaviour
         SetupBot(_botData.Value);
     }
 
-    void Update()
-    {
-        //Remove
-        if (Input.GetKeyDown(KeyCode.P))
-            SceneManager.LoadScene("BotAssembleScene");
-    }
-
     public void SetupBot(BotData botData)
     {
         Dictionary<Vector3Int, GameObject> partGameObjects = new Dictionary<Vector3Int, GameObject>();

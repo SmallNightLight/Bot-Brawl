@@ -120,13 +120,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
     Power: 150
     MaxAngle: 30
     Offset: 0
+    Inverted: 0
   _wheelCollider: {fileID: 3683803236751475162}
   _meshTransform: {fileID: 611610214077591852}
 --- !u!54 &1617479248776019267
@@ -286,8 +287,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7719050582010592867}
   serializedVersion: 4
-  m_Mass: 50
-  m_Drag: 1
+  m_Mass: 40
+  m_Drag: 0.7
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -298,7 +299,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -324,8 +325,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34, y: 0.2, z: 0.19999999}
-  m_Center: {x: 0.33, y: 0, z: 0}
+  m_Size: {x: 0.20277534, y: 0.2, z: 0.19999997}
+  m_Center: {x: 0.26138678, y: 0, z: 0}
 --- !u!1 &9154833277449506011
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,8 +354,8 @@ Transform:
   m_GameObject: {fileID: 9154833277449506011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.326, y: 0, z: 0}
-  m_LocalScale: {x: 0.34958002, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0.257, y: -0, z: -0}
+  m_LocalScale: {x: 0.21160717, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3640560082941394197}

@@ -33,10 +33,15 @@ public class WheelObjectPart : ObjectPart<WheelPartSettings>
 
     private void Accelerate(float powerInput)
     {
+        if (powerInput == 0)
+            _wheelCollider.brakeTorque = 100;
+        else
+            _wheelCollider.brakeTorque = 0;
+
         if (_isPowered.Value) 
             _wheelCollider.motorTorque = powerInput * PartSettings.Power * 100 * (PartSettings.Inverted ? -1 : 1);
         else 
-            _wheelCollider.brakeTorque = 0; //Or even go negative
+            _wheelCollider.brakeTorque = 100;
     }
 
     private void UpdateMeshPosition()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ade4f73df3ea334c954e2fb132d264d, type: 3}
-  m_Name: PlacingPart
+  m_Name: PlacingPartEvent
   m_EditorClassIdentifier: 
   DebugValue:
     AttachPoint: {x: 0, y: 0, z: 0}

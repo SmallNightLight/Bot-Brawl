@@ -12,13 +12,26 @@ public class BotCreator : MonoBehaviour
     [SerializeField] private BasePartDataReference _mainPartData;
     [SerializeField] private BoolReference _isPlacing;
 
+    [SerializeField] private Material _previewMaterial;
+    [SerializeField] private Material _unplacableMaterial;
+
     private Dictionary<Vector3Int, GameObject> _parts = new Dictionary<Vector3Int, GameObject>();
     private BasePartDataReference _selectedBasePart;
     private Vector3Int _mainPartPosition = new Vector3Int(0, 5, 0);
 
+    private GameObject _previewObject;
+
     private void Start()
     {
         SetupBot();
+    }
+
+    private void Update()
+    {
+        //In early script execution order
+
+        if (_previewObject != null)
+            Destroy(_previewObject);
     }
 
     private void SetupBot()
@@ -111,6 +124,47 @@ public class BotCreator : MonoBehaviour
 
         if (asCameraTarget)
             _cameraTarget.Value = newUnit.transform;
+    }
+
+    public void PreviewPartInfo(PlacingInfo placingInfo)
+    {
+        PartData newPartData = Instantiate(_selectedBasePart.Value.DefaultData);
+        newPartData.BasePart = _selectedBasePart;
+        newPartData.Position = placingInfo.AttachPoint;
+
+        newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
+
+        _previewObject = Instantiate(newPartData.BasePart.Value.CreatorPrefab, newPartData.Position, Quaternion.Euler(newPartData.Rotation.x, newPartData.Rotation.y, newPartData.Rotation.z));
+        _previewObject.layer = LayerMask.NameToLayer("Default");
+
+        bool canBePlaced = CanPlaceUnit(placingInfo);
+
+        if (_previewObject.TryGetComponent(out MeshRenderer renderer))
+            SetTransparent(renderer, canBePlaced);
+
+        foreach(MeshRenderer childRenderer in _previewObject.GetComponentsInChildren<MeshRenderer>())
+            SetTransparent(childRenderer, canBePlaced);
+    }
+
+    private void SetTransparent(MeshRenderer renderer, bool canBePlaced)
+    {
+        if (canBePlaced)
+            renderer.material = _previewMaterial;
+        else
+            renderer.material = _unplacableMaterial;
+
+        //if (material != null)
+        //    if (material.HasProperty("_Opacity"))
+        //        material.SetFloat("_Opacity", 0.5f);
+
+        //if (!canBePlaced)
+        //{
+        //    if (material.HasProperty("_UseColorMap"))
+        //        material.SetInt("_UseColorMap", 0);
+
+        //    if (material.HasProperty("_Color"))
+        //        material.SetColor("_Color", Color.red);
+        //}
     }
 
     public void SetSelectionBasePartData(BasePartDataReference data)

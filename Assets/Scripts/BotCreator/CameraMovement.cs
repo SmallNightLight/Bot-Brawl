@@ -12,6 +12,7 @@ public class CameraMovement : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private PlacingInfoGameEvent _placingPartEvent;
+    [SerializeField] private PlacingInfoGameEvent _previewPartEvent;
     [SerializeField] private Vector3GameEvent _selectingPartEvent;
 
     [Header("Rotation")]
@@ -41,40 +42,42 @@ public class CameraMovement : MonoBehaviour
     private void Update()
     {
         //Selecting objects
-        if (Input.GetMouseButtonDown(0))
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _unitLayer))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _unitLayer))
+            if (_isPlacing.Value)
             {
-                if (_isPlacing.Value)
+                PlacingInfo placingInfo = new PlacingInfo();
+                placingInfo.AttachPoint = Vector3Int.RoundToInt(hit.normal + hit.collider.transform.position);
+                placingInfo.Normal = Vector3Int.RoundToInt(hit.normal);
+        
+                try
                 {
-                    PlacingInfo placingInfo = new PlacingInfo();
-                    placingInfo.AttachPoint = Vector3Int.RoundToInt(hit.normal + hit.collider.transform.position);
-                    placingInfo.Normal = Vector3Int.RoundToInt(hit.normal);
-
-                    try
-                    {
-                        PartData otherPartData = hit.collider.gameObject.GetComponent<Unit>().UnitPartData;
-                        if (otherPartData == null)
-                            Debug.LogError("No PartData selected for unit: " + hit.collider.gameObject.name);
-
-                        placingInfo.OtherPart = otherPartData;
-                    }
-                    catch
-                    {
-                        Debug.LogError("Didn't add a unit component to unit: " + hit.collider.gameObject.name);
-                    }
-                    
+                    PartData otherPartData = hit.collider.gameObject.GetComponent<Unit>().UnitPartData;
+                    if (otherPartData == null)
+                        Debug.LogError("No PartData selected for unit: " + hit.collider.gameObject.name);
+        
+                    placingInfo.OtherPart = otherPartData;
+                }
+                catch
+                {
+                    Debug.LogError("Didn't add a unit component to unit: " + hit.collider.gameObject.name);
+                }
+        
+                if (Input.GetMouseButtonDown(0))
                     _placingPartEvent.Raise(placingInfo);
-                }
                 else
-                {
-                    _selectingPartEvent.Raise(hit.collider.transform.position);
-                }
+                    _previewPartEvent.Raise(placingInfo);
+            }
+            else
+            {
+                _selectingPartEvent.Raise(hit.collider.transform.position);
             }
         }
+            
 
         //Rotating
         if (Input.GetMouseButtonDown(1))

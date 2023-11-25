@@ -31,7 +31,7 @@ MonoBehaviour:
   Cost: 0
   Position: {x: 2, y: 5, z: 0}
   PartSettings:
-    Power: 150
+    Power: 3
     MaxAngle: 30
     Offset: 0
-    Inverted: 1
+    Inverted: 0

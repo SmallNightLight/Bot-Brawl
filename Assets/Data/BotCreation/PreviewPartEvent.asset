@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6dd0e9bbe998104884681b64478c707, type: 3}
-  m_Name: Bot1DataVariable
+  m_Script: {fileID: 11500000, guid: 5ade4f73df3ea334c954e2fb132d264d, type: 3}
+  m_Name: PreviewPartEvent
   m_EditorClassIdentifier: 
-  Value:
-    _parts:
-      _serializedList: []
-  Type: 0
-  DefaultValue:
-    _parts:
-      _serializedList: []
+  DebugValue:
+    AttachPoint: {x: 0, y: 0, z: 0}
+    Normal: {x: 0, y: 0, z: 0}

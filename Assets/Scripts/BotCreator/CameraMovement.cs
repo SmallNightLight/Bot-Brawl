@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
     [Header("Events")]
     [SerializeField] private PlacingInfoGameEvent _placingPartEvent;
     [SerializeField] private PlacingInfoGameEvent _previewPartEvent;
-    [SerializeField] private PartDataReference _selectedPartData;
+    [SerializeField] private PartDataGameEvent _selectedPartData;
 
     [Header("Rotation")]
     [SerializeField] private float _distance = 6;
@@ -74,8 +74,8 @@ public class CameraMovement : MonoBehaviour
             }
             else
             {
-                if (hit.collider.gameObject.TryGetComponent(out Unit selectedUnit))
-                    _selectedPartData.Value = selectedUnit.UnitPartData;
+                if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.TryGetComponent(out Unit selectedUnit))
+                    _selectedPartData.Raise(selectedUnit.UnitPartData);
             }
         }
             

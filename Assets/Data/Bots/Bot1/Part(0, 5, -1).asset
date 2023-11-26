@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f675cb12f9fb9047a832b5be04224b9, type: 3}
+  m_Script: {fileID: 11500000, guid: d6099389838875640a0c71df8b7ea453, type: 3}
   m_Name: Part(0, 5, -1)
   m_EditorClassIdentifier: 
   BasePart:
     _isVariable: 1
-    _variable: {fileID: 11400000, guid: 318b27d33e677d94d9d474d74183cf38, type: 2}
+    _variable: {fileID: 11400000, guid: 3c2a21f9e420edf40b23d53142d38165, type: 2}
     _constant:
       PartName: 
       PartDescription: 
@@ -26,57 +26,8 @@ MonoBehaviour:
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
       DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
-  Rotation: {x: 0, y: 270, z: 0}
+  Rotation: {x: -0, y: 90, z: 0}
   Material: 0
   Cost: 0
-  Settings:
-  - Name: Power
-    VariableType: 4
-    BoolValue: 0
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 30
-    MinFloat: 0
-    MaxFloat: 150
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
-  - Name: MaxAngle
-    VariableType: 4
-    BoolValue: 0
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 0
-    MinFloat: 0
-    MaxFloat: 360
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
-  - Name: Offset
-    VariableType: 4
-    BoolValue: 0
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 0
-    MinFloat: 0
-    MaxFloat: 100
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
-  - Name: Inverted
-    VariableType: 0
-    BoolValue: 1
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 0
-    MinFloat: 0
-    MaxFloat: 100
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
+  Settings: []
   Position: {x: 0, y: 5, z: -1}
-  PartSettings:
-    Power: 3
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0

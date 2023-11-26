@@ -1207,6 +1207,7 @@ GameObject:
   - component: {fileID: 956121752}
   - component: {fileID: 956121753}
   - component: {fileID: 956121754}
+  - component: {fileID: 956121755}
   m_Layer: 0
   m_Name: BotCreator
   m_TagString: Untagged
@@ -1271,6 +1272,8 @@ MonoBehaviour:
     _constant: 0
   _previewMaterial: {fileID: 2100000, guid: a2a3492217da8174697dfaa8f39f6f43, type: 2}
   _unplacableMaterial: {fileID: 2100000, guid: 77ea2a004e75fc641b0a27f9fd019dc6, type: 2}
+  _selectedMaterial: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  _selectedPartData: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}
 --- !u!114 &956121752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1342,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 956121751}
+        m_TargetAssemblyTypeName: BotCreator, Assembly-CSharp
+        m_MethodName: Deselect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &956121754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,6 +1373,47 @@ MonoBehaviour:
       - m_Target: {fileID: 956121751}
         m_TargetAssemblyTypeName: BotCreator, Assembly-CSharp
         m_MethodName: PreviewPartInfo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &956121755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956121749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbbf23a07913da428232cdd0df00f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: eabbd69dab9147c4fba3bc6fc36682c2, type: 2}
+        m_TargetAssemblyTypeName: ScriptableArchitecture.Core.Variable`1[[ScriptableArchitecture.Data.PartData,
+          ScriptableAssembly.Data
+        m_MethodName: Set
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 956121751}
+        m_TargetAssemblyTypeName: BotCreator, Assembly-CSharp
+        m_MethodName: SelectUnit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1648,10 +1704,7 @@ MonoBehaviour:
     m_Bits: 128
   _placingPartEvent: {fileID: 11400000, guid: c2222f142f20637419742e922f9c98df, type: 2}
   _previewPartEvent: {fileID: 11400000, guid: cc7456353838c55409bfd685f755ba13, type: 2}
-  _selectedPartData:
-    _isVariable: 1
-    _variable: {fileID: 11400000, guid: eabbd69dab9147c4fba3bc6fc36682c2, type: 2}
-    _constant: {fileID: 0}
+  _selectedPartData: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}
   _distance: 10
   _minYAngle: -30
   _maxYAngle: 90

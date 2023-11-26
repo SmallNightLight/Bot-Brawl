@@ -1,6 +1,7 @@
 using ScriptableArchitecture.Data;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,12 +15,16 @@ public class BotCreator : MonoBehaviour
 
     [SerializeField] private Material _previewMaterial;
     [SerializeField] private Material _unplacableMaterial;
+    [SerializeField] private Material _selectedMaterial;
 
     private Dictionary<Vector3Int, GameObject> _parts = new Dictionary<Vector3Int, GameObject>();
     private BasePartDataReference _selectedBasePart;
     private Vector3Int _mainPartPosition = new Vector3Int(0, 5, 0);
 
     private GameObject _previewObject;
+
+    [SerializeField] private PartDataGameEvent _selectedPartData;
+    private List<MeshRenderer> _selectedRenderers = new List<MeshRenderer>();
 
     private void Start()
     {
@@ -85,7 +90,7 @@ public class BotCreator : MonoBehaviour
         return angle;
     }
 
-    private void PlacePart(PlacingInfo placingInfo, bool AsCameraTarget)
+    private void PlacePart(PlacingInfo placingInfo, bool isMainBlock)
     {
         PartData newPartData = Instantiate(_selectedBasePart.Value.DefaultData);
         newPartData.BasePart = _selectedBasePart;
@@ -97,19 +102,19 @@ public class BotCreator : MonoBehaviour
         AssetDatabase.CreateAsset(newPartData, "Assets/Data/Bots/Bot1/Part" + newPartData.Position.ToString() + ".asset");
         AssetDatabase.SaveAssets();
 
-        AddPart(newPartData, AsCameraTarget);
+        AddPart(newPartData, isMainBlock);
     }
 
-    private void AddPart(PartData partData, bool asCameraTarget = false)
+    private void AddPart(PartData partData, bool isMainBlock = false)
     {
         if (_parts.ContainsKey(partData.Position))
             return;
 
         _botData.Value.AddPart(partData.Position, partData);
-        AddUnit(partData, asCameraTarget);
+        AddUnit(partData, isMainBlock);
     }
 
-    private void AddUnit(PartData partData, bool asCameraTarget = false)
+    private void AddUnit(PartData partData, bool isMainBlock = false)
     {
         GameObject newUnit = Instantiate(partData.BasePart.Value.CreatorPrefab, partData.Position, Quaternion.Euler(partData.Rotation.x, partData.Rotation.y, partData.Rotation.z));
 
@@ -118,8 +123,11 @@ public class BotCreator : MonoBehaviour
 
         _parts[partData.Position] = newUnit;
 
-        if (asCameraTarget)
+        if (isMainBlock)
+        {
+            _selectedPartData.Raise(partData);
             _cameraTarget.Value = newUnit.transform;
+        }
     }
 
     public void PreviewPartInfo(PlacingInfo placingInfo)
@@ -142,12 +150,69 @@ public class BotCreator : MonoBehaviour
             SetTransparent(childRenderer, canBePlaced);
     }
 
+    public void SelectUnit(PartData partData)
+    {
+        Deselect();
+
+        GameObject selectedParent = _parts[partData.Position];
+
+        if (selectedParent.TryGetComponent(out MeshRenderer renderer))
+            SetSelected(renderer);
+
+        foreach (MeshRenderer childRenderer in selectedParent.GetComponentsInChildren<MeshRenderer>())
+            SetSelected(childRenderer);
+    }
+
     private void SetTransparent(MeshRenderer renderer, bool canBePlaced)
     {
         if (canBePlaced)
             renderer.material = _previewMaterial;
         else
             renderer.material = _unplacableMaterial;
+    }
+
+    private void SetSelected(MeshRenderer renderer)
+    {
+        _selectedRenderers.Add(renderer);
+
+        Material[] currentMaterials = renderer.materials;
+        Material[] newMaterials = new Material[currentMaterials.Length + 1];
+
+        for (int i = 0; i < currentMaterials.Length; i++)
+            newMaterials[i] = currentMaterials[i];
+        newMaterials[newMaterials.Length - 1] = _selectedMaterial;
+
+        renderer.materials = newMaterials;
+    }
+
+    public void Deselect()
+    {
+        foreach (MeshRenderer r in _selectedRenderers)
+            RemoveSelectedMaterial(r);
+
+        _selectedRenderers.Clear();
+    }
+
+    private void RemoveSelectedMaterial(MeshRenderer renderer)
+    {
+        Material[] currentMaterials = renderer.sharedMaterials;
+
+        if (currentMaterials.Any(mat => ReferenceEquals(mat, _selectedMaterial)))
+        {
+            Material[] newMaterials = new Material[currentMaterials.Length - 1];
+            int newIndex = 0;
+
+            for (int i = 0; i < currentMaterials.Length; i++)
+            {
+                if (currentMaterials[i] != _selectedMaterial)
+                {
+                    newMaterials[newIndex] = currentMaterials[i];
+                    newIndex++;
+                }
+            }
+
+            renderer.materials = newMaterials;
+        }
     }
 
     public void SetSelectionBasePartData(BasePartDataReference data)

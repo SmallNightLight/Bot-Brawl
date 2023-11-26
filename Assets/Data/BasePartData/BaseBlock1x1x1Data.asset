@@ -16,7 +16,7 @@ MonoBehaviour:
     PartName: Block1x1x1
     PartDescription: Small block that can be attached to everything!
     PartType: Block
-    DefaultData: {fileID: 11400000, guid: e30b6b4acc1b8f94a89cef8048a84de3, type: 2}
+    DefaultData: {fileID: 11400000, guid: be6c24ea5365c8f4d8c993930756a2f6, type: 2}
     PartPrefab: {fileID: 2288977799406177123, guid: 10618e2a82bcf174f9a36613b00c4860,
       type: 3}
     CreatorPrefab: {fileID: 1180067945870177502, guid: 4dee7c96cc8a84f4a949287340aa1487,

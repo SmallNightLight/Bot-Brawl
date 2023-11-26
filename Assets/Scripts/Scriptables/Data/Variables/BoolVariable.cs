@@ -11,10 +11,5 @@ namespace ScriptableArchitecture.Data
         {
             Value = !Value;
         }
-
-        public void Set(bool condition)
-        {
-            Value = condition;
-        }
     }
 }

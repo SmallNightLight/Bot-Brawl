@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ScriptableArchitecture.Data
 {
-    [CreateAssetMenu(fileName = "PartDataVariable", menuName = "Scriptables/Variables/PartData")]
+    [CreateAssetMenu(fileName = "PartDataVariable", menuName = "Scriptables/Variables/PartDataVariable")]
     public class PartDataVariable : Variable<PartData>
     {
         public void SetName(string name)

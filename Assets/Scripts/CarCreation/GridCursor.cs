@@ -57,56 +57,56 @@ namespace CarCreation
 
             //Just some code to test the creation part
 
-            Vector3Int partPosition = Vector3Int.RoundToInt(_currPosition);
+            //Vector3Int partPosition = Vector3Int.RoundToInt(_currPosition);
 
-            if (!_botData.Value.TryGetPartData(partPosition, out PartData existingPart))
-            {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    //1x1x1 block
-                    BlockSmall blockSO = ScriptableObject.CreateInstance<BlockSmall>();
-                    blockSO.BasePart = _baseParts[0];
-                    blockSO.Position = partPosition;
+            //if (!_botData.Value.TryGetPartData(partPosition, out PartData existingPart))
+            //{
+            //    if (Input.GetKeyDown(KeyCode.Alpha1))
+            //    {
+            //        //1x1x1 block
+            //        BlockSmall blockSO = ScriptableObject.CreateInstance<BlockSmall>();
+            //        blockSO.BasePart = _baseParts[0];
+            //        blockSO.Position = partPosition;
 
-                    //Only works in editor
-                    UnityEditor.AssetDatabase.CreateAsset(blockSO, "Assets/Data/Bots/Bot1/Block" + blockSO.Position.ToString() + ".asset");
-                    UnityEditor.AssetDatabase.SaveAssets();
+            //        //Only works in editor
+            //        UnityEditor.AssetDatabase.CreateAsset(blockSO, "Assets/Data/Bots/Bot1/Block" + blockSO.Position.ToString() + ".asset");
+            //        UnityEditor.AssetDatabase.SaveAssets();
 
-                    _createNewPart.Raise(blockSO);
-                }
+            //        _createNewPart.Raise(blockSO);
+            //    }
 
-                if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    //Wheel
-                    WheelPart wheelSO = ScriptableObject.CreateInstance<WheelPart>();
-                    wheelSO.BasePart = _baseParts[1];
-                    wheelSO.Position = partPosition;
+            //    if (Input.GetKeyDown(KeyCode.Alpha2))
+            //    {
+            //        //Wheel
+            //        WheelPart wheelSO = ScriptableObject.CreateInstance<WheelPart>();
+            //        wheelSO.BasePart = _baseParts[1];
+            //        wheelSO.Position = partPosition;
 
-                    //Only works in editor
-                    UnityEditor.AssetDatabase.CreateAsset(wheelSO, "Assets/Data/Bots/Bot1/Wheel" + wheelSO.Position.ToString() + ".asset");
-                    UnityEditor.AssetDatabase.SaveAssets();
+            //        //Only works in editor
+            //        UnityEditor.AssetDatabase.CreateAsset(wheelSO, "Assets/Data/Bots/Bot1/Wheel" + wheelSO.Position.ToString() + ".asset");
+            //        UnityEditor.AssetDatabase.SaveAssets();
 
-                    _createNewPart.Raise(wheelSO);
-                }
+            //        _createNewPart.Raise(wheelSO);
+            //    }
 
-                if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    //Inverted Wheel, rotated
-                    WheelPart wheelSO = ScriptableObject.CreateInstance<WheelPart>();
-                    wheelSO.BasePart = _baseParts[1];
-                    wheelSO.Position = partPosition;
-                    wheelSO.Rotation = new Vector3(0, 180, 0);
+            //    if (Input.GetKeyDown(KeyCode.Alpha3))
+            //    {
+            //        //Inverted Wheel, rotated
+            //        WheelPart wheelSO = ScriptableObject.CreateInstance<WheelPart>();
+            //        wheelSO.BasePart = _baseParts[1];
+            //        wheelSO.Position = partPosition;
+            //        wheelSO.Rotation = new Vector3(0, 180, 0);
 
-                    wheelSO.PartSettings = new WheelPartSettings();
-                    wheelSO.PartSettings.Inverted = true;
+            //        wheelSO.PartSettings = new WheelPartSettings();
+            //        wheelSO.PartSettings.Inverted = true;
                     
-                    //Only works in editor
-                    UnityEditor.AssetDatabase.CreateAsset(wheelSO, "Assets/Data/Bots/Bot1/Wheel" + wheelSO.Position.ToString() + ".asset");
-                    UnityEditor.AssetDatabase.SaveAssets();
+            //        //Only works in editor
+            //        UnityEditor.AssetDatabase.CreateAsset(wheelSO, "Assets/Data/Bots/Bot1/Wheel" + wheelSO.Position.ToString() + ".asset");
+            //        UnityEditor.AssetDatabase.SaveAssets();
 
-                    _createNewPart.Raise(wheelSO);
-                }
-            }
+            //        _createNewPart.Raise(wheelSO);
+            //    }
+            //}
             
 
             //Test in other scene

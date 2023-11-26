@@ -1,9 +1,7 @@
 using ScriptableArchitecture.Data;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelObjectPart : ObjectPart<WheelPartSettings>
+public class WheelObjectPart : ObjectPart
 {
     [Header("Components")]
     [SerializeField] private WheelCollider _wheelCollider;
@@ -27,7 +25,7 @@ public class WheelObjectPart : ObjectPart<WheelPartSettings>
 
     private void Steer(float horizontalDirection)
     {
-        _turnAngle = horizontalDirection * PartSettings.MaxAngle + PartSettings.Offset;
+        _turnAngle = horizontalDirection * PartData.GetFloat("MaxAngle") + PartData.GetFloat("Offset");
         _wheelCollider.steerAngle = _turnAngle;
     }
 
@@ -39,7 +37,7 @@ public class WheelObjectPart : ObjectPart<WheelPartSettings>
             _wheelCollider.brakeTorque = 0;
 
         if (_isPowered.Value) 
-            _wheelCollider.motorTorque = powerInput * PartSettings.Power * 100 * (PartSettings.Inverted ? -1 : 1);
+            _wheelCollider.motorTorque = powerInput * PartData.GetFloat("Power") * 100 * (PartData.GetBool("Inverted") ? -1 : 1);
         else 
             _wheelCollider.brakeTorque = 100;
     }

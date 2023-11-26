@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f675cb12f9fb9047a832b5be04224b9, type: 3}
+  m_Script: {fileID: 11500000, guid: feb20e7ad179ca540a7ff1c4de4ae3c2, type: 3}
   m_Name: DefaulWheelPart
   m_EditorClassIdentifier: 
   BasePart:
-    _isVariable: 1
-    _variable: {fileID: 11400000, guid: 318b27d33e677d94d9d474d74183cf38, type: 2}
+    _isVariable: 0
+    _variable: {fileID: 0}
     _constant:
       PartName: 
       PartDescription: 
@@ -36,7 +36,7 @@ MonoBehaviour:
     IntValue: 0
     MinInt: 0
     MaxInt: 0
-    FloatValue: 30
+    FloatValue: 3
     MinFloat: 0
     MaxFloat: 150
     Vector3Value: {x: 0, y: 0, z: 0}
@@ -49,18 +49,18 @@ MonoBehaviour:
     MaxInt: 0
     FloatValue: 0
     MinFloat: 0
-    MaxFloat: 360
+    MaxFloat: 90
     Vector3Value: {x: 0, y: 0, z: 0}
     Vector3IntValue: {x: 0, y: 0, z: 0}
   - Name: Offset
-    VariableType: 4
+    VariableType: 3
     BoolValue: 0
     IntValue: 0
     MinInt: 0
     MaxInt: 0
     FloatValue: 0
     MinFloat: 0
-    MaxFloat: 100
+    MaxFloat: 50
     Vector3Value: {x: 0, y: 0, z: 0}
     Vector3IntValue: {x: 0, y: 0, z: 0}
   - Name: Inverted
@@ -71,12 +71,7 @@ MonoBehaviour:
     MaxInt: 0
     FloatValue: 0
     MinFloat: 0
-    MaxFloat: 100
+    MaxFloat: 0
     Vector3Value: {x: 0, y: 0, z: 0}
     Vector3IntValue: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0, z: 0}
-  PartSettings:
-    Power: 3
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0

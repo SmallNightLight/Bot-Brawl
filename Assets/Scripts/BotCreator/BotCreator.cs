@@ -113,11 +113,7 @@ public class BotCreator : MonoBehaviour
     {
         GameObject newUnit = Instantiate(partData.BasePart.Value.CreatorPrefab, partData.Position, Quaternion.Euler(partData.Rotation.x, partData.Rotation.y, partData.Rotation.z));
 
-        Unit unitComponent;
-
-        if (!newUnit.TryGetComponent(out unitComponent))
-            unitComponent = newUnit.AddComponent<Unit>();
-
+        Unit unitComponent = newUnit.AddComponent<Unit>();
         unitComponent.UnitPartData = partData;
 
         _parts[partData.Position] = newUnit;
@@ -152,19 +148,6 @@ public class BotCreator : MonoBehaviour
             renderer.material = _previewMaterial;
         else
             renderer.material = _unplacableMaterial;
-
-        //if (material != null)
-        //    if (material.HasProperty("_Opacity"))
-        //        material.SetFloat("_Opacity", 0.5f);
-
-        //if (!canBePlaced)
-        //{
-        //    if (material.HasProperty("_UseColorMap"))
-        //        material.SetInt("_UseColorMap", 0);
-
-        //    if (material.HasProperty("_Color"))
-        //        material.SetColor("_Color", Color.red);
-        //}
     }
 
     public void SetSelectionBasePartData(BasePartDataReference data)

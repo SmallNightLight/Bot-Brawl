@@ -29,4 +29,5 @@ MonoBehaviour:
   Rotation: {x: -0, y: 0, z: 0}
   Material: 0
   Cost: 0
+  Settings: []
   Position: {x: 0, y: 5, z: 0}

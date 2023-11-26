@@ -19,14 +19,20 @@ MonoBehaviour:
       PartName: 
       PartDescription: 
       PartType: 
+      DefaultData: {fileID: 0}
       PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
       BlockSize: {x: 0, y: 0, z: 0}
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 0, z: 0}
   Material: 0
   Cost: 0
+  Settings: []
+  Position: {x: 0, y: 0, z: 0}
   PartSettings:
     Power: 150
     MaxAngle: 30
     Offset: 0
+    Inverted: 0

@@ -6,9 +6,18 @@ public class NodeIf : Node
 {
     public NodeBool Condition;
 
-    public override void Execute(VariableCollection variables)
+    private bool _executeNextStatement; //For else and elseif
+
+    public override void ExecuteChildren(VariableCollection variables)
     {
-        if (Condition.IsTrue())
-            base.Execute(variables);
+        _executeNextStatement = !Condition.IsTrue();
+
+        if (!_executeNextStatement)
+            base.ExecuteChildren(variables);
+    }
+
+    public bool ExecuteNextStatement()
+    {
+        return _executeNextStatement;
     }
 }

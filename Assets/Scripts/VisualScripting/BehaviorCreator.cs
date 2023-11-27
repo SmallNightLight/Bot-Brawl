@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BehaviorCreator : MonoBehaviour
@@ -9,7 +7,7 @@ public class BehaviorCreator : MonoBehaviour
 
     public void Execute(VariableCollection variables)
     {
-        BaseNode.Execute();
+        BaseNode.ExecuteChildren(variables);
     }
 
 

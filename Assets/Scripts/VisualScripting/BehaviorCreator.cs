@@ -9,6 +9,4 @@ public class BehaviorCreator : MonoBehaviour
     {
         BaseNode.ExecuteChildren(variables);
     }
-
-
 }

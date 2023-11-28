@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,7 +37,6 @@ namespace PartSettingsIO.SettingProcessor
             _toggleCheckbox.onValueChanged.AddListener((value) =>
             {
                 ModifySetting();
-                Debug.Log("Checkbox event fired: " + value);
             });
         }
 
@@ -53,9 +51,6 @@ namespace PartSettingsIO.SettingProcessor
         {
             _toggleCheckbox.onValueChanged.RemoveAllListeners();
             
-            #if UNITY_EDITOR
-            //EditorUtility.SetDirty(UiSetting);
-            #endif
         }
     }
 }

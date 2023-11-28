@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using PartSettingsIO.SettingProcessor;
 using ScriptableArchitecture.Data;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace PartSettingsIO
 {
@@ -28,6 +25,7 @@ namespace PartSettingsIO
         {
             if (partDataAsset != null)
             {
+                
                 foreach (PartSetting setting in partDataAsset.Settings)
                 {
                     switch (setting.VariableType)
@@ -36,13 +34,13 @@ namespace PartSettingsIO
                             _processes.Add(BoolSettingProcessor.CreateInstance(Instantiate(togglePrefab, _panelTransform), setting));
                             break;
                         case PartSetting.SettingType.Int:
-                            
+                            _processes.Add(IntSettingProcessor.CreateInstance(Instantiate(inputFieldPrefab, _panelTransform), setting));
                             break;
                         case PartSetting.SettingType.ClampedInt:
-                            
+                            _processes.Add(ClampedIntSettingProcessor.CreateInstance(Instantiate(inputFieldPrefab, _panelTransform), setting));
                             break;
                         case PartSetting.SettingType.Float:
-                            
+                            _processes.Add(FloatSettingProcessor.CreateInstance(Instantiate(inputFieldPrefab, _panelTransform), setting));
                             break;
                         case PartSetting.SettingType.ClampedFloat:
                             _processes.Add(ClampedFloatSettingProcessor.CreateInstance(Instantiate(inputFieldPrefab, _panelTransform), setting));
@@ -54,9 +52,6 @@ namespace PartSettingsIO
     
         private void WriteSettings()
         {
-            #if UNITY_EDITOR
-            AssetDatabase.SaveAssets();
-            #endif
         }
         
         private void OnDestroy()

@@ -1,18 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UICategory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<Animator> _openCategories = new List<Animator>();
+
+    private void Start()
     {
-        
+        foreach(Animator child in GetComponentsInChildren<Animator>(true))
+            _openCategories.Add(child);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void Raise(int index) => _openCategories[index].SetBool("Open", !_openCategories[index].GetBool("Open"));
 }

@@ -32,7 +32,7 @@ namespace PartSettingsIO.SettingProcessor
             _inputField.GetComponentInChildren<TMP_Text>().text = $"int: {UiSetting.MinInt}...{UiSetting.MinInt}";
             _inputLabel.text = UiSetting.Name; 
             _inputField.contentType = TMP_InputField.ContentType.IntegerNumber;
-            _inputField.text = UiSetting.IntValue.ToString("N", CultureInfo.InvariantCulture);
+            _inputField.text = UiSetting.IntValue.ToString("N0", CultureInfo.InvariantCulture);
         }
         
         protected override void SetEvent()
@@ -47,7 +47,7 @@ namespace PartSettingsIO.SettingProcessor
         protected override void ValidateInput() 
         {
             int clamped = Math.Clamp(int.Parse(_inputField.text), UiSetting.MinInt, UiSetting.MaxInt);
-            _inputField.text = clamped.ToString("N", CultureInfo.InvariantCulture);
+            _inputField.text = clamped.ToString("N0", CultureInfo.InvariantCulture);
         }
     
         protected override void ModifySetting()

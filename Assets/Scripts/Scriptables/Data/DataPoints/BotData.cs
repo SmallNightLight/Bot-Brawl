@@ -10,8 +10,12 @@ namespace ScriptableArchitecture.Data
     [Serializable]
     public class BotData : IDataPoint
     {
+        public string BotName;
+
         [SerializeField, SerializedDictionary("Position", "Data")]
         private SerializedDictionary<Vector3Int, PartData> _parts;
+
+        [SerializeField] private Node BaseNode;
 
         public void AddPart(Vector3Int position, PartData botPartData)
         {

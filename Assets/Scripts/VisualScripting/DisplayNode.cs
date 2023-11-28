@@ -14,6 +14,8 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 _offset;
     private float _snappingValue = 10;
 
+    public DisplayNode _bufferNode;
+
     private void Start()
     {
         
@@ -52,7 +54,9 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         AssetDatabase.CreateAsset(newPartData, "Assets/Data/Bots/Bot1/Behavior/Node" + Node.ID++ + ".asset");
         AssetDatabase.SaveAssets();
 
-        Instantiate(this, transform.parent.transform).GetComponent<DisplayNode>().EnableDragging();
+        _bufferNode = Instantiate(this, transform.parent.transform).GetComponent<DisplayNode>();
+        _bufferNode.EnableDragging();
+        _bufferNode.IsDefaultNode = false;
     }
 
     private Vector2 SnapPosition(Vector2 position)
@@ -68,6 +72,11 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _isDragging = true;
     }
 
+    public void DisableDragging()
+    {
+        _isDragging = false;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         _isDragging = true;
@@ -76,5 +85,8 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         _isDragging = false;
+
+        if (_bufferNode != null)
+            _bufferNode.DisableDragging();
     }
 }

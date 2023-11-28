@@ -6,6 +6,10 @@ public class Node : ScriptableObject
 {
     public List<Node> ScopeNodes = new List<Node>();
 
+    //Drawing
+    public Color _displayColor;
+    
+
     public virtual void ExecuteChildren(VariableCollection variables)
     {
         for (int i = 0; i < ScopeNodes.Count; i++)

@@ -8,6 +8,8 @@ public class NodePart : Node
 
     public List<PartSetting> NewSettings = new List<PartSetting>();
 
+    //public PartSetting SelectedPartSetting;
+
     public override void ExecuteNode(VariableCollection variables)
     {
         PartData.Settings = NewSettings;

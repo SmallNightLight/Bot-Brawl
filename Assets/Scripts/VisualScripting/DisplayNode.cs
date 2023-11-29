@@ -14,12 +14,7 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 _offset;
     private float _snappingValue = 10;
 
-    public DisplayNode _bufferNode;
-
-    private void Start()
-    {
-        
-    }
+    private DisplayNode _bufferNode;
 
     private void Update()
     {
@@ -41,7 +36,7 @@ public class DisplayNode : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     }
                 }
 
-                transform.position = SnapPosition(mousePosition + _offset);
+                transform.position = mousePosition + _offset;
             }
         }
     }

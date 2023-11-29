@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace ScriptableArchitecture.Data
 {
+    [System.Serializable]
     [CreateAssetMenu(fileName = "DefaultNodeVariable", menuName = "Nodes/Variables")]
     public class NodeVariable : Node //Setup variables in a different window as global
     {

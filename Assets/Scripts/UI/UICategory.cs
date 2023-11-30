@@ -12,4 +12,5 @@ public class UICategory : MonoBehaviour
     }
 
     public void Raise(int index) => _openCategories[index].SetBool("Open", !_openCategories[index].GetBool("Open"));
+
 }

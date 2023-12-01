@@ -18,14 +18,28 @@ namespace PartSettingsIO
         void Start()
         {
             _panelTransform = transform.Find("Panel");
+        }
+
+        public void SetPartData(PartData partData)
+        {
+            partDataAsset = partData;
+
+            Clear();
             ProcessPartSettings();
+        }
+
+        public void Clear()
+        {
+            foreach(var process in _processes)
+                Destroy(process.gameObject);
+
+            _processes.Clear();
         }
 
         private void ProcessPartSettings()
         {
             if (partDataAsset != null)
             {
-                
                 foreach (PartSetting setting in partDataAsset.Settings)
                 {
                     switch (setting.VariableType)

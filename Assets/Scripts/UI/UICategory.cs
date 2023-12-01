@@ -7,7 +7,7 @@ public class UICategory : MonoBehaviour
 
     private void Start()
     {
-        foreach(Animator child in GetComponentsInChildren<Animator>(true))
+        foreach(Animator child in GetComponentsInChildren<Animator>(false))
             _openCategories.Add(child);
     }
 

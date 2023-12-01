@@ -23,6 +23,8 @@ public class BotCreator : MonoBehaviour
 
     private GameObject _previewObject;
 
+    private PartData _selectedPartNew;
+
     [SerializeField] private PartDataGameEvent _selectedPartData;
     private List<MeshRenderer> _selectedRenderers = new List<MeshRenderer>();
 
@@ -156,6 +158,8 @@ public class BotCreator : MonoBehaviour
 
         GameObject selectedParent = _parts[partData.Position];
 
+        _selectedPartNew = partData;
+
         if (selectedParent.TryGetComponent(out MeshRenderer renderer))
             SetSelected(renderer);
 
@@ -233,6 +237,12 @@ public class BotCreator : MonoBehaviour
     {
         foreach (var partData in _botData.Value.GetParts())
             Remove(partData.Value.Position);
+    }
+
+    public void RemoveSelected() //Make into one that removes as state
+    {
+        if (_selectedPartNew != null)
+            Remove(_selectedPartNew.Position);
     }
 
     public void Remove(Vector3Int partPosition)

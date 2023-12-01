@@ -895,7 +895,7 @@ PrefabInstance:
     - target: {fileID: 7551996667734759437, guid: 0d7496e25812096428e3d72baaf66a2b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 62.33
       objectReference: {fileID: 0}
     - target: {fileID: 7551996667734759437, guid: 0d7496e25812096428e3d72baaf66a2b,
         type: 3}
@@ -1545,8 +1545,10 @@ MonoBehaviour:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 6456a04979624d54c8d44c0968388b6b, type: 2}
     _constant:
+      BotName: 
       _parts:
         _serializedList: []
+      BaseNode: {fileID: 0}
   _cameraTarget:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 8e6f65651c0ff6b478098260269df9c5, type: 2}

@@ -13,7 +13,8 @@ public class PartSetting
         Float,
         ClampedFloat,
         Vector3,
-        Vector3Int
+        Vector3Int,
+        ClampedVector3Int
     }
 
     public SettingType VariableType;

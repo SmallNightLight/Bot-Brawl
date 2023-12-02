@@ -19,6 +19,14 @@ namespace ScriptableArchitecture.Data
         [HideInInspector] public Vector3Int Position;
 
         private string _currentSettingName;
+        
+        public enum PartType
+        {
+            Frame,
+            Wheel,
+            Weapon,
+            Armor
+        }
 
         public void SetName(string name)
         {

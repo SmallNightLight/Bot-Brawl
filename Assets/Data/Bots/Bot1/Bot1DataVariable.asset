@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Bot1DataVariable
   m_EditorClassIdentifier: 
   Value:
+    BotName: 
     _parts:
       _serializedList: []
+    BaseNode: {fileID: 0}
   Type: 0
   DefaultValue:
+    BotName: 
     _parts:
       _serializedList: []
+    BaseNode: {fileID: 0}

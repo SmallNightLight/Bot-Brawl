@@ -1,6 +1,5 @@
 using ScriptableArchitecture.Data;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;

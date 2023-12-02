@@ -28,6 +28,17 @@ namespace ScriptableArchitecture.Data
             Armor
         }
 
+        public void Initialize(string currentSettingName, BasePartDataReference basePart, Vector3Int position, Vector3 rotation, int material, int cost, List<PartSetting> settings)
+        {
+            _currentSettingName = currentSettingName;
+            BasePart = basePart;
+            Position = position;
+            Rotation = rotation;
+            Material = material;
+            Cost = cost;
+            Settings = settings;
+        }
+
         public void SetName(string name)
         {
             _currentSettingName = name;

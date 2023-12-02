@@ -17,6 +17,12 @@ namespace ScriptableArchitecture.Data
 
         [SerializeField] private Node BaseNode;
 
+        public BotData(string botName, SerializedDictionary<Vector3Int, PartData> parts) //Add node
+        {
+            BotName = botName;
+            _parts = parts;
+        }
+
         public void AddPart(Vector3Int position, PartData botPartData)
         {
             _parts.Add(position, botPartData);
@@ -49,6 +55,11 @@ namespace ScriptableArchitecture.Data
         public List<KeyValuePair<Vector3Int, PartData>> GetParts()
         {
             return _parts.ToList();
+        }
+
+        public SerializedDictionary<Vector3Int, PartData> GetPartsDictionary()
+        {
+            return _parts;
         }
 
         public int GetPartCount()

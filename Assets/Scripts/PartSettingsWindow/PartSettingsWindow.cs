@@ -27,7 +27,9 @@ public class PartSettingsWindow : MonoBehaviour
 
     public void Clear()
     {
-        Destroy(gameObject);
+        if (_windowContext != null)
+            foreach(Transform child in _windowContext)
+                Destroy(child.gameObject);
     }
     
     void Start()
@@ -39,6 +41,8 @@ public class PartSettingsWindow : MonoBehaviour
 
     private void InitWindow()
     {
+        Clear();
+
         foreach (var setting in _settings)
         {
             switch (setting.VariableType)

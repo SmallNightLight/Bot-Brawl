@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -97,10 +98,19 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void SetupAsDefault()
     {
         //Create Do node text
-        NewText(DefaultDo.GetBeforeNodeText());
+        NewText(DefaultDo.GetNodeText());
+
+        string[] getTexts = DefaultDo.GetBeforeNodeText();
+        int i = 0;
 
         foreach (BaseGet defaultGet in DefaultDo.GetDefaultInput())
+        {
+            NewText(getTexts[i]);
             CreateGetPoint(defaultGet);
+
+            i++;
+        }
+            
     }   
 
     private void CreateGetPoint(BaseGet defaultGet)

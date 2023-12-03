@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditorInternal.ReorderableList;
 
 public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -73,10 +74,17 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void SetupAsDefault()
     {
         //Create Do node text
-        NewText(DefaultGet.GetBeforeNodeText());
+        NewText(DefaultGet.GetNodeText());
+
+        string[] getTexts = DefaultGet.GetBeforeNodeText();
+        int i = 0;
 
         foreach (BaseGet defaultGet in DefaultGet.GetDefaultInput())
+        {
+            NewText(getTexts[i]);
             CreateGetPoint(defaultGet);
+            i++;
+        }
     }
 
     private void CreateGetPoint(BaseGet defaultGet)

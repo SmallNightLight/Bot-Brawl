@@ -50,7 +50,7 @@ public class VariableCreator : MonoBehaviour
             newConditionVariable.name = _variableName;
             newConditionVariable.Value = _conditionValue;
 
-            DataManager.Instance.Variables[_variableName] = newConditionVariable;
+            DataManager.Instance.CustomVariables[_variableName] = newConditionVariable;
 
             //Create object
             Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newConditionVariable);
@@ -62,7 +62,7 @@ public class VariableCreator : MonoBehaviour
             newNumberVariable.name = _variableName;
             newNumberVariable.Value = _numberValue;
 
-            DataManager.Instance.Variables[_variableName] = newNumberVariable;
+            DataManager.Instance.CustomVariables[_variableName] = newNumberVariable;
 
             //Create object
             Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newNumberVariable);

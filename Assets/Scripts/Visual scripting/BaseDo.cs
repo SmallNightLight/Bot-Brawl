@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 
@@ -43,9 +44,17 @@ public class BaseDo : Node
 
     public virtual bool HasScope() => false;
 
-    public virtual string GetBeforeNodeText()
+    public virtual string GetNodeText() => "";
+
+    public virtual string[] GetBeforeNodeText()
     {
-        return "";
+        int size = GetInput().Count;
+        string[] emptyStringArray = new string[size];
+
+        for (int i = 0; i < size; i++)
+            emptyStringArray[i] = string.Empty;
+
+        return emptyStringArray;
     }
 
     public virtual bool CanSnapAbove() => true;

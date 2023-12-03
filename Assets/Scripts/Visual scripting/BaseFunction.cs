@@ -7,5 +7,5 @@ public class BaseFunction : BaseDo
 {
     public string FunctionName;
 
-    public override string GetBeforeNodeText() => FunctionName;
+    public override string GetNodeText() => FunctionName;
 }

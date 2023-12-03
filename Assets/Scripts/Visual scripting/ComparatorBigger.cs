@@ -13,4 +13,6 @@ public class ComparatorBigger : BaseComparator
     public override bool GetComparator(object value1, object value2) => (float)value1 > (float)value2;
 
     public override List<BaseGet> GetDefaultInput() => new List<BaseGet> { DefaultNumber1, DefaultNumber2 };
+
+    public override string[] GetBeforeNodeText() => new string[] { "", ">" };
 }

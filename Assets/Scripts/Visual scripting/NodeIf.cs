@@ -15,17 +15,11 @@ public class NodeIf : BaseDo
             base.Execute();
     }
 
-    public override List<BaseGet> GetInput()
-    {
-        return new List<BaseGet> 
-        { 
-            Condition
-        };
-    }
+    public override List<BaseGet> GetInput() => new List<BaseGet> { Condition };
 
     public override List<BaseGet> GetDefaultInput() => new List<BaseGet> { DefaultCondition };
 
-    public override string GetBeforeNodeText() => "If";
+    public override string[] GetBeforeNodeText() => new string[] { "If" };
 
     public override bool HasScope() => true;
 }

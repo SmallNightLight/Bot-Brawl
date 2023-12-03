@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 1998468470006388821, guid: e216d7897420aa84091ab245f712f8b6,
         type: 3}
       propertyPath: m_Name
-      value: VisualScirptingCanvas
+      value: VisualScriptingCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 3814820530020626054, guid: e216d7897420aa84091ab245f712f8b6,
         type: 3}
@@ -475,6 +475,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6823386594320650660, guid: e216d7897420aa84091ab245f712f8b6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405075963721994673, guid: e216d7897420aa84091ab245f712f8b6,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

@@ -17,8 +17,16 @@ public abstract class BaseGet : Node
         return new List<BaseGet>();
     }
 
-    public virtual string GetBeforeNodeText()
+    public virtual string GetNodeText() => "";
+
+    public virtual string[] GetBeforeNodeText()
     {
-        return "";
+        int size = GetInput().Count;
+        string[] emptyStringArray = new string[size];
+
+        for (int i = 0; i < size; i++)
+            emptyStringArray[i] = string.Empty;
+
+        return emptyStringArray;
     }
 }

@@ -11,7 +11,7 @@ public class GetNot : BaseGetBool
 
     public override bool GetBool() => !Reference.GetBool();
 
-    public override string GetBeforeNodeText() => "Not";
+    public override string GetNodeText() => "Not";
 
     public override List<BaseGet> GetInput() => new List<BaseGet> { Reference };
 

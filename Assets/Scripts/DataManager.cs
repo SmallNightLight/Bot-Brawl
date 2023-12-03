@@ -58,6 +58,7 @@ public class DataManager : MonoBehaviour
     public List<BotData> BotData = new List<BotData>();
     public List<PartData> PartData = new List<PartData>();
     public List<Node> AllNodes = new List<Node>();
+    public Dictionary<string, BaseGet> Variables = new Dictionary<string, BaseGet>();
 
     private void SetupBaseData()
     {

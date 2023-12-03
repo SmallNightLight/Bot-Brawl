@@ -3050,6 +3050,7 @@ MonoBehaviour:
       BotName: 
       _parts:
         _serializedList: []
+      BaseNode: {fileID: 0}
   _cameraTarget:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 8e6f65651c0ff6b478098260269df9c5, type: 2}

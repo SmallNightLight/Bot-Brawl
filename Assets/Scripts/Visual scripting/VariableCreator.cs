@@ -25,9 +25,6 @@ public class VariableCreator : MonoBehaviour
     private float _numberValue;
     private bool _conditionValue;
 
-    public List<BaseGet> DEBUGLIST = new List<BaseGet>();
-    private Dictionary<string, BaseGet> _variables = new Dictionary<string, BaseGet>();
-
     private enum VariableType
     {
         Condition,
@@ -53,7 +50,7 @@ public class VariableCreator : MonoBehaviour
             newConditionVariable.name = _variableName;
             newConditionVariable.Value = _conditionValue;
 
-            _variables[_variableName] = newConditionVariable;
+            DataManager.Instance.Variables[_variableName] = newConditionVariable;
 
             //Create object
             Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newConditionVariable);
@@ -65,15 +62,11 @@ public class VariableCreator : MonoBehaviour
             newNumberVariable.name = _variableName;
             newNumberVariable.Value = _numberValue;
 
-            _variables[_variableName] = newNumberVariable;
+            DataManager.Instance.Variables[_variableName] = newNumberVariable;
 
             //Create object
             Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newNumberVariable);
         }
-
-        DEBUGLIST.Clear();
-        foreach (var v in _variables.Values)
-            DEBUGLIST.Add(v);
 
         ResetValues();
     }
@@ -85,7 +78,7 @@ public class VariableCreator : MonoBehaviour
 
     public void SetVariableType(int index)
     {
-        switch(index)
+        switch (index)
         {
             case 0:
                 _variableType = VariableType.Condition;

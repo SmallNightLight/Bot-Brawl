@@ -15,7 +15,7 @@ namespace ScriptableArchitecture.Data
         [SerializeField, SerializedDictionary("Position", "Data")]
         private SerializedDictionary<Vector3Int, PartData> _parts;
 
-        [SerializeField] private Node BaseNode;
+        //[SerializeField] private Node BaseNode;
 
         public BotData(string botName, SerializedDictionary<Vector3Int, PartData> parts) //Add node
         {

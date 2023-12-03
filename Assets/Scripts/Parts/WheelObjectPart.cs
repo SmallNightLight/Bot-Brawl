@@ -36,10 +36,7 @@ public class WheelObjectPart : ObjectPart
         else
             _wheelCollider.brakeTorque = 0;
 
-        if (_isPowered.Value) 
-            _wheelCollider.motorTorque = powerInput * PartData.GetFloat("Power") * 100 * (PartData.GetBool("Inverted") ? -1 : 1);
-        else 
-            _wheelCollider.brakeTorque = 100;
+        _wheelCollider.motorTorque = powerInput * PartData.GetFloat("Power") * 100 * (PartData.GetBool("Inverted") ? -1 : 1);
     }
 
     private void UpdateMeshPosition()

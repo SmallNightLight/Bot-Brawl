@@ -17,7 +17,7 @@ MonoBehaviour:
     PartDescription: Starting block
     PartType: Block
     DefaultData: {fileID: 11400000, guid: e104d5dbe02fd914b992433433e6fcf5, type: 2}
-    PartPrefab: {fileID: 6104115825073675406, guid: f3ad292019fb722488168e632cfc3e99,
+    PartPrefab: {fileID: 2288977799406177123, guid: 10618e2a82bcf174f9a36613b00c4860,
       type: 3}
     CreatorPrefab: {fileID: 8305669283018129502, guid: 04a3c5d98e8a51b4cbeb1ce188ba8b99,
       type: 3}

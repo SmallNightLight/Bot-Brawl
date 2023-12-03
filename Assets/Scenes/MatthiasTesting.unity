@@ -548,11 +548,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 147539281}
   _meshTransform: {fileID: 709543136}
 --- !u!1 &208840036
@@ -1152,11 +1147,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 11400000, guid: c3c1f48701c334b49a52f2794f913fb1, type: 2}
-  PartSettings:
-    Power: 150
-    MaxAngle: 0
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 1422736378}
   _meshTransform: {fileID: 1795949578}
 --- !u!1 &410087039
@@ -1964,11 +1954,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 1656398778}
   _meshTransform: {fileID: 1347421043}
 --- !u!1 &685771768
@@ -2220,11 +2205,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 1584381182}
   _meshTransform: {fileID: 890739572}
 --- !u!1 &811938765
@@ -2278,11 +2258,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 1024093650}
   _meshTransform: {fileID: 90264719}
 --- !u!1 &820920693
@@ -2698,6 +2673,7 @@ MonoBehaviour:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 6456a04979624d54c8d44c0968388b6b, type: 2}
     _constant:
+      BotName: 
       _parts:
         _serializedList: []
   _yOffset: 2
@@ -4257,11 +4233,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 11400000, guid: 4823dbbcbf09ac542979356dfdb1bc0d, type: 2}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 500059568}
   _meshTransform: {fileID: 1595689123}
 --- !u!1 &1584381180
@@ -4386,11 +4357,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 2121997270}
   _meshTransform: {fileID: 1730008758}
 --- !u!1 &1595689122
@@ -4542,11 +4508,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 598977030}
   _meshTransform: {fileID: 2025862253}
 --- !u!1 &1651048686
@@ -4600,11 +4561,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 2110580920}
   _meshTransform: {fileID: 834685584}
 --- !u!1 &1656398776
@@ -4794,11 +4750,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 208840038}
   _meshTransform: {fileID: 1915200172}
 --- !u!1 &1790961347
@@ -4852,11 +4803,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 0}
-  PartSettings:
-    Power: 150
-    MaxAngle: 30
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 1481100695}
   _meshTransform: {fileID: 1088706351}
 --- !u!1 &1795949577
@@ -5269,57 +5215,6 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
---- !u!1 &2119257846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2119257848}
-  - component: {fileID: 2119257847}
-  m_Layer: 0
-  m_Name: TestBot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2119257847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119257846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2500f6fbc17f22c4aac151d1cd35bf71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _botData:
-    _isVariable: 1
-    _variable: {fileID: 11400000, guid: 39a4c43936399384aa34eb3c72683e0b, type: 2}
-    _constant:
-      _parts:
-        _serializedList: []
-  _yOffset: 0
---- !u!4 &2119257848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119257846}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 1.5, z: -7.39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121997268
 GameObject:
   m_ObjectHideFlags: 0
@@ -6485,11 +6380,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _constant: 1
   PartData: {fileID: 11400000, guid: d6ac387f36d9ad344894a4e1bb4450ef, type: 2}
-  PartSettings:
-    Power: 150
-    MaxAngle: 0
-    Offset: 0
-    Inverted: 0
   _wheelCollider: {fileID: 7343247049325793159}
   _meshTransform: {fileID: 2727633996183173718}
 --- !u!23 &5377157368758518235
@@ -7070,7 +6960,6 @@ SceneRoots:
   - {fileID: 470024546}
   - {fileID: 341557227}
   - {fileID: 917090395}
-  - {fileID: 2119257848}
   - {fileID: 952818838}
   - {fileID: 1257752021}
   - {fileID: 371843581}

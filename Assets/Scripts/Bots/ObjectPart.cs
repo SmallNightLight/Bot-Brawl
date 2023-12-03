@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class ObjectPart : MonoBehaviour
 {
-    [Header("Base")]
-    public BoolReference _isPowered;
     public PartData PartData;
 
     public virtual void SetPartData(PartData partData)

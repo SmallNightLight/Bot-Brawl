@@ -70,6 +70,7 @@ public class BotCreator : MonoBehaviour
         }
 
         _isPlacing.Value = false;
+        StartCoroutine(WaitForScreenshot(false));
     }
 
     public void PlacePart(PlacingInfo placingInfo)
@@ -276,10 +277,10 @@ public class BotCreator : MonoBehaviour
     [ContextMenu("Screenshot")]
     public void TakeScreenshot()
     {
-        StartCoroutine(WaitForScreenshot());
+        StartCoroutine(WaitForScreenshot(true));
     }
 
-    private IEnumerator WaitForScreenshot()
+    private IEnumerator WaitForScreenshot(bool alwaysCapture)
     {
         foreach (Canvas canvas in _canvases)
             canvas.gameObject.SetActive(false);
@@ -304,7 +305,8 @@ public class BotCreator : MonoBehaviour
 
         string filePath = Path.Combine(folderPath, botName + ".png");
 
-        File.WriteAllBytes(filePath, byteArray);
+        if (alwaysCapture || !File.Exists(filePath))
+            File.WriteAllBytes(filePath, byteArray);
 
         foreach (Canvas canvas in _canvases)
             canvas.gameObject.SetActive(true);

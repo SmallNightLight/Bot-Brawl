@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class DisplayBots : MonoBehaviour
 {
     [SerializeField] private GameObject _displayBotPrefab;
+    [SerializeField] private Transform _botParent;
 
     private List<DisplayBot> _displayBots = new List<DisplayBot>();
 
@@ -21,7 +22,7 @@ public class DisplayBots : MonoBehaviour
             {
                 _botCount++;
 
-                DisplayBot bot = Instantiate(_displayBotPrefab, transform).GetComponent<DisplayBot>();
+                DisplayBot bot = Instantiate(_displayBotPrefab, _botParent).GetComponent<DisplayBot>();
                 bot.Initialize(botData.Value);
                 _displayBots.Add(bot);
             }

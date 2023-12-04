@@ -107,6 +107,9 @@ public class DataManager : MonoBehaviour
 
             BotData botData = new BotData(data.BotName, newParts);
             AllBotData[botData.BotName] = botData;
+
+            if (CurrentBotData == null || CurrentBotData.BotName == "")
+                CurrentBotData = botData;
         }
     }
 

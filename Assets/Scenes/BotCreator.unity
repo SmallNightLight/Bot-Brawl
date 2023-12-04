@@ -1815,6 +1815,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 956121751}
+        m_TargetAssemblyTypeName: BotCreator, Assembly-CSharp
+        m_MethodName: TakeScreenshot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 547812457}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: LoadSceneByName
@@ -3046,7 +3058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _botData:
     _isVariable: 1
-    _variable: {fileID: 11400000, guid: 6456a04979624d54c8d44c0968388b6b, type: 2}
+    _variable: {fileID: 11400000, guid: 1d2d49f556b438f4397e672d51ae4ec7, type: 2}
     _constant:
       BotName: 
       _parts:
@@ -3076,6 +3088,9 @@ MonoBehaviour:
   _previewMaterial: {fileID: 2100000, guid: a2a3492217da8174697dfaa8f39f6f43, type: 2}
   _unplacableMaterial: {fileID: 2100000, guid: 77ea2a004e75fc641b0a27f9fd019dc6, type: 2}
   _selectedMaterial: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  _canvases:
+  - {fileID: 1764481580}
+  - {fileID: 2077126118}
   _selectedPartData: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}
 --- !u!114 &956121752
 MonoBehaviour:
@@ -3705,6 +3720,7 @@ GameObject:
   - component: {fileID: 1136017303}
   - component: {fileID: 1136017307}
   - component: {fileID: 1136017306}
+  - component: {fileID: 1136017308}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3863,6 +3879,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1136017308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136017302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01988b5bd8e054d43a64b7058eb925e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184000045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,6 +5524,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!223 &2077126118 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4879900416448978460, guid: b60395e44883b424d87f9b99c4032f8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 62226089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100741946
 GameObject:
   m_ObjectHideFlags: 0

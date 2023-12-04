@@ -1,12 +1,15 @@
 using ScriptableArchitecture.Data;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public class BotCreator : MonoBehaviour
 {
-    [SerializeField] private BotDataReference _botData;
+    private BotData _botData;
     [SerializeField] private TransformReference _cameraTarget;
 
     [SerializeField] private BasePartDataReference _mainPartData;
@@ -15,6 +18,8 @@ public class BotCreator : MonoBehaviour
     [SerializeField] private Material _previewMaterial;
     [SerializeField] private Material _unplacableMaterial;
     [SerializeField] private Material _selectedMaterial;
+
+    [SerializeField] private List<Canvas> _canvases = new List<Canvas>();
 
     private Dictionary<Vector3Int, GameObject> _parts = new Dictionary<Vector3Int, GameObject>();
     private BasePartDataReference _selectedBasePart;
@@ -29,6 +34,11 @@ public class BotCreator : MonoBehaviour
 
     private void Start()
     {
+        _botData = DataManager.Instance.CurrentBotData;
+
+        if (_botData == null)
+            return;
+
         SetupBot();
     }
 
@@ -42,7 +52,7 @@ public class BotCreator : MonoBehaviour
 
     private void SetupBot()
     {
-        if (_botData.Value.GetPartCount() == 0)
+        if (_botData.GetPartCount() == 0)
         {
             //Create new main block
             _selectedBasePart = _mainPartData;
@@ -54,7 +64,7 @@ public class BotCreator : MonoBehaviour
         else
         {
             //Setup bot from previous save
-            foreach (var part in _botData.Value.GetParts())
+            foreach (var part in _botData.GetParts())
                 if (part.Value != null)
                     AddUnit(part.Value, part.Value.BasePart.Value.Equals(_mainPartData.Value));
         }
@@ -111,7 +121,7 @@ public class BotCreator : MonoBehaviour
         if (_parts.ContainsKey(partData.Position))
             return;
 
-        _botData.Value.AddPart(partData.Position, partData);
+        _botData.AddPart(partData.Position, partData);
         AddUnit(partData, isMainBlock);
     }
 
@@ -228,13 +238,13 @@ public class BotCreator : MonoBehaviour
         if (!_parts.ContainsKey(partData.Position))
             return;
 
-        _botData.Value.ChangePart(partData.Position, partData);
+        _botData.ChangePart(partData.Position, partData);
     }
 
     [ContextMenu("Clear Bot")]
     public void ClearBotData()
     {
-        foreach (var partData in _botData.Value.GetParts())
+        foreach (var partData in _botData.GetParts())
             Remove(partData.Value.Position);
     }
 
@@ -249,7 +259,7 @@ public class BotCreator : MonoBehaviour
         if (partPosition == _mainPartPosition)
             return;
 
-        _botData.Value.RemovePart(partPosition);
+        _botData.RemovePart(partPosition);
 
         //Remove SO from editor
         string assetPath = "Assets/Data/Bots/Bot1/Part" + partPosition.ToString() + ".asset";
@@ -261,5 +271,42 @@ public class BotCreator : MonoBehaviour
 
         Destroy(_parts[partPosition]);
         _parts.Remove(partPosition);
+    }
+
+    [ContextMenu("Screenshot")]
+    public void TakeScreenshot()
+    {
+        StartCoroutine(WaitForScreenshot());
+    }
+
+    private IEnumerator WaitForScreenshot()
+    {
+        foreach (Canvas canvas in _canvases)
+            canvas.gameObject.SetActive(false);
+
+        yield return new WaitForEndOfFrame();
+
+        string botName = _botData.BotName;
+        int width = Screen.width;
+        int height = Screen.height;
+
+        Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+        Rect rect = new Rect(0, 0, width, height);
+        screenshotTexture.ReadPixels(rect, 0, 0);
+        screenshotTexture.Apply();
+
+        byte[] byteArray = screenshotTexture.EncodeToPNG();
+
+        string folderPath = Application.persistentDataPath + "/Images/";
+        
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+
+        string filePath = Path.Combine(folderPath, botName + ".png");
+
+        File.WriteAllBytes(filePath, byteArray);
+
+        foreach (Canvas canvas in _canvases)
+            canvas.gameObject.SetActive(true);
     }
 }

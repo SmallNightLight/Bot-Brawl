@@ -84,14 +84,64 @@ MonoBehaviour:
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
       DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
-  _currentBotData:
-    _isVariable: 1
-    _variable: {fileID: 11400000, guid: 6456a04979624d54c8d44c0968388b6b, type: 2}
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 2d85de5c009a6d24387d916561a30a81, type: 2}
     _constant:
-      BotName: 
-      _parts:
-        _serializedList: []
-      BaseNode: {fileID: 0}
-  BotData: []
-  PartData: []
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 819094b385e11f845aaf28904e63abaa, type: 2}
+    _constant:
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: aa2111f62d44b0f4494cfaa60b4436fe, type: 2}
+    _constant:
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: cf4c5fc3e739c1e42addf1c5168f24d4, type: 2}
+    _constant:
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  CurrentBotData:
+    BotName: 
+    _parts:
+      _serializedList: []
   AllNodes: []
+  DefaultVariables:
+    _serializedList: []
+  CustomVariables:
+    _serializedList: []

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feb20e7ad179ca540a7ff1c4de4ae3c2, type: 3}
-  m_Name: Part(0, 6, 0)
+  m_Name: Part(-3, 6, 0)
   m_EditorClassIdentifier: 
   BasePart:
     _isVariable: 1
-    _variable: {fileID: 11400000, guid: aa2111f62d44b0f4494cfaa60b4436fe, type: 2}
+    _variable: {fileID: 11400000, guid: 3c2a21f9e420edf40b23d53142d38165, type: 2}
     _constant:
       PartName: 
       PartDescription: 
@@ -26,8 +26,8 @@ MonoBehaviour:
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
       DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
-  Rotation: {x: -0, y: 0, z: 0}
+  Rotation: {x: -0, y: 0, z: 90}
   Material: 0
   Cost: 0
   Settings: []
-  Position: {x: 0, y: 6, z: 0}
+  Position: {x: -3, y: 6, z: 0}

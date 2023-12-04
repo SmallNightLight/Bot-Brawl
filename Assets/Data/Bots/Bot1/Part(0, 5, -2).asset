@@ -26,7 +26,7 @@ MonoBehaviour:
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
       DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
-  Rotation: {x: -0, y: 0, z: 0}
+  Rotation: {x: -0, y: 90, z: 0}
   Material: 0
   Cost: 0
   Settings: []

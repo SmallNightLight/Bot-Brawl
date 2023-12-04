@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6dd0e9bbe998104884681b64478c707, type: 3}
-  m_Name: Bot1DataVariable
+  m_Name: Bot2
   m_EditorClassIdentifier: 
   Value:
-    BotName: Bot1
-    ImagePath: 
+    BotName: Bot2
     _parts:
       _serializedList:
       - Key: {x: 0, y: 5, z: 0}
@@ -22,6 +21,5 @@ MonoBehaviour:
   Type: 0
   DefaultValue:
     BotName: 
-    ImagePath: 
     _parts:
       _serializedList: []

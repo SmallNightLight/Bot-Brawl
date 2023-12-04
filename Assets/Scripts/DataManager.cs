@@ -45,8 +45,6 @@ public class DataManager : MonoBehaviour
         }
 
         SetupBaseData();
-
-        //Save(testData.Value);
         Load();
     }
 
@@ -54,9 +52,8 @@ public class DataManager : MonoBehaviour
     public List<BasePartDataReference> BasePartDatas = new List<BasePartDataReference>();
     private Dictionary<string, BasePartDataReference> BasePartDataLookup = new Dictionary<string, BasePartDataReference>();
 
-    public BotDataReference _currentBotData;
-    public List<BotData> BotData = new List<BotData>();
-    public List<PartData> PartData = new List<PartData>();
+    public BotData CurrentBotData;
+    public Dictionary<string, BotData> AllBotData = new Dictionary<string, BotData>();
     public List<Node> AllNodes = new List<Node>();
 
     [SerializedDictionary("Name", "Variable")]
@@ -82,37 +79,38 @@ public class DataManager : MonoBehaviour
 
     }
 
-    public void Save(BotData data)
+    [ContextMenu("SAVE")]
+    public void Save()
     {
-        SaveData("/Save1.json", new SerializedBotData(data));
+        SaveData("/Bots.json", new SerializedBotDataCollection(AllBotData));
     }
 
+    [ContextMenu("LOAD")]
     public void Load()
     {
-        SerializedBotData loadedData = LoadData("/Save1.json");
+        SerializedBotDataCollection loadedData = LoadData("/Bots.json");
 
-        //Creating new part
-        SerializedDictionary<Vector3Int, PartData> newParts = new SerializedDictionary<Vector3Int, PartData>();
-
-        foreach (var part in loadedData.Parts)
+        foreach (var data in loadedData.BotDatas)
         {
-            PartData newPart = ScriptableObject.CreateInstance<PartData>();
+            SerializedDictionary<Vector3Int, PartData> newParts = new SerializedDictionary<Vector3Int, PartData>();
 
-            SerializedPartData partData = part.Value;
-            BasePartDataReference basePartData = BasePartDataLookup[partData.BasePartName];
+            foreach (var part in data.Parts)
+            {
+                PartData newPart = ScriptableObject.CreateInstance<PartData>();
 
-            newPart.Initialize(partData.BasePartName, basePartData, partData.Position, partData.Rotation, partData.Material, partData.Cost, partData.Settings);
-            PartData.Add(newPart);
+                SerializedPartData partData = part.Value;
+                BasePartDataReference basePartData = BasePartDataLookup[partData.BasePartName];
 
-            newParts[partData.Position] = newPart;
+                newPart.Initialize(partData.BasePartName, basePartData, partData.Position, partData.Rotation, partData.Material, partData.Cost, partData.Settings);
+                newParts[partData.Position] = newPart;
+            }
+
+            BotData botData = new BotData(data.BotName, newParts);
+            AllBotData[botData.BotName] = botData;
         }
-       
-        
-        BotData botData = new BotData(loadedData.BotName, newParts);
-        BotData.Add(botData);
     }
 
-    public bool SaveData(string relativePath, SerializedBotData data)
+    public bool SaveData(string relativePath, SerializedBotDataCollection data)
     {
         string path = Application.persistentDataPath + relativePath;
 
@@ -140,7 +138,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    SerializedBotData LoadData(string relativePath)
+    SerializedBotDataCollection LoadData(string relativePath)
     {
         string path = Application.persistentDataPath + relativePath;
 
@@ -152,7 +150,7 @@ public class DataManager : MonoBehaviour
 
         try
         {
-            return JsonUtility.FromJson<SerializedBotData>(File.ReadAllText(path));
+            return JsonUtility.FromJson<SerializedBotDataCollection>(File.ReadAllText(path));
         }
         catch(Exception e)
         {

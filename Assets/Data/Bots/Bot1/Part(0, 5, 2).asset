@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb20e7ad179ca540a7ff1c4de4ae3c2, type: 3}
+  m_Name: Part(0, 5, 2)
+  m_EditorClassIdentifier: 
+  BasePart:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 318b27d33e677d94d9d474d74183cf38, type: 2}
+    _constant:
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  Rotation: {x: -0, y: 90, z: 0}
+  Material: 0
+  Cost: 0
+  Settings:
+  - Name: Power
+    VariableType: 4
+    BoolValue: 0
+    IntValue: 0
+    MinInt: 0
+    MaxInt: 0
+    FloatValue: 3
+    MinFloat: 0
+    MaxFloat: 150
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+  - Name: MaxAngle
+    VariableType: 4
+    BoolValue: 0
+    IntValue: 0
+    MinInt: 0
+    MaxInt: 0
+    FloatValue: 0
+    MinFloat: 0
+    MaxFloat: 90
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+  - Name: Offset
+    VariableType: 3
+    BoolValue: 0
+    IntValue: 0
+    MinInt: 0
+    MaxInt: 0
+    FloatValue: 0
+    MinFloat: 0
+    MaxFloat: 50
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+  - Name: Inverted
+    VariableType: 0
+    BoolValue: 0
+    IntValue: 0
+    MinInt: 0
+    MaxInt: 0
+    FloatValue: 0
+    MinFloat: 0
+    MaxFloat: 0
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+  Position: {x: 0, y: 5, z: 2}

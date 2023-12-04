@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using ScriptableArchitecture.Data;
+using UnityEngine.UI;
 
 public class PartSettingsWindow : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class PartSettingsWindow : MonoBehaviour
     private List<GameObject> _fieldPrefabs;
     private List<PartSetting> _settings;
     private PartData.PartType _partType;
-    private Transform _windowContext;
+    [SerializeField] private Transform _windowContext;
     public static (PartData.PartType partType, List<PartSetting> settings) LastCopiedSettings;
-    
+
+    [SerializeField] Image image;
     public void ReceivePartTypeAndSettings(PartData.PartType t, List<PartSetting> s)
     {
         _partType = t;
@@ -30,18 +32,22 @@ public class PartSettingsWindow : MonoBehaviour
         if (_windowContext != null)
             foreach(Transform child in _windowContext)
                 Destroy(child.gameObject);
+
+        image.enabled = false;
     }
     
     void Start()
     {
         _fieldPrefabs = GetComponent<Prefabs>().prefabs;
-        _windowContext = transform.GetChild(0).transform;
-        //InitWindow();
+        image.enabled = false;
     }
 
     private void InitWindow()
     {
         Clear();
+
+        if (_settings.Count != 0)
+            image.enabled = true;
 
         foreach (var setting in _settings)
         {
@@ -73,6 +79,8 @@ public class PartSettingsWindow : MonoBehaviour
                     break;
             }
         }
+        _windowContext.position = Input.mousePosition;
+        
     }
     
 }

@@ -33,6 +33,8 @@ public class CameraMovement : MonoBehaviour
     private Vector3 _previousPosition;
     private float y = 0;
 
+    [SerializeField] private PartSettingsWindow partSettings;
+
     private void Start()
     {
         _camera = GetComponent<Camera>();
@@ -41,6 +43,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        bool cameraMovement = false;
         //Selecting objects
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -83,10 +86,14 @@ public class CameraMovement : MonoBehaviour
         //Rotating
         if (Input.GetMouseButtonDown(1))
         {
+            cameraMovement = true;
+
             _previousPosition = _camera.ScreenToViewportPoint(Input.mousePosition);
         }
         else if (Input.GetMouseButton(1))
         {
+            cameraMovement = true;
+
             Vector3 newPosition = _camera.ScreenToViewportPoint(Input.mousePosition);
             Vector3 direction = _previousPosition - newPosition;
 
@@ -105,6 +112,8 @@ public class CameraMovement : MonoBehaviour
         //Pan
         if (Input.GetMouseButton(2))
         {
+            cameraMovement = true;
+
             float horizontal = Input.GetAxis("Mouse X");
             float vertical = Input.GetAxis("Mouse Y");
 
@@ -117,6 +126,7 @@ public class CameraMovement : MonoBehaviour
 
         //Zooming
         float scroolWheel = Input.GetAxis("Mouse ScrollWheel") * _scroolSensitivity;
+        cameraMovement |= scroolWheel != 0;
 
         _distance -= scroolWheel;
         _distance = Mathf.Min(Mathf.Max(_distance, _minDistance), _maxDistance);
@@ -125,5 +135,10 @@ public class CameraMovement : MonoBehaviour
 
         _camera.transform.position = _target.Value.position + _offset;
         _camera.transform.Translate(new Vector3(0, 0, -_currentDistance));
+
+        if (cameraMovement)
+        {
+            partSettings.Clear();
+        }
     }
 }

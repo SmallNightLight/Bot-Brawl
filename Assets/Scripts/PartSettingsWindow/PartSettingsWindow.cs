@@ -2,28 +2,22 @@ using UnityEngine;
 using System.Collections.Generic;
 using ScriptableArchitecture.Data;
 using UnityEngine.UI;
+using TMPro;
 
 public class PartSettingsWindow : MonoBehaviour
 {
-    private PartData tempPartData; // temporarily testing
-    private List<GameObject> _fieldPrefabs;
-    private List<PartSetting> _settings;
-    private PartData.PartType _partType;
+    private PartData _partData; // temporarily testing
+    
+    [SerializeField] private List<GameObject> _fieldPrefabs;
+    [SerializeField] private GameObject _namePrefab;
+
     [SerializeField] private Transform _windowContext;
-    public static (PartData.PartType partType, List<PartSetting> settings) LastCopiedSettings;
 
     [SerializeField] Image image;
-    public void ReceivePartTypeAndSettings(PartData.PartType t, List<PartSetting> s)
-    {
-        _partType = t;
-        _settings ??= s;
-    }
-    
+
     public void SetPartData(PartData partData)
     {
-        tempPartData = partData;
-        _settings = tempPartData.Settings; // temporarily testing
-        //Clear();
+        _partData = partData;
         InitWindow();
     }
 
@@ -38,7 +32,6 @@ public class PartSettingsWindow : MonoBehaviour
     
     void Start()
     {
-        _fieldPrefabs = GetComponent<Prefabs>().prefabs;
         image.enabled = false;
     }
 
@@ -46,10 +39,16 @@ public class PartSettingsWindow : MonoBehaviour
     {
         Clear();
 
-        if (_settings.Count != 0)
-            image.enabled = true;
+        if (_partData.Settings.Count == 0)
+            return;
+            
+        image.enabled = true;
 
-        foreach (var setting in _settings)
+        TMP_InputField inputName = Instantiate(_namePrefab, _windowContext).GetComponentInChildren<TMP_InputField>();
+        inputName.onValueChanged.AddListener(name => _partData.CustomName = name);
+        inputName.text = _partData.CustomName;
+
+        foreach (var setting in _partData.Settings)
         {
             switch (setting.VariableType)
             {
@@ -79,8 +78,7 @@ public class PartSettingsWindow : MonoBehaviour
                     break;
             }
         }
+
         _windowContext.position = Input.mousePosition;
-        
     }
-    
 }

@@ -17,7 +17,7 @@ public struct SerializedBotData
         foreach (var part in baseBotData.GetPartsDictionary())
         {
             PartData mainData = part.Value;
-            SerializedPartData partData = new SerializedPartData(mainData.name, mainData.BasePart, mainData.Position, mainData.Rotation, mainData.Material, mainData.Cost, mainData.Settings);
+            SerializedPartData partData = new SerializedPartData(mainData.name, mainData.BasePart, mainData.Position, mainData.Rotation, mainData.Material, mainData.Cost,mainData.CustomName, mainData.Settings);
             Parts[part.Key] = partData;
         }
     }

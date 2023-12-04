@@ -14,9 +14,10 @@ public struct SerializedPartData
     public int Material;
     public int Cost;
 
+    public string CustomName;
     public List<PartSetting> Settings;
     
-    public SerializedPartData(string currentSettingsName, BasePartDataReference basePart, Vector3Int position, Vector3 rotation, int material, int cost, List<PartSetting> settings)
+    public SerializedPartData(string currentSettingsName, BasePartDataReference basePart, Vector3Int position, Vector3 rotation, int material, int cost, string customName, List<PartSetting> settings)
     {
         CurrentSettingName = currentSettingsName;
         BasePartName = basePart.Value.PartName;
@@ -24,6 +25,7 @@ public struct SerializedPartData
         Rotation = rotation;
         Material = material;
         Cost = cost;
+        CustomName = customName;
         Settings = settings;
     }
 }

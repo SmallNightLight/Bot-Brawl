@@ -233,7 +233,7 @@ public class DataManager : MonoBehaviour
                     SerializedPartData partData = part.Value;
                     BasePartDataReference basePartData = BasePartDataLookup[partData.BasePartName];
 
-                    newPart.Initialize(partData.BasePartName, basePartData, partData.Position, partData.Rotation, partData.Material, partData.Cost, partData.Settings);
+                    newPart.Initialize(partData.BasePartName, basePartData, partData.Position, partData.Rotation, partData.Material, partData.Cost, partData.CustomName, partData.Settings);
                     newParts[partData.Position] = newPart;
                 }
 

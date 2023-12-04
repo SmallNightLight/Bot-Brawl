@@ -29,7 +29,7 @@ namespace ScriptableArchitecture.Data
             Armor
         }
 
-        public void Initialize(string currentSettingName, BasePartDataReference basePart, Vector3Int position, Vector3 rotation, int material, int cost, List<PartSetting> settings)
+        public void Initialize(string currentSettingName, BasePartDataReference basePart, Vector3Int position, Vector3 rotation, int material, int cost, string customName, List<PartSetting> settings)
         {
             _currentSettingName = currentSettingName;
             BasePart = basePart;
@@ -37,6 +37,7 @@ namespace ScriptableArchitecture.Data
             Rotation = rotation;
             Material = material;
             Cost = cost;
+            CustomName = customName;
             Settings = settings;
         }
 

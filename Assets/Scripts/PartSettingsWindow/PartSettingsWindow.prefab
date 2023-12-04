@@ -129,7 +129,9 @@ GameObject:
   - component: {fileID: 4879900416448978460}
   - component: {fileID: 5376061928321343855}
   - component: {fileID: 2033574852029042728}
-  - component: {fileID: 3256247887883638561}
+  - component: {fileID: 6703162785707607408}
+  - component: {fileID: 8935650675494009704}
+  - component: {fileID: 6051925285077818673}
   m_Layer: 5
   m_Name: PartSettingsWindow
   m_TagString: Untagged
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3256247887883638561
+--- !u!114 &6703162785707607408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,10 +231,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 8654302175993105250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12ae53745844484dae6736110a846bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 18ff63e55da878342a151900ee4b59ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
+  _fieldPrefabs:
   - {fileID: 241168285932116608, guid: c2074752f3671c840b3ec4dc9722bb09, type: 3}
   - {fileID: 6581076976281818894, guid: ba9a2897060c0ae4bb2ef8289016f706, type: 3}
   - {fileID: 6581076976281818894, guid: 171c227bf46d7534294930b7bc4e4ac6, type: 3}
+  _namePrefab: {fileID: 546255986441461466, guid: 5b59c5fe589b6f04bb8d272a8fda95cf,
+    type: 3}
+  _windowContext: {fileID: 3374091988014933581}
+  image: {fileID: 1530023173284612700}
+--- !u!114 &8935650675494009704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654302175993105250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbbf23a07913da428232cdd0df00f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6703162785707607408}
+        m_TargetAssemblyTypeName: PartSettingsWindow, Assembly-CSharp
+        m_MethodName: SetPartData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6051925285077818673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654302175993105250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266524683c6070b478edeb7404fc494b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 664854e2e4dd0d8418c31a31fd7edc4a, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6703162785707607408}
+        m_TargetAssemblyTypeName: PartSettingsWindow, Assembly-CSharp
+        m_MethodName: Clear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

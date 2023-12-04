@@ -110,10 +110,6 @@ public class BotCreator : MonoBehaviour
 
         newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
 
-        //Only works in editor
-        AssetDatabase.CreateAsset(newPartData, "Assets/Data/Bots/Bot1/Part" + newPartData.Position.ToString() + ".asset");
-        AssetDatabase.SaveAssets();
-
         AddPart(newPartData, isMainBlock);
     }
 
@@ -261,12 +257,6 @@ public class BotCreator : MonoBehaviour
             return;
 
         _botData.RemovePart(partPosition);
-
-        //Remove SO from editor
-        string assetPath = "Assets/Data/Bots/Bot1/Part" + partPosition.ToString() + ".asset";
-        AssetDatabase.DeleteAsset(assetPath);
-        AssetDatabase.Refresh();
-
         if (!_parts.ContainsKey(partPosition))
             return;
 

@@ -60,14 +60,11 @@ public class DataManager : MonoBehaviour
     public BaseFunction DefaultFunctionSetup;
     public BaseFunction DefaultFunctionUpdate;
 
-    public List<DisplayDo> DosToCompile = new List<DisplayDo>();
-    public List<DisplayGet> GetsToCompile = new List<DisplayGet>();
+    [HideInInspector] public List<DisplayDo> DosToCompile = new List<DisplayDo>();
+    [HideInInspector] public List<DisplayGet> GetsToCompile = new List<DisplayGet>();
 
-    public List<DisplayDo> FunctionsToCompile = new List<DisplayDo>();
-    public List<DisplayGet> VariablesToCompile = new List<DisplayGet>();
-
-    public HashSet<BaseGet> DefaultVariables = new HashSet<BaseGet>();
-    public HashSet<BaseGet> CustomVariables = new HashSet<BaseGet>();
+    [HideInInspector] public List<DisplayDo> FunctionsToCompile = new List<DisplayDo>();
+    [HideInInspector] public List<DisplayGet> VariablesToCompile = new List<DisplayGet>();
 
     private void SetupBaseData()
     {
@@ -83,11 +80,9 @@ public class DataManager : MonoBehaviour
 
     private Dictionary<DisplayDo, BaseDo> _dos = new Dictionary<DisplayDo, BaseDo>();
     private Dictionary<DisplayGet, BaseGet> _gets = new Dictionary<DisplayGet, BaseGet>();
-
     private Dictionary<DisplayDo, BaseFunction> _functions = new Dictionary<DisplayDo, BaseFunction>();
-    private Dictionary<DisplayGet, BaseGet> _variables = new Dictionary<DisplayGet, BaseGet>();
-    private HashSet<string> _variableNames = new HashSet<string>();
 
+    private HashSet<string> _variableNames = new HashSet<string>();
 
     public void Compile()
     {
@@ -97,9 +92,7 @@ public class DataManager : MonoBehaviour
 
         _dos.Clear();
         _gets.Clear();
-
         _functions.Clear();
-        _variables.Clear();
 
         //First add Default functions
         foreach (DisplayDo displayFunction in FunctionsToCompile)
@@ -140,15 +133,7 @@ public class DataManager : MonoBehaviour
         //Create variables
         foreach (DisplayGet displayGet in VariablesToCompile)
         {
-            BaseGet baseGet = displayGet.DefaultGet;
-
-            if (!CustomVariables.Contains(baseGet))
-            {
-                Debug.LogError("????");
-            }
-
-            _gets[displayGet] = baseGet;
-            _variables[displayGet] = baseGet;
+            _gets[displayGet] = displayGet.DefaultGet;
         }
 
         //Setup do references

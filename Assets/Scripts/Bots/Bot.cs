@@ -2,12 +2,10 @@ using ScriptableArchitecture.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Bot : MonoBehaviour
 {
-    [SerializeField] private BotDataReference _botData;
+    private BotData _botData;
     [SerializeField] private int _yOffset = 0;
 
     static Vector3Int[] _directions =
@@ -20,12 +18,23 @@ public class Bot : MonoBehaviour
         new Vector3Int(0, 0, -1),
     };
 
-    void Start()
+    private void Start()
     {
+        _botData = DataManager.Instance.CurrentBotData;
+
 #if UNITY_EDITOR
-        CheckBotData(_botData.Value);
+        CheckBotData(_botData);
 #endif
-        SetupBot(_botData.Value);
+        SetupBot(_botData);
+
+        foreach (BaseFunction function in _botData.SetupFunctions)
+            function.Execute();
+    }
+
+    private void Update()
+    {
+        foreach (BaseFunction function in _botData.UpdateFunctions)
+            function.Execute();
     }
 
     public void SetupBot(BotData botData)

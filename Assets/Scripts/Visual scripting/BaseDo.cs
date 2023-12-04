@@ -16,16 +16,26 @@ public class BaseDo : Node
             for (int i = 0; i < _scope.Count; i++)
             {
                 BaseDo currentNode = _scope[i];
-                BaseDo nextNode = null;
+                //BaseDo nextNode = null;
 
-                if (i != _scope.Count - 1)
-                    nextNode = _scope[i + 1];
+                //if (i != _scope.Count - 1)
+                //    nextNode = _scope[i + 1];
 
                 currentNode.Execute();
                 //if (nextNode == null || !(currentNode is NodeIf || currentNode is NodeElseIf) || !(nextNode is NodeElse || nextNode is NodeElseIf) || !(currentNode as NodeIf).ExecuteNextStatement())
                 //    i++; //Skip else node
             }
         }
+    }
+
+    public void AddChild(BaseDo childDo)
+    {
+        _scope.Add(childDo);
+    }
+
+    public void RemoveAddChild(BaseDo childDo)
+    {
+        _scope.Remove(childDo);
     }
 
     public virtual void Do()

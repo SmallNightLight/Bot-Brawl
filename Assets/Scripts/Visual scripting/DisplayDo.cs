@@ -11,7 +11,6 @@ using JetBrains.Annotations;
 public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BaseDo DefaultDo;
-    [HideInInspector] public BaseDo Reference;
 
     [SerializeField] private GameObject _textPrefab;
     [SerializeField] private GameObject _baseGetPointPrefab;
@@ -28,6 +27,8 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [HideInInspector] public DisplayDo NextScopedDo;
 
     public bool IsDefaultNode;
+    public bool IsFunctionNode;
+
     [SerializeField] private Color _baseColor;
 
     [HideInInspector] public bool IsDragging;
@@ -44,6 +45,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [HideInInspector] public bool IsMoving;
     private bool _inPreview;
     private bool _isSnapping;
+    private bool _isFirst;
 
     private Vector3 _snapPosition;
     private Vector3 _snapPositionOffset;
@@ -83,7 +85,14 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         else
         {
             _inPreview = true;
+            _isFirst = true;
+
             _childrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+
+            if (IsFunctionNode)
+                DataManager.Instance.FunctionsToCompile.Add(this);
+            else
+                DataManager.Instance.DosToCompile.Add(this);
 
             if (HasScope)
                 _scopeObject = Instantiate(_scopePrefab, transform);
@@ -92,6 +101,11 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void OnDestroy()
     {
+        if (IsFunctionNode)
+            DataManager.Instance.FunctionsToCompile.Remove(this);
+        else
+            DataManager.Instance.DosToCompile.Remove(this);
+
         ALLNODES.Remove(_rect);
     }
 
@@ -175,7 +189,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             transform.position = mousePosition + _mouseOffset;
 
-            if (Reference == null)
+            if (_isFirst)
                 _rect.anchoredPosition -= new Vector2(_rect.rect.width * 0.5f, 0f);
 
             MoveChild();
@@ -279,8 +293,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 _isSnapping = false;
             }
 
-            if (Reference == null)
-                NewDo();
+            _isFirst = false;
 
             DisableMoving();
         }
@@ -706,15 +719,6 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _bufferNode = Instantiate(this, transform.parent.transform).GetComponent<DisplayDo>();
         _bufferNode.IsDragging = true;
         _bufferNode.IsDefaultNode = false;
-    }
-
-    private void NewDo()
-    {
-        Reference = Instantiate(DefaultDo);
-
-        //Only works in editor
-        AssetDatabase.CreateAsset(Reference, "Assets/Data/Do" + Node.ID++ + ".asset"); //ChangePath
-        AssetDatabase.SaveAssets();
     }
 
     public void OnPointerDown(PointerEventData eventData)

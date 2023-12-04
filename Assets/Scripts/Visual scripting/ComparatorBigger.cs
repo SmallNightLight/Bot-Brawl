@@ -14,5 +14,11 @@ public class ComparatorBigger : BaseComparator
 
     public override List<BaseGet> GetDefaultInput() => new List<BaseGet> { DefaultNumber1, DefaultNumber2 };
 
+    public override void SetInput(List<BaseGet> input)
+    {
+        DefaultNumber1 = input[0] as BaseGetNumber;
+        DefaultNumber1 = input[1] as BaseGetNumber;
+    }
+
     public override string[] GetBeforeNodeText() => new string[] { "", ">" };
 }

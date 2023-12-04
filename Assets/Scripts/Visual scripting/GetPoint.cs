@@ -24,7 +24,6 @@ public class GetPoint : MonoBehaviour
     private void Start()
     {
         ALLGETPOINTS.Add(GetComponent<RectTransform>());
-
         BaseColor = GetComponent<Image>().color;
     }
 

@@ -12,35 +12,27 @@ public class BaseDo : Node
         Do();
 
         if (HasScope())
-        {
             for (int i = 0; i < _scope.Count; i++)
-            {
-                BaseDo currentNode = _scope[i];
-                BaseDo nextNode = null;
-
-                if (i != _scope.Count - 1)
-                    nextNode = _scope[i + 1];
-
-                currentNode.Execute();
-                //if (nextNode == null || !(currentNode is NodeIf || currentNode is NodeElseIf) || !(nextNode is NodeElse || nextNode is NodeElseIf) || !(currentNode as NodeIf).ExecuteNextStatement())
-                //    i++; //Skip else node
-            }
-        }
+                _scope[i].Execute();
     }
 
-    public virtual void Do()
+    public void AddChild(BaseDo childDo)
     {
+        _scope.Add(childDo);
     }
 
-    public virtual List<BaseGet> GetInput()
+    public void RemoveAddChild(BaseDo childDo)
     {
-        return new List<BaseGet> { };
+        _scope.Remove(childDo);
     }
 
-    public virtual List<BaseGet> GetDefaultInput()
-    {
-        return new List<BaseGet> { };
-    }
+    public virtual void Do() { }
+
+    public virtual List<BaseGet> GetInput() => new List<BaseGet> { };
+
+    public virtual List<BaseGet> GetDefaultInput() => new List<BaseGet> { };
+
+    public virtual void SetInput(List<BaseGet> input) { }
 
     public virtual bool HasScope() => false;
 

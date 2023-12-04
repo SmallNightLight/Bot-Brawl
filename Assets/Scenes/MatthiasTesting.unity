@@ -543,10 +543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 147539281}
   _meshTransform: {fileID: 709543136}
@@ -1142,10 +1138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 11400000, guid: c3c1f48701c334b49a52f2794f913fb1, type: 2}
   _wheelCollider: {fileID: 1422736378}
   _meshTransform: {fileID: 1795949578}
@@ -1827,10 +1819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc66d823f881f649ba43e2522962da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 0
   PartData: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
 --- !u!1 &598977028
 GameObject:
@@ -1949,10 +1937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 1656398778}
   _meshTransform: {fileID: 1347421043}
@@ -2200,10 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 1584381182}
   _meshTransform: {fileID: 890739572}
@@ -2253,10 +2233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 1024093650}
   _meshTransform: {fileID: 90264719}
@@ -2676,6 +2652,8 @@ MonoBehaviour:
       BotName: 
       _parts:
         _serializedList: []
+      SetupFunctions: []
+      UpdateFunctions: []
   _yOffset: 2
 --- !u!4 &952818838
 Transform:
@@ -4228,10 +4206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 11400000, guid: 4823dbbcbf09ac542979356dfdb1bc0d, type: 2}
   _wheelCollider: {fileID: 500059568}
   _meshTransform: {fileID: 1595689123}
@@ -4352,10 +4326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 2121997270}
   _meshTransform: {fileID: 1730008758}
@@ -4503,10 +4473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 11400000, guid: 7cc80426dbf2b56458a413d40790feed, type: 2}
   _wheelCollider: {fileID: 598977030}
   _meshTransform: {fileID: 2025862253}
@@ -4556,10 +4522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 2110580920}
   _meshTransform: {fileID: 834685584}
@@ -4745,10 +4707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 208840038}
   _meshTransform: {fileID: 1915200172}
@@ -4798,10 +4756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 0}
   _wheelCollider: {fileID: 1481100695}
   _meshTransform: {fileID: 1088706351}
@@ -5144,6 +5098,74 @@ Transform:
   - {fileID: 1353520942}
   m_Father: {fileID: 1716866007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2073043248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4256404661353855958, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_Name
+      value: DataManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782460744005417489, guid: 7328b6a85c298394d8169b8db842238c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7328b6a85c298394d8169b8db842238c, type: 3}
 --- !u!1 &2110580918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6375,10 +6397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c5aeff9e9dd345ace9fa773867356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 1
   PartData: {fileID: 11400000, guid: d6ac387f36d9ad344894a4e1bb4450ef, type: 2}
   _wheelCollider: {fileID: 7343247049325793159}
   _meshTransform: {fileID: 2727633996183173718}
@@ -6484,10 +6502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc66d823f881f649ba43e2522962da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 0
   PartData: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
 --- !u!138 &5765724875360166595
 FixedJoint:
@@ -6860,10 +6874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc66d823f881f649ba43e2522962da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPowered:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 0
   PartData: {fileID: 11400000, guid: 52187d5bcd8df8041b5cab02140f356a, type: 2}
 --- !u!23 &8893257426338119706
 MeshRenderer:
@@ -6963,3 +6973,4 @@ SceneRoots:
   - {fileID: 952818838}
   - {fileID: 1257752021}
   - {fileID: 371843581}
+  - {fileID: 2073043248}

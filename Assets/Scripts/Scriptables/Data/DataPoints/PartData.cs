@@ -14,6 +14,7 @@ namespace ScriptableArchitecture.Data
         public int Material;
         public int Cost;
 
+        public string CustomName;
         public List<PartSetting> Settings = new List<PartSetting>();
 
         [HideInInspector] public Vector3Int Position;

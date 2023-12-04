@@ -140,7 +140,15 @@ MonoBehaviour:
     BotName: 
     _parts:
       _serializedList: []
-  AllNodes: []
+    SetupFunctions: []
+    UpdateFunctions: []
+  DefaultFunctionSetup: {fileID: 11400000, guid: 7debd68beec92f243ae8bd77ab9a39cc,
+    type: 2}
+  DefaultFunctionUpdate: {fileID: 11400000, guid: 927c8bc16f917a2498958a39a5bde6f2,
+    type: 2}
+  FunctionsToCompile: []
+  DosToCompile: []
+  GetsToCompile: []
   DefaultVariables:
     _serializedList: []
   CustomVariables:

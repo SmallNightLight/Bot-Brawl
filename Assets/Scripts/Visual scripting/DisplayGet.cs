@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,7 +10,6 @@ using UnityEngine.UI;
 public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BaseGet DefaultGet;
-    [HideInInspector] public BaseGet Reference;
 
     [SerializeField] private GameObject _textPrefab;
     [SerializeField] private GameObject _baseGetPointPrefab;
@@ -34,6 +32,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [HideInInspector] public bool IsMoving;
     private bool _inPreview;
     private bool _isSnapping;
+    private bool _isFirst;
 
     private Vector2 _mouseOffset;
     private Vector3 _snapPosition;
@@ -42,7 +41,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private RectTransform _rect;
     private DisplayGet _bufferNode;
 
-    private List<GetPoint> _childrenPoints = new List<GetPoint>();
+    public List<GetPoint> ChildrenPoints = new List<GetPoint>();
 
     private void Start()
     {
@@ -51,19 +50,36 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (IsVariable)
         {
             if (!IsDefaultNode)
+            {
                 _inPreview = true;
+                _isFirst = true;
 
-            return;
+                DataManager.Instance.VariablesToCompile.Add(this);
+            }
         }
-           
-
-        if (IsDefaultNode)
-            SetupAsDefault();
         else
         {
-            _inPreview = true;
-            _childrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+            if (IsDefaultNode)
+            {
+                SetupAsDefault();
+            }
+            else
+            {
+                _inPreview = true;
+                _isFirst = true;
+
+                DataManager.Instance.GetsToCompile.Add(this);
+                ChildrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+            }
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (IsVariable)
+            DataManager.Instance.VariablesToCompile.Remove(this);
+        else
+            DataManager.Instance.GetsToCompile.Remove(this);
     }
 
     public void InitializeAsVariable(string variableName, BaseGet variable)
@@ -72,7 +88,6 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         NewText(variableName);
 
         DefaultGet = variable;
-
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
@@ -96,7 +111,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         GetPoint child = Instantiate(_baseGetPointPrefab, transform).GetComponent<GetPoint>();
         child.DefaultGet = defaultGet;
-        _childrenPoints.Add(child);
+        ChildrenPoints.Add(child);
     }
 
     private void Update()
@@ -146,7 +161,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             transform.position = mousePosition + _mouseOffset;
 
-            if (Reference == null)
+            if (_isFirst)
                 _rect.anchoredPosition -= new Vector2(_rect.rect.width * 0.5f, 0f);
 
             EnableMoving();
@@ -181,9 +196,6 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     LayoutRebuilder.ForceRebuildLayoutImmediate(MainDisplayDo.GetComponent<RectTransform>());
                     MainDisplayDo.UpdateGetStack();
                 }
-                
-                //Setup references
-                //...
             }
             else
             {
@@ -191,9 +203,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 _isSnapping = false;
             }
 
-            if (Reference == null)
-                NewGet();
-
+            _isFirst = false;
             DisableMoving();
         }
     }
@@ -305,7 +315,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (TryGetComponent(out Image image))
             image.color = DarkenColor(_baseColor, darkeningFactor);
 
-        foreach (GetPoint child in _childrenPoints)
+        foreach (GetPoint child in ChildrenPoints)
         {
             if (child.TryGetComponent(out Image pointImage))
                 pointImage.color = DarkenColor(child.BaseColor, darkeningFactor);
@@ -408,14 +418,6 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _bufferNode = Instantiate(this, _allParent).GetComponent<DisplayGet>();
         _bufferNode.IsDragging = true;
         _bufferNode.IsDefaultNode = false;
-    }
-
-    private void NewGet()
-    {
-        //Only works in editor
-        Reference = Instantiate(DefaultGet);
-        AssetDatabase.CreateAsset(Reference, "Assets/Data/Get" + Node.ID++ + ".asset"); //NEW PATH
-        AssetDatabase.SaveAssets();
     }
 
     private void NewText(string text)

@@ -489,11 +489,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8103879727229219113, guid: e216d7897420aa84091ab245f712f8b6,
-        type: 3}
-      propertyPath: IsFunctionNode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8298020044412978543, guid: e216d7897420aa84091ab245f712f8b6,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -503,11 +498,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9196881396552369857, guid: e216d7897420aa84091ab245f712f8b6,
-        type: 3}
-      propertyPath: IsFunctionNode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

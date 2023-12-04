@@ -750,12 +750,13 @@ MonoBehaviour:
   PreviousScopedDo: {fileID: 0}
   NextScopedDo: {fileID: 0}
   IsDefaultNode: 1
-  IsFunctionNode: 0
+  IsFunctionNode: 1
   _baseColor: {r: 0, g: 0, b: 0, a: 0}
   IsDragging: 0
   _allParent: {fileID: 9061117275386493685}
   _overlayParent: {fileID: 5470171509123407654}
   IsMoving: 0
+  ChildrenPoints: []
   HasScope: 0
 --- !u!114 &5190233467108504910
 MonoBehaviour:
@@ -1555,7 +1556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultGet: {fileID: 0}
-  Reference: {fileID: 11400000, guid: 1c15a645c3211c74295450bcfbdbe8af, type: 2}
   _textPrefab: {fileID: 6218454174162113788, guid: c68d42bb286ea68459e3f569b40f76f7,
     type: 3}
   _baseGetPointPrefab: {fileID: 1179852341084555149, guid: a8dd391f4d680b74bbf811d2d5bcb8c3,
@@ -1569,6 +1569,7 @@ MonoBehaviour:
   MainDisplayDo: {fileID: 0}
   _insert: {fileID: 5315747892181063178}
   IsMoving: 0
+  ChildrenPoints: []
 --- !u!114 &3502778509936552164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,12 +2056,13 @@ MonoBehaviour:
   PreviousScopedDo: {fileID: 0}
   NextScopedDo: {fileID: 0}
   IsDefaultNode: 1
-  IsFunctionNode: 0
+  IsFunctionNode: 1
   _baseColor: {r: 0, g: 0, b: 0, a: 0}
   IsDragging: 0
   _allParent: {fileID: 9061117275386493685}
   _overlayParent: {fileID: 5470171509123407654}
   IsMoving: 0
+  ChildrenPoints: []
   HasScope: 0
 --- !u!114 &1879589544995209067
 MonoBehaviour:
@@ -2887,6 +2889,7 @@ MonoBehaviour:
   _allParent: {fileID: 9061117275386493685}
   _overlayParent: {fileID: 5470171509123407654}
   IsMoving: 0
+  ChildrenPoints: []
   HasScope: 0
 --- !u!114 &112552976788911247
 MonoBehaviour:
@@ -3701,6 +3704,7 @@ MonoBehaviour:
   _allParent: {fileID: 9061117275386493685}
   _overlayParent: {fileID: 5470171509123407654}
   IsMoving: 0
+  ChildrenPoints: []
   HasScope: 0
 --- !u!114 &3203383416669189005
 MonoBehaviour:
@@ -4380,7 +4384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultGet: {fileID: 11400000, guid: 1c15a645c3211c74295450bcfbdbe8af, type: 2}
-  Reference: {fileID: 11400000, guid: 1c15a645c3211c74295450bcfbdbe8af, type: 2}
   _textPrefab: {fileID: 6218454174162113788, guid: c68d42bb286ea68459e3f569b40f76f7,
     type: 3}
   _baseGetPointPrefab: {fileID: 1179852341084555149, guid: a8dd391f4d680b74bbf811d2d5bcb8c3,
@@ -4394,6 +4397,7 @@ MonoBehaviour:
   MainDisplayDo: {fileID: 0}
   _insert: {fileID: 5315747892181063178}
   IsMoving: 0
+  ChildrenPoints: []
 --- !u!114 &1215004870851664880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5192,7 +5196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultGet: {fileID: 11400000, guid: be26b9e065fab444483bac3b67647ecc, type: 2}
-  Reference: {fileID: 11400000, guid: 1c15a645c3211c74295450bcfbdbe8af, type: 2}
   _textPrefab: {fileID: 6218454174162113788, guid: c68d42bb286ea68459e3f569b40f76f7,
     type: 3}
   _baseGetPointPrefab: {fileID: 1179852341084555149, guid: a8dd391f4d680b74bbf811d2d5bcb8c3,
@@ -5206,6 +5209,7 @@ MonoBehaviour:
   MainDisplayDo: {fileID: 0}
   _insert: {fileID: 5315747892181063178}
   IsMoving: 0
+  ChildrenPoints: []
 --- !u!114 &4810011137688004143
 MonoBehaviour:
   m_ObjectHideFlags: 0

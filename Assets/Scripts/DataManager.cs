@@ -60,15 +60,14 @@ public class DataManager : MonoBehaviour
     public BaseFunction DefaultFunctionSetup;
     public BaseFunction DefaultFunctionUpdate;
 
-    public List<DisplayDo> FunctionsToCompile = new List<DisplayDo>();
     public List<DisplayDo> DosToCompile = new List<DisplayDo>();
     public List<DisplayGet> GetsToCompile = new List<DisplayGet>();
 
-    [SerializedDictionary("Name", "Variable")]
-    public SerializedDictionary<string, BaseGet> DefaultVariables = new SerializedDictionary<string, BaseGet>();
+    public List<DisplayDo> FunctionsToCompile = new List<DisplayDo>();
+    public List<DisplayGet> VariablesToCompile = new List<DisplayGet>();
 
-    [SerializedDictionary("Name", "Variable")]
-    public SerializedDictionary<string, BaseGet> CustomVariables = new SerializedDictionary<string, BaseGet>();
+    public HashSet<BaseGet> DefaultVariables = new HashSet<BaseGet>();
+    public HashSet<BaseGet> CustomVariables = new HashSet<BaseGet>();
 
     private void SetupBaseData()
     {
@@ -82,9 +81,13 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private Dictionary<DisplayDo, BaseFunction> _functions = new Dictionary<DisplayDo, BaseFunction>();
     private Dictionary<DisplayDo, BaseDo> _dos = new Dictionary<DisplayDo, BaseDo>();
     private Dictionary<DisplayGet, BaseGet> _gets = new Dictionary<DisplayGet, BaseGet>();
+
+    private Dictionary<DisplayDo, BaseFunction> _functions = new Dictionary<DisplayDo, BaseFunction>();
+    private Dictionary<DisplayGet, BaseGet> _variables = new Dictionary<DisplayGet, BaseGet>();
+    private HashSet<string> _variableNames = new HashSet<string>();
+
 
     public void Compile()
     {
@@ -92,9 +95,11 @@ public class DataManager : MonoBehaviour
         CurrentBotData.UpdateFunctions.Clear();
         CurrentBotData.SetupFunctions.Clear();
 
-        _functions.Clear();
         _dos.Clear();
         _gets.Clear();
+
+        _functions.Clear();
+        _variables.Clear();
 
         //First add Default functions
         foreach (DisplayDo displayFunction in FunctionsToCompile)
@@ -132,6 +137,20 @@ public class DataManager : MonoBehaviour
             _gets[displayGet] = newGet;
         }
 
+        //Create variables
+        foreach (DisplayGet displayGet in VariablesToCompile)
+        {
+            BaseGet baseGet = displayGet.DefaultGet;
+
+            if (!CustomVariables.Contains(baseGet))
+            {
+                Debug.LogError("????");
+            }
+
+            _gets[displayGet] = baseGet;
+            _variables[displayGet] = baseGet;
+        }
+
         //Setup do references
         foreach (var functionPair in _functions)
         {
@@ -141,20 +160,70 @@ public class DataManager : MonoBehaviour
             if (functionDo.NextDo != null)
             {
                 DisplayDo firstDisplayDo = functionDo.NextDo;
-                AddNextAndScopes(firstDisplayDo, functionDo);
+                AddDoNextAndScopes(firstDisplayDo, functionDo);
             }
+        }
+
+        foreach (var doPair in _dos)
+        {
+            BaseDo baseDo = doPair.Value;
+            DisplayDo currentDisplayDo = doPair.Key;
+            List<BaseGet> input = new List<BaseGet>();
+
+            foreach (GetPoint point in currentDisplayDo.ChildrenPoints)
+            {
+                if (point.ChildGet != null)
+                {
+                    AddGetScopes(point.ChildGet);
+                    input.Add(_gets[point.ChildGet]);
+                }
+            }
+
+            baseDo.SetInput(input);
         }
     }
 
-    private void AddNextAndScopes(DisplayDo currentDo, DisplayDo scope)
+    private void AddDoNextAndScopes(DisplayDo currentDo, DisplayDo scope)
     {
         _dos[scope].AddChild(_dos[currentDo]);
 
         if (currentDo.NextScopedDo != null)
-            AddNextAndScopes(currentDo.NextScopedDo, currentDo);
+            AddDoNextAndScopes(currentDo.NextScopedDo, currentDo);
 
         if (currentDo.NextDo != null)
-            AddNextAndScopes(currentDo.NextDo, scope);
+            AddDoNextAndScopes(currentDo.NextDo, scope);
+    }
+
+    private void AddGetScopes(DisplayGet currentGet)
+    {
+        if (currentGet == null)
+        {
+            Debug.Log("Compile error");
+            return;
+        }
+        
+        List<BaseGet> input = new List<BaseGet>();
+
+        foreach(GetPoint point in currentGet.ChildrenPoints)
+        {
+            if (point.ChildGet != null)
+            {
+                AddGetScopes(point.ChildGet);
+                input.Add(_gets[point.ChildGet]);
+            }
+        }
+
+        _gets[currentGet].SetInput(input);
+    }
+
+    public void AddVariableName(string name)
+    {
+        _variableNames.Add(name);
+    }
+
+    public bool HasVariable(string name)
+    {
+        return _variableNames.Contains(name);
     }
 
     [ContextMenu("SAVE")]

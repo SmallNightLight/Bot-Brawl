@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DefaultNodeIf", menuName = "Nodes/If")]
 public class NodeIf : BaseDo
 {
-    [HideInInspector] public BaseGetBool Condition;
+    public BaseGetBool Condition;
     public BaseGetBool DefaultCondition;
 
     public override void Execute()
@@ -18,6 +18,11 @@ public class NodeIf : BaseDo
     public override List<BaseGet> GetInput() => new List<BaseGet> { Condition };
 
     public override List<BaseGet> GetDefaultInput() => new List<BaseGet> { DefaultCondition };
+
+    public override void SetInput(List<BaseGet> input)
+    {
+        Condition = input[0] as BaseGetBool;
+    }
 
     public override string[] GetBeforeNodeText() => new string[] { "If" };
 

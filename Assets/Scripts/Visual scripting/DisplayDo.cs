@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
-using JetBrains.Annotations;
 
 public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -58,7 +56,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private SnapType _snapType;
 
-    private List<GetPoint> _childrenPoints = new List<GetPoint>();
+    [HideInInspector] public List<GetPoint> ChildrenPoints = new List<GetPoint>();
 
     [HideInInspector] public bool HasScope;
     private GameObject _scopeObject;
@@ -87,7 +85,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _inPreview = true;
             _isFirst = true;
 
-            _childrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+            ChildrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
 
             if (IsFunctionNode)
                 DataManager.Instance.FunctionsToCompile.Add(this);
@@ -132,7 +130,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         GetPoint child = Instantiate(_baseGetPointPrefab, transform).GetComponent<GetPoint>();
         child.DefaultGet = defaultGet;
 
-        _childrenPoints.Add(child);
+        ChildrenPoints.Add(child);
     }
 
     private void NewText(string text)
@@ -284,9 +282,6 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     _rect.localPosition += new Vector3(_snappingOffsetScope.x, _snappingOffsetScope.y, 0);
 
                 UpdateScope();
-
-                //Setup references
-                //...
             }
             else
             {
@@ -294,7 +289,6 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
 
             _isFirst = false;
-
             DisableMoving();
         }
     }
@@ -594,7 +588,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void UpdateGetStack()
     {
-        foreach (var child in _childrenPoints)
+        foreach (var child in ChildrenPoints)
             child.ChildGet?.UpdateGetStack();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

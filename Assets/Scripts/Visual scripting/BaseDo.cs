@@ -42,15 +42,11 @@ public class BaseDo : Node
     {
     }
 
-    public virtual List<BaseGet> GetInput()
-    {
-        return new List<BaseGet> { };
-    }
+    public virtual List<BaseGet> GetInput() => new List<BaseGet> { };
 
-    public virtual List<BaseGet> GetDefaultInput()
-    {
-        return new List<BaseGet> { };
-    }
+    public virtual List<BaseGet> GetDefaultInput() => new List<BaseGet> { };
+
+    public virtual void SetInput(List<BaseGet> input) { }
 
     public virtual bool HasScope() => false;
 

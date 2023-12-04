@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DefaultNodeEqual", menuName = "Nodes/Function")]
 public class BaseFunction : BaseDo
 {
-    public string FunctionName;
+    public string DisplayName;
 
-    public override string GetNodeText() => FunctionName;
+    public override string GetNodeText() => DisplayName;
+
+    public override bool CanSnapUnder() => false;
 }

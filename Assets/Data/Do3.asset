@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88edb66f9961a2140a204072a1a42d54, type: 3}
+  m_Script: {fileID: 11500000, guid: d345102fd2091944a8d8fd6f0b119a53, type: 3}
   m_Name: Do3
   m_EditorClassIdentifier: 
-  BaseNodeName: Function
+  BaseNodeName: 
   BaseNodeColor: {r: 0, g: 0, b: 0, a: 0}
-  FunctionName: TestFunction
+  VariableToChange: {fileID: 0}
+  DefaultVariableToChange: {fileID: 11400000, guid: 752a46c2d2870f146a6381f26e05e6cd,
+    type: 2}
+  Value: {fileID: 0}
+  DefaultValue: {fileID: 11400000, guid: 32a3648cc8b0b1347a5128cb10f03460, type: 2}

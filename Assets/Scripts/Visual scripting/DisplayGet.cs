@@ -7,7 +7,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditorInternal.ReorderableList;
 
 public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -50,7 +49,13 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         TryGetComponent(out _rect);
 
         if (IsVariable)
+        {
+            if (!IsDefaultNode)
+                _inPreview = true;
+
             return;
+        }
+           
 
         if (IsDefaultNode)
             SetupAsDefault();

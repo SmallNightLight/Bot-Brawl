@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88edb66f9961a2140a204072a1a42d54, type: 3}
-  m_Name: Do0
+  m_Name: FunctionSetup
   m_EditorClassIdentifier: 
   BaseNodeName: Setup
   BaseNodeColor: {r: 0, g: 0, b: 0, a: 0}

@@ -48,12 +48,17 @@ public class DataManager : MonoBehaviour
         Load();
     }
 
-    //SO
+    //Bot Data
     public List<BasePartDataReference> BasePartDatas = new List<BasePartDataReference>();
     private Dictionary<string, BasePartDataReference> BasePartDataLookup = new Dictionary<string, BasePartDataReference>();
 
     public BotData CurrentBotData;
     public Dictionary<string, BotData> AllBotData = new Dictionary<string, BotData>();
+
+
+    //Bot behavior
+    public List<BaseFunction> DefaultFunctions = new List<BaseFunction>();
+    public List<BaseFunction> Functions = new List<BaseFunction>();
     public List<Node> AllNodes = new List<Node>();
 
     [SerializedDictionary("Name", "Variable")]

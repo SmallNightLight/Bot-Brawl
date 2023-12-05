@@ -196,8 +196,17 @@ public class BotCreator : MonoBehaviour
 
     public void Deselect()
     {
-        foreach (MeshRenderer r in _selectedRenderers)
-            RemoveSelectedMaterial(r);
+        for(int i = _selectedRenderers.Count - 1; i >= 0; i--)
+        {
+            MeshRenderer renderer = _selectedRenderers[i];
+
+            if (renderer == null)
+            {
+                _selectedRenderers.Remove(renderer);
+                continue;
+            }
+            RemoveSelectedMaterial(renderer);
+        }
 
         _selectedRenderers.Clear();
     }

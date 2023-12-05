@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fbbde89700df488fc5a1d2fb6d205, type: 3}
   m_Name: DefaultNodeBigger
   m_EditorClassIdentifier: 
+  BaseNodeName: 
+  BaseNodeColor: {r: 0, g: 0, b: 0, a: 0}
   Value: 0
+  Reference1: {fileID: 0}
+  Reference2: {fileID: 0}
+  DefaultReference1: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c, type: 2}
+  DefaultReference2: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c, type: 2}
+  DefaultNumber1: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c, type: 2}
+  DefaultNumber2: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c, type: 2}

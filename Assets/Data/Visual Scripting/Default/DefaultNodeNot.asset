@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a350384cc7e3f564d94144312c46a6e9, type: 3}
   m_Name: DefaultNodeNot
   m_EditorClassIdentifier: 
+  BaseNodeName: 
+  BaseNodeColor: {r: 0, g: 0, b: 0, a: 0}
   Value: 0
+  Reference: {fileID: 0}
+  DefaultReference: {fileID: 11400000, guid: 32a3648cc8b0b1347a5128cb10f03460, type: 2}

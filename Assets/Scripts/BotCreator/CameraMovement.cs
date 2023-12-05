@@ -127,8 +127,8 @@ public class CameraMovement : MonoBehaviour
         //Zooming
         float scroolWheel = Input.GetAxis("Mouse ScrollWheel") * _scroolSensitivity;
         cameraMovement |= scroolWheel != 0;
-
-        _distance -= scroolWheel;
+        
+        _distance -= Input.GetMouseButton(1) ? 0 : scroolWheel;
         _distance = Mathf.Min(Mathf.Max(_distance, _minDistance), _maxDistance);
 
         _currentDistance = Mathf.Lerp(_currentDistance, _distance, _scrollSmoothness * Time.deltaTime);

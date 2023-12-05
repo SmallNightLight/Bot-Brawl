@@ -47,8 +47,31 @@ public class BotCreator : MonoBehaviour
 
         if (_previewObject != null)
             Destroy(_previewObject);
+        HandleRotationInput();
+    }
+    private void HandleRotationInput()
+    {
+        if (_selectedPartNew == null) return;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("Rotation" + _selectedPartNew.Rotation);
+            GameObject selectedUnit = _parts[_selectedPartNew.Position];
+            Debug.Log("Rotation GO" + selectedUnit.transform.rotation);
+        }
+        if (Input.GetMouseButton(1) && Input.GetAxis("Mouse ScrollWheel") > 0f) RotateSelectedPart(90f);
+        else if (Input.GetMouseButton(1) && Input.GetAxis("Mouse ScrollWheel") < 0f) RotateSelectedPart(-90f);
     }
 
+    private void RotateSelectedPart(float angle)
+    {
+        if (_selectedPartNew != null && _parts.ContainsKey(_selectedPartNew.Position))
+        {
+            GameObject selectedUnit = _parts[_selectedPartNew.Position];
+            selectedUnit.transform.Rotate(Vector3.up, angle, Space.Self);
+            _selectedPartNew.Rotation = selectedUnit.transform.eulerAngles;
+        }
+    }
+    
     private void SetupBot()
     {
         if (_botData.GetPartCount() == 0)
@@ -85,7 +108,7 @@ public class BotCreator : MonoBehaviour
 
         List<Vector3Int> otherAttachmentPoints = placingInfo.OtherPart.BasePart.Value.RelativeAttachmentPoints;
         Vector3 localNormal = Quaternion.Euler(placingInfo.OtherPart.Rotation) * placingInfo.Normal;
-
+        
         for (int i = 0; i < otherAttachmentPoints.Count; i++)
             if (localNormal == -otherAttachmentPoints[i])
                 return true;

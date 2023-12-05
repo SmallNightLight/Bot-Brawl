@@ -128,6 +128,7 @@ public class BotCreator : MonoBehaviour
     {
         PartData newPartData = Instantiate(_selectedBasePart.Value.DefaultData);
         newPartData.BasePart = _selectedBasePart;
+        newPartData.CustomName = _selectedBasePart.Value.PartName + UnityEngine.Random.Range(0, int.MaxValue).ToString();
         newPartData.Position = placingInfo.AttachPoint;
 
         newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;

@@ -9,9 +9,11 @@ public class VariableCreator : MonoBehaviour
     //BaseVariables
     [SerializeField] private GetBoolVariable _defaultBoolVariable;
     [SerializeField] private GetNumberVariable _defaultNumberVariable;
+    [SerializeField] private GetSettingsVariable _defaultSettingsVariable;
 
     //Prefabs
     [SerializeField] private GameObject _variablePrefab;
+    [SerializeField] private Transform _variableParent;
 
     //Creator components
     [SerializeField] private TMP_Dropdown _componentVariableType;
@@ -34,7 +36,32 @@ public class VariableCreator : MonoBehaviour
     private void Start()
     {
         SetVariableType(0);
+        AddSettingVariables();
         ResetValues();
+    }
+
+    private void AddSettingVariables()
+    {
+        foreach(var v in DataManager.Instance.CurrentBotData.GetParts())
+        {
+            string partName = v.Value.CustomName;
+
+            foreach(PartSetting setting in v.Value.Settings)
+            {
+                string variableName = partName + " " + setting.Name;
+                DataManager.Instance.AddVariableName(variableName);
+
+                //Create SO
+                GetSettingsVariable newConditionVariable = Instantiate(_defaultSettingsVariable);
+                newConditionVariable.BaseNodeName = variableName; //Change baseName??
+                newConditionVariable.name = variableName;
+                newConditionVariable.Value = setting;
+
+                Instantiate(_variablePrefab, _variableParent).GetComponent<DisplayGet>().InitializeAsVariable(variableName, newConditionVariable); ;
+            }
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     public void CreateNewVariable()
@@ -53,7 +80,7 @@ public class VariableCreator : MonoBehaviour
             newConditionVariable.Value = _conditionValue;
 
             //Create object
-            Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newConditionVariable);
+            Instantiate(_variablePrefab, _variableParent).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newConditionVariable);
         }
         else if (_variableType == VariableType.Number)
         {
@@ -63,7 +90,7 @@ public class VariableCreator : MonoBehaviour
             newNumberVariable.Value = _numberValue;
 
             //Create object
-            Instantiate(_variablePrefab, transform).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newNumberVariable);
+            Instantiate(_variablePrefab, _variableParent).GetComponent<DisplayGet>().InitializeAsVariable(_variableName, newNumberVariable);
         }
 
         ResetValues();

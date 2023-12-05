@@ -5,5 +5,4 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DefaultNumberVariable", menuName = "Nodes/Variables/Number")]
 public class GetNumberVariable : BaseGetNumber
 {
-
 }

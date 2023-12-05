@@ -1562,6 +1562,8 @@ MonoBehaviour:
     type: 3}
   IsDefaultNode: 1
   IsVariable: 1
+  DefaultValueGameObject: {fileID: 5882129366414024615, guid: e77439db0ec380c428cc4610c810d6f3,
+    type: 3}
   _baseColor: {r: 0.6784314, g: 0.41960785, b: 0.2, a: 1}
   IsDragging: 0
   _allParent: {fileID: 9061117275386493685}
@@ -4390,6 +4392,7 @@ MonoBehaviour:
     type: 3}
   IsDefaultNode: 1
   IsVariable: 0
+  DefaultValueGameObject: {fileID: 0}
   _baseColor: {r: 0.6784314, g: 0.41960785, b: 0.2, a: 1}
   IsDragging: 0
   _allParent: {fileID: 9061117275386493685}
@@ -4837,6 +4840,8 @@ MonoBehaviour:
     type: 2}
   _defaultNumberVariable: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c,
     type: 2}
+  _defaultSettingsVariable: {fileID: 11400000, guid: 8d6d6029633b4444091a2e409e3dbdf8,
+    type: 2}
   _variablePrefab: {fileID: 4100653624484624499}
   _componentVariableType: {fileID: 8325585582386436088}
   _componentVariableName: {fileID: 5549619601844196122}
@@ -4859,7 +4864,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 35
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 2
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -5202,6 +5207,7 @@ MonoBehaviour:
     type: 3}
   IsDefaultNode: 1
   IsVariable: 0
+  DefaultValueGameObject: {fileID: 0}
   _baseColor: {r: 0.6784314, g: 0.41960785, b: 0.2, a: 1}
   IsDragging: 0
   _allParent: {fileID: 9061117275386493685}

@@ -136,6 +136,19 @@ MonoBehaviour:
       NeedsAttachment: 0
       RelativeAttachmentPoints: []
       DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: b7d28cd7a6c5fcd4095960d9526c9330, type: 2}
+    _constant:
+      PartName: 
+      PartDescription: 
+      PartType: 
+      DefaultData: {fileID: 0}
+      PartPrefab: {fileID: 0}
+      CreatorPrefab: {fileID: 0}
+      BlockSize: {x: 0, y: 0, z: 0}
+      NeedsAttachment: 0
+      RelativeAttachmentPoints: []
+      DefaultAttachmentDirection: {x: 0, y: 0, z: 0}
   CurrentBotData:
     BotName: 
     _parts:
@@ -146,10 +159,7 @@ MonoBehaviour:
     type: 2}
   DefaultFunctionUpdate: {fileID: 11400000, guid: 927c8bc16f917a2498958a39a5bde6f2,
     type: 2}
-  FunctionsToCompile: []
   DosToCompile: []
   GetsToCompile: []
-  DefaultVariables:
-    _serializedList: []
-  CustomVariables:
-    _serializedList: []
+  FunctionsToCompile: []
+  VariablesToCompile: []

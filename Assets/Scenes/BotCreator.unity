@@ -1257,7 +1257,7 @@ MonoBehaviour:
     type: 2}
   _newBasePartData:
     _isVariable: 1
-    _variable: {fileID: 11400000, guid: 3c2a21f9e420edf40b23d53142d38165, type: 2}
+    _variable: {fileID: 11400000, guid: b7d28cd7a6c5fcd4095960d9526c9330, type: 2}
     _constant:
       PartName: 
       PartDescription: 

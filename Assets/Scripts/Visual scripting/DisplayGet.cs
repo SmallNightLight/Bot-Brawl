@@ -17,6 +17,9 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool IsDefaultNode;
     public bool IsVariable;
 
+    private bool _isBaseVariable = true;
+    [SerializeField] private GameObject DefaultValueGameObject;
+
     [SerializeField] private Color _baseColor;
     [HideInInspector] public bool IsDragging;
 
@@ -56,6 +59,10 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
                 DataManager.Instance.VariablesToCompile.Add(this);
             }
+            else if (!_isBaseVariable)
+            {
+                //Instantiate(DefaultValueGameObject, transform).GetComponent<Toggle>().onValueChanged.AddListener(state => DefaultGet.GetValue );
+            }
         }
         else
         {
@@ -85,6 +92,8 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void InitializeAsVariable(string variableName, BaseGet variable)
     {
         IsVariable = true;
+        _isBaseVariable = false;
+
         NewText(variableName);
 
         DefaultGet = variable;
@@ -418,6 +427,10 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _bufferNode = Instantiate(this, _allParent).GetComponent<DisplayGet>();
         _bufferNode.IsDragging = true;
         _bufferNode.IsDefaultNode = false;
+
+        var toggle = _bufferNode.GetComponentInChildren<Toggle>();
+        if (toggle != null)
+            Destroy(toggle.gameObject);
     }
 
     private void NewText(string text)

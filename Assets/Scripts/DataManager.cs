@@ -196,6 +196,13 @@ public class DataManager : MonoBehaviour
                 AddGetScopes(point.ChildGet);
                 input.Add(_gets[point.ChildGet]);
             }
+            else if (point.IsNumber)
+            {
+                float number = point.GetNumberValue();
+                BaseGetNumber newNumber = ScriptableObject.CreateInstance<BaseGetNumber>();
+                newNumber.Value = number;
+                input.Add(newNumber);
+            }
         }
 
         _gets[currentGet].SetInput(input);

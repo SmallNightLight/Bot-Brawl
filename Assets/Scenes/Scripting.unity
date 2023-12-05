@@ -469,6 +469,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5343430403185923571, guid: e216d7897420aa84091ab245f712f8b6,
+        type: 3}
+      propertyPath: IsBaseVariable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343430403185923571, guid: e216d7897420aa84091ab245f712f8b6,
+        type: 3}
+      propertyPath: DefaultValueGameObject
+      value: 
+      objectReference: {fileID: 5882129366414024615, guid: e77439db0ec380c428cc4610c810d6f3,
+        type: 3}
     - target: {fileID: 5412651276982895788, guid: e216d7897420aa84091ab245f712f8b6,
         type: 3}
       propertyPath: m_SizeDelta.x

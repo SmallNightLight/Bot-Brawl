@@ -2,6 +2,7 @@ using AYellowpaper.SerializedCollections;
 using ScriptableArchitecture.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using UnityEngine;
 
@@ -161,6 +162,20 @@ public class DataManager : MonoBehaviour
                 {
                     AddGetScopes(point.ChildGet);
                     input.Add(_gets[point.ChildGet]);
+                }
+                else
+                {
+                    if (point.IsNumber())
+                    {
+                        var v = ScriptableObject.CreateInstance<BaseGetNumber>();
+                        v.Value = point.GetNumberValue();
+                        input.Add(v);
+                    }
+                    else
+                    {
+                        var v = Instantiate(point.DefaultGet);
+                        input.Add(v);
+                    }
                 }
             }
 

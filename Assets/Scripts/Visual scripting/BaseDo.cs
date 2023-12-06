@@ -11,7 +11,7 @@ public class BaseDo : Node
     {
         Do();
 
-        if (HasScope())
+        if (HasScope() || IsSecondaryScope())
             for (int i = 0; i < _scope.Count; i++)
                 _scope[i].Execute();
     }
@@ -61,4 +61,6 @@ public class BaseDo : Node
             typeof(BaseDo)
         };
     }
+
+    public virtual bool IsSecondaryScope() => false;
 }

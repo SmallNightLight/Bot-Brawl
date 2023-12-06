@@ -30,6 +30,29 @@ public class PartSetting
                     break;
             }
         }
+
+        get
+        {
+            switch (VariableType)
+            {
+                case SettingType.Bool:
+                    return BoolValue;
+                case SettingType.Float: 
+                    return FloatValue;
+                case SettingType.Int:
+                    return IntValue;
+                case SettingType.ClampedInt:
+                    return IntValue;
+                case SettingType.ClampedFloat:
+                    return FloatValue;
+                case SettingType.Vector3:
+                    return Vector3Value;
+                case SettingType.Vector3Int:
+                    return Vector3IntValue;
+                default: 
+                    return null;
+            }
+        }
     }
 
 

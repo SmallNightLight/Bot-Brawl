@@ -11,11 +11,9 @@ public class SetSettingFloat : BaseDo
     public BaseGetNumber Value;
     public BaseGetNumber DefaultValue;
 
-    public override void Execute()
+    public override void Do()
     {
-        //Variable?.Value
-
-        base.Execute();
+        VariableToChange.Value.FloatValue = Value.Value;
     }
 
     public override List<BaseGet> GetInput() => new List<BaseGet> { VariableToChange, Value };

@@ -11,11 +11,9 @@ public class SetSettingBool : BaseDo
     public BaseGetBool Value;
     public BaseGetBool DefaultValue;
 
-    public override void Execute()
+    public override void Do()
     {
-        //Variable?.Value
-
-        base.Execute();
+        VariableToChange.Value.BoolValue = Value.Value;
     }
 
     public override List<BaseGet> GetInput() => new List<BaseGet> { VariableToChange, Value };

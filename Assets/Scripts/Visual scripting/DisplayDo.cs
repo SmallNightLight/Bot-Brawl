@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -95,7 +94,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             else
                 DataManager.Instance.DosToCompile.Add(this);
 
-            if (HasScope)
+            if (HasScope && !IsFunctionNode)
                 _scopeObject = Instantiate(_scopePrefab, transform);
 
             foreach (Transform child in Base.transform)

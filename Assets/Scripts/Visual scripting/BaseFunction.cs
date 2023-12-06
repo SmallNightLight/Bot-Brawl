@@ -10,4 +10,8 @@ public class BaseFunction : BaseDo
     public override string GetNodeText() => DisplayName;
 
     public override bool CanSnapUnder() => false;
+
+    public override bool HasScope() => false;
+
+    public override bool IsSecondaryScope() => true;
 }

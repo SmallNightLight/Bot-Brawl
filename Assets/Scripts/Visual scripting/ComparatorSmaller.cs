@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "DefaultNodeSmaller", menuName = "Nodes/Smaller")]
+public class ComparatorSmaller : BaseComparator
+{
+    [Header("Just these needed! (not the other default above)")]
+    public BaseGetNumber DefaultNumber1;
+    public BaseGetNumber DefaultNumber2;
+
+    public override bool GetComparator(object value1, object value2) => (float)value1 < (float)value2;
+
+    public override List<BaseGet> GetDefaultInput() => new List<BaseGet> { DefaultNumber1, DefaultNumber2 };
+
+    public override void SetInput(List<BaseGet> input)
+    {
+        DefaultNumber1 = input[0] as BaseGetNumber;
+        DefaultNumber1 = input[1] as BaseGetNumber;
+    }
+
+    public override string[] GetBeforeNodeText() => new string[] { "", "<" };
+}

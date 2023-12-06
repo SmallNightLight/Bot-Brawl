@@ -77,6 +77,16 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
                 DataManager.Instance.GetsToCompile.Add(this);
                 ChildrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+
+                foreach (var child in GetComponentsInChildren<GetPoint>())
+                {
+                    bool hasChild = child.gameObject.GetComponentInChildren<DisplayGet>() != null;
+                    //child.gameObject.GetComponent<ContentSizeFitter>().enabled = hasChild;
+                    RectTransform rect = child.gameObject.GetComponent<RectTransform>();
+
+                    if (!hasChild)
+                        rect.sizeDelta = new Vector2(40, rect.sizeDelta.y);
+                }
             }
         }
     }
@@ -248,7 +258,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     _attachingPoint = otherGetPoint;
 
                     //Set preview
-                    _insert.SetInsertGet(snappingTarget);
+                    _insert.SetInsertGet(snappingTarget, new Vector3(0, -10, 0));
                     _snapPosition = snappingTarget.position;
                     _snapPositionOffset = new Vector3(0, 0, 0);
                 }
@@ -283,7 +293,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         foreach (var child in GetComponentsInChildren<GetPoint>())
         {
             bool hasChild = child.gameObject.GetComponentInChildren<DisplayGet>() != null;
-            child.gameObject.GetComponent<ContentSizeFitter>().enabled = hasChild;
+            //child.gameObject.GetComponent<ContentSizeFitter>().enabled = hasChild;
             RectTransform rect = child.gameObject.GetComponent<RectTransform>();
 
             if (!hasChild)
@@ -317,7 +327,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    public void UpdateGetStack(int height = 19, float darkeningFactor = 1f)
+    public void UpdateGetStack(int height = 17, float darkeningFactor = 1f)
     {
         _rect.sizeDelta = new Vector2(_rect.sizeDelta.x, height);
 
@@ -424,7 +434,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void NewPreviewGet()
     {
-        _bufferNode = Instantiate(this, _allParent).GetComponent<DisplayGet>();
+        _bufferNode = Instantiate(this, transform.parent.transform).GetComponent<DisplayGet>();
         _bufferNode.IsDragging = true;
         _bufferNode.IsDefaultNode = false;
 

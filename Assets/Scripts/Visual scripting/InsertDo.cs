@@ -29,10 +29,11 @@ public class InsertDo : MonoBehaviour
         _image.enabled = true;
     }
 
-    public void SetInsertGet(RectTransform otherRect)
+    public void SetInsertGet(RectTransform otherRect, Vector3 offset)
     {
         Rect.sizeDelta = new Vector2(otherRect.rect.width, Rect.sizeDelta.y);
         Rect.position = otherRect.position;
+        Rect.localPosition += offset;
 
         _image.enabled = true;
     }

@@ -99,9 +99,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 _scopeObject = Instantiate(_scopePrefab, transform);
 
             foreach (Transform child in Base.transform)
-            {
                 LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
-            }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(Base.GetComponent<RectTransform>());
         }
@@ -607,6 +605,9 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         foreach (var child in ChildrenPoints)
             child.ChildGet?.UpdateGetStack();
+
+        foreach (Transform child in Base.transform)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }

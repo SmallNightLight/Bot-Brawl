@@ -91,4 +91,5 @@ public class GetPoint : MonoBehaviour
     {
         return float.Parse(_numberInputField.text.Replace(',', '.'));
     }
+
 }

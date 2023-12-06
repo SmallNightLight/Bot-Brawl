@@ -24,6 +24,9 @@ public class BotCreator : MonoBehaviour
     private BasePartDataReference _selectedBasePart;
     private Vector3Int _mainPartPosition = new Vector3Int(0, 5, 0);
 
+    private bool _keepPreviewRotation;
+    private PlacingInfo _previousPlacingInfo;
+    private PartData _previousPartData;
     private GameObject _previewObject;
 
     private PartData _selectedPartNew;
@@ -47,29 +50,38 @@ public class BotCreator : MonoBehaviour
 
         if (_previewObject != null)
             Destroy(_previewObject);
+
         HandleRotationInput();
     }
     private void HandleRotationInput()
     {
-        if (_selectedPartNew == null) return;
-        if (Input.GetKeyDown(KeyCode.X))
+        if (!Input.GetMouseButton(1)) return;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            Debug.Log("Rotation" + _selectedPartNew.Rotation);
-            GameObject selectedUnit = _parts[_selectedPartNew.Position];
-            Debug.Log("Rotation GO" + selectedUnit.transform.rotation);
+            if (_isPlacing.Value) RotatePreviewPart(90f);
+            else RotateSelectedPart(90f);
         }
-        if (Input.GetMouseButton(1) && Input.GetAxis("Mouse ScrollWheel") > 0f) RotateSelectedPart(90f);
-        else if (Input.GetMouseButton(1) && Input.GetAxis("Mouse ScrollWheel") < 0f) RotateSelectedPart(-90f);
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (_isPlacing.Value) RotatePreviewPart(-90f);
+            else RotateSelectedPart(-90f);
+        }
+    }
+
+    private void RotatePreviewPart(float angle)
+    {
+        if (_previewObject != null && _previousPartData != null)
+        {
+            _previewObject.transform.Rotate(Vector3.up, angle, Space.Self);
+            _previousPartData.Rotation = _previewObject.transform.eulerAngles;
+        }
     }
 
     private void RotateSelectedPart(float angle)
     {
-        if (_selectedPartNew != null && _parts.ContainsKey(_selectedPartNew.Position))
-        {
-            GameObject selectedUnit = _parts[_selectedPartNew.Position];
-            selectedUnit.transform.Rotate(Vector3.up, angle, Space.Self);
-            _selectedPartNew.Rotation = selectedUnit.transform.eulerAngles;
-        }
+        GameObject selectedUnit = _parts[_selectedPartNew.Position];
+        selectedUnit.transform.Rotate(Vector3.up, angle, Space.Self);
+        _selectedPartNew.Rotation = selectedUnit.transform.eulerAngles;
     }
     
     private void SetupBot()
@@ -131,7 +143,10 @@ public class BotCreator : MonoBehaviour
         newPartData.CustomName = _selectedBasePart.Value.PartName + UnityEngine.Random.Range(0, int.MaxValue).ToString();
         newPartData.Position = placingInfo.AttachPoint;
 
-        newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
+        if (_keepPreviewRotation)
+            newPartData.Rotation = _previousPartData.Rotation;
+        else
+            newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
 
         AddPart(newPartData, isMainBlock);
     }
@@ -163,11 +178,25 @@ public class BotCreator : MonoBehaviour
 
     public void PreviewPartInfo(PlacingInfo placingInfo)
     {
-        PartData newPartData = Instantiate(_selectedBasePart.Value.DefaultData);
-        newPartData.BasePart = _selectedBasePart;
-        newPartData.Position = placingInfo.AttachPoint;
+        PartData newPartData;
 
-        newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
+        if (IsSamePlacingInfo(placingInfo))
+        {
+            _keepPreviewRotation = true;
+            newPartData = _previousPartData;
+        }
+        else
+        {
+            _keepPreviewRotation = false;
+            newPartData = Instantiate(_selectedBasePart.Value.DefaultData);
+            newPartData.BasePart = _selectedBasePart;
+            newPartData.Position = placingInfo.AttachPoint;
+
+            newPartData.Rotation = Quaternion.FromToRotation(newPartData.BasePart.Value.DefaultAttachmentDirection, placingInfo.Normal).eulerAngles;
+
+            _previousPartData = newPartData;
+        }
+
 
         _previewObject = Instantiate(newPartData.BasePart.Value.CreatorPrefab, newPartData.Position, Quaternion.Euler(newPartData.Rotation.x, newPartData.Rotation.y, newPartData.Rotation.z));
         _previewObject.layer = LayerMask.NameToLayer("Default");
@@ -177,8 +206,18 @@ public class BotCreator : MonoBehaviour
         if (_previewObject.TryGetComponent(out MeshRenderer renderer))
             SetTransparent(renderer, canBePlaced);
 
-        foreach(MeshRenderer childRenderer in _previewObject.GetComponentsInChildren<MeshRenderer>())
+        foreach (MeshRenderer childRenderer in _previewObject.GetComponentsInChildren<MeshRenderer>())
             SetTransparent(childRenderer, canBePlaced);
+
+        _previousPlacingInfo = placingInfo;
+    }
+
+
+    private bool IsSamePlacingInfo(PlacingInfo newPlacingInfo)
+    {
+        return _previousPlacingInfo.AttachPoint == newPlacingInfo.AttachPoint &&
+               _previousPlacingInfo.OtherPart.Equals(newPlacingInfo.OtherPart) &&
+               _previousPlacingInfo.Normal == newPlacingInfo.Normal;
     }
 
     public void SelectUnit(PartData partData)

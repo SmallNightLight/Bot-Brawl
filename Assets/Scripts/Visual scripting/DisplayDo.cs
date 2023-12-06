@@ -5,16 +5,19 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BaseDo DefaultDo;
 
+    public GameObject Base;
     [SerializeField] private GameObject _textPrefab;
     [SerializeField] private GameObject _baseGetPointPrefab;
     [SerializeField] private GameObject _scopePrefab;
 
     [SerializeField] private InsertDo _insert;
+    private Vector2 _insertScale;
 
     [SerializeField] private Vector2 _snappingOffset;
     [SerializeField] private Vector2 _snappingOffsetScope;
@@ -94,7 +97,16 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (HasScope)
                 _scopeObject = Instantiate(_scopePrefab, transform);
+
+            foreach (Transform child in Base.transform)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(Base.GetComponent<RectTransform>());
         }
+
+        _insertScale = _insert.GetComponent<RectTransform>().sizeDelta;
     }
 
     private void OnDestroy()
@@ -122,15 +134,17 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             i++;
         }
-            
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Base.GetComponent<RectTransform>());
     }   
 
     private void CreateGetPoint(BaseGet defaultGet)
     {
-        GetPoint child = Instantiate(_baseGetPointPrefab, transform).GetComponent<GetPoint>();
-        child.DefaultGet = defaultGet;
+        GetPoint childGet = Instantiate(_baseGetPointPrefab, Base.transform).GetComponent<GetPoint>();
+        childGet.DefaultGet = defaultGet;
+        ChildrenPoints.Add(childGet);
 
-        ChildrenPoints.Add(child);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(childGet.GetComponent<RectTransform>());
     }
 
     private void NewText(string text)
@@ -138,8 +152,10 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (text == "")
             return;
 
-        GameObject g = Instantiate(_textPrefab, transform);
-        g.GetComponent<TMP_Text>().text = text;
+        GameObject newText = Instantiate(_textPrefab, Base.transform);
+        newText.GetComponent<TMP_Text>().text = text;
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(newText.GetComponent<RectTransform>());
     }
 
     private void Update()
@@ -299,7 +315,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (HasScope)
         {
-            height += 30;
+            height += 33;
 
             if (NextScopedDo != null)
                 height += NextScopedDo.GetHeightOfBlock(true);
@@ -352,10 +368,12 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 continue;
 
             Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
+            
             if (DefaultDo.CanSnapAbove() && otherDo.DefaultDo.CanSnapUnder())
             {
-                if (IsPointInsideConstructedRect(snappingTarget, mousePosition - new Vector2(0, snappingTarget.sizeDelta.y / 2)))
+                Vector2 pointToTest = mousePosition - new Vector2(0, snappingTarget.sizeDelta.y * 2);
+
+                if (IsPointInsideConstructedRect(snappingTarget, pointToTest, otherDo.Base.GetComponent<RectTransform>().sizeDelta.x))
                 {
                     //Set preview
                     _isSnapping = true;
@@ -395,9 +413,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                         {
                             _snapType = SnapType.Top;
                             _attachmentPrevious = null;
-
-                            _insert.Rect.localPosition += new Vector3(_snappingOffset.x, _snappingOffset.y, 0);
-                            _insert.Rect.sizeDelta = snappingTarget.sizeDelta;
+                            _insert.Rect.sizeDelta = _insertScale;
                         }
                     }
 
@@ -407,12 +423,13 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (DefaultDo.CanSnapUnder() && otherDo.DefaultDo.CanSnapAbove())
             {
-                Vector2 pointToTest = mousePosition + new Vector2(0, snappingTarget.sizeDelta.y / 2);
+                Vector2 pointToTest = mousePosition + new Vector2(0, snappingTarget.sizeDelta.y);
 
                 if (otherDo.HasScope)
                     pointToTest -= new Vector2(10, 0);
 
-                if (IsPointInsideConstructedRect(snappingTarget, pointToTest))
+
+                if (IsPointInsideConstructedRect(snappingTarget, pointToTest, otherDo.Base.GetComponent<RectTransform>().sizeDelta.x))
                 {
                     //Set preview 
                     _isSnapping = true;
@@ -444,8 +461,8 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                                 _snapType = SnapType.Under;
                                 _attachmentNext = null;
 
-                                _insert.Rect.localPosition += _snapPositionOffset;
-                                _insert.Rect.sizeDelta = snappingTarget.sizeDelta;
+                                _insert.Rect.localPosition += new Vector3(0, -40, 0);
+                                _insert.Rect.sizeDelta = _insertScale;
                             }
                         }
                     }
@@ -476,8 +493,8 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                                 _snapType = SnapType.UnderAsScope;
                                 _attachmentNext = null;
 
-                                _insert.Rect.localPosition -= new Vector3(_snappingOffset.x - 10, _snappingOffset.y, 0);
-                                _insert.Rect.sizeDelta = snappingTarget.sizeDelta;
+                                _insert.Rect.localPosition += new Vector3(4, -40, 0);
+                                _insert.Rect.sizeDelta = _insertScale;
                             }
                         }
                     }
@@ -501,9 +518,9 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (DefaultDo.CanSnapUnder() && otherDo.DefaultDo.CanSnapAbove())
             {
-                Vector2 pointToTest = mousePosition + new Vector2(0, snappingTarget.sizeDelta.y / 2);
+                Vector2 pointToTest = mousePosition + new Vector2(0, snappingTarget.sizeDelta.y);
 
-                if (IsPointInsideConstructedRect(snappingTarget, pointToTest))
+                if (IsPointInsideConstructedRect(snappingTarget, pointToTest, 50))
                 {
                     //Set preview 
                     _isSnapping = true;
@@ -518,7 +535,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                         _insert.EnableInsert();
 
                         _snapPosition = snappingTarget.position;
-                        _snapPositionOffset = -new Vector3(_snappingOffset.x, _snappingOffset.y, 0);
+                        _snapPositionOffset = -new Vector3(0, 10, 0);
 
                         if (otherDo.NextDo != null)
                         {
@@ -533,8 +550,8 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                             _snapType = SnapType.Under;
                             _attachmentNext = null;
 
-                            _insert.Rect.localPosition += _snapPositionOffset;
-                            _insert.Rect.sizeDelta = new Vector2(snappingTarget.sizeDelta.x, 20);
+                            _insert.Rect.localPosition += new Vector3(0, -33);
+                            _insert.Rect.sizeDelta = _insertScale;
                         }
                     }
 
@@ -594,7 +611,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    bool IsPointInsideConstructedRect(RectTransform originalRect, Vector2 point)
+    bool IsPointInsideConstructedRect(RectTransform originalRect, Vector2 point, float addedWidth = 0)
     {
         float halfHeight = originalRect.rect.height * 0.5f;
 
@@ -603,7 +620,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         float minX = Mathf.Min(corners[0].x, corners[1].x, corners[2].x, corners[3].x);
         float minY = Mathf.Min(corners[0].y, corners[1].y, corners[2].y, corners[3].y + halfHeight); // Adjusted minY to consider half height
-        float maxX = Mathf.Max(corners[0].x, corners[1].x, corners[2].x, corners[3].x);
+        float maxX = Mathf.Max(corners[0].x, corners[1].x, corners[2].x, corners[3].x + addedWidth);
         float maxY = Mathf.Max(corners[0].y, corners[1].y, corners[2].y, corners[3].y + halfHeight); // Adjusted maxY to consider half height
 
         return (point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY);

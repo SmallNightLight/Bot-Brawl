@@ -28,5 +28,5 @@ public class SetCondition : BaseDo
         Value = input[1] as BaseGetBool;
     }
 
-    public override string[] GetBeforeNodeText() => new string[] { "Set condition", "to" };
+    public override string[] GetBeforeNodeText() => new string[] { "Set", "to" };
 }

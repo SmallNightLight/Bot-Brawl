@@ -29,18 +29,8 @@ MonoBehaviour:
   Rotation: {x: 0, y: 0, z: 0}
   Material: 0
   Cost: 0
+  CustomName: 
   Settings:
-  - Name: Power
-    VariableType: 4
-    BoolValue: 0
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 3
-    MinFloat: 0
-    MaxFloat: 150
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
   - Name: MaxAngle
     VariableType: 4
     BoolValue: 0
@@ -50,17 +40,6 @@ MonoBehaviour:
     FloatValue: 0
     MinFloat: 0
     MaxFloat: 90
-    Vector3Value: {x: 0, y: 0, z: 0}
-    Vector3IntValue: {x: 0, y: 0, z: 0}
-  - Name: Offset
-    VariableType: 3
-    BoolValue: 0
-    IntValue: 0
-    MinInt: 0
-    MaxInt: 0
-    FloatValue: 0
-    MinFloat: 0
-    MaxFloat: 50
     Vector3Value: {x: 0, y: 0, z: 0}
     Vector3IntValue: {x: 0, y: 0, z: 0}
   - Name: Inverted

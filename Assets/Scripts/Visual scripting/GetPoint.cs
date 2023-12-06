@@ -13,6 +13,15 @@ public class GetPoint : MonoBehaviour
 
     private DisplayGet _childGet;
 
+    private Gettype _type;
+
+    private enum Gettype
+    {
+        Condition,
+        Number,
+        Part
+    }
+
     [HideInInspector] public DisplayGet ChildGet
     {
         get
@@ -22,7 +31,9 @@ public class GetPoint : MonoBehaviour
         set
         {
             _childGet = value;
-            ReloadInputField();
+
+            if (_type == Gettype.Number)
+                ReloadInputField();
         }
     }
 
@@ -31,7 +42,6 @@ public class GetPoint : MonoBehaviour
         return obj is BaseGet && obj.GetType().IsSubclassOf(baseType);
     }
 
-    public bool IsNumber = false;
     [SerializeField] private TMP_InputField _numberInputField;
 
     public DisplayDo MainDo
@@ -52,12 +62,21 @@ public class GetPoint : MonoBehaviour
 
         if (DefaultGet == null)
         {
-            IsNumber = false;
+            _type = Gettype.Condition;
             return;
         }
 
-        IsNumber = IsDerivedFrom(DefaultGet, typeof(BaseGetNumber));
-        ReloadInputField();
+        if (IsDerivedFrom(DefaultGet, typeof(BaseGetNumber)))
+        {
+            _type = Gettype.Number;
+            ReloadInputField();
+        }
+        else if (IsDerivedFrom(DefaultGet, typeof(BaseGetBool)))
+        {
+            _type = Gettype.Condition;
+        }
+        else
+            _type = Gettype.Part;
     }
 
     private void ReloadInputField()
@@ -72,8 +91,7 @@ public class GetPoint : MonoBehaviour
         else if (mainDo != null)
             current = !mainDo.IsDefaultNode;
 
-        current &= ChildGet == null && IsNumber;
-
+        current &= ChildGet == null && _type == Gettype.Number;
         _numberInputField.gameObject.SetActive(current);
     }
 
@@ -92,4 +110,8 @@ public class GetPoint : MonoBehaviour
         return float.Parse(_numberInputField.text.Replace(',', '.'));
     }
 
+    public bool IsNumber()
+    {
+        return _type == Gettype.Number;
+    }
 }

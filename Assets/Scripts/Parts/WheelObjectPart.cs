@@ -25,7 +25,7 @@ public class WheelObjectPart : ObjectPart
 
     private void Steer(float horizontalDirection)
     {
-        _turnAngle = horizontalDirection * PartData.GetFloat("MaxAngle") + PartData.GetFloat("Offset");
+        _turnAngle = horizontalDirection * PartData.GetFloat("MaxAngle");
         _wheelCollider.steerAngle = _turnAngle;
     }
 
@@ -36,7 +36,7 @@ public class WheelObjectPart : ObjectPart
         else
             _wheelCollider.brakeTorque = 0;
 
-        _wheelCollider.motorTorque = powerInput * PartData.GetFloat("Power") * 100 * (PartData.GetBool("Inverted") ? -1 : 1);
+        _wheelCollider.motorTorque = powerInput * 300 * (PartData.GetBool("Inverted") ? -1 : 1);
     }
 
     private void UpdateMeshPosition()

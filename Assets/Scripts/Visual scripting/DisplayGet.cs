@@ -46,6 +46,7 @@ public class DisplayGet : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public List<GetPoint> ChildrenPoints = new List<GetPoint>();
 
+
     private void Start()
     {
         TryGetComponent(out _rect);

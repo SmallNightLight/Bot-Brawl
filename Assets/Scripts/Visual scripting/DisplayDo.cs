@@ -13,7 +13,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public GameObject Base;
     [SerializeField] private GameObject _textPrefab;
-    [SerializeField] private GameObject _baseGetPointPrefab;
+    [SerializeField] List<GameObject> _baseGetPointPrefab = new List<GameObject>();
     [SerializeField] private GameObject _scopePrefab;
 
     [SerializeField] private InsertDo _insert;
@@ -59,7 +59,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private SnapType _snapType;
 
-    [HideInInspector] public List<GetPoint> ChildrenPoints = new List<GetPoint>();
+    public List<GetPoint> ChildrenPoints = new List<GetPoint>();
 
     [HideInInspector] public bool HasScope;
     private GameObject _scopeObject;
@@ -88,7 +88,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _inPreview = true;
             _isFirst = true;
 
-            ChildrenPoints = GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == transform).ToList();
+            ChildrenPoints = Base.GetComponentsInChildren<GetPoint>().Where(childComponent => childComponent.transform.parent == Base.transform).ToList();
 
             if (IsFunctionNode)
                 DataManager.Instance.FunctionsToCompile.Add(this);
@@ -128,7 +128,7 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         foreach (BaseGet defaultGet in DefaultDo.GetDefaultInput())
         {
             NewText(getTexts[i]);
-            CreateGetPoint(defaultGet);
+            CreateGetPoint(defaultGet, i);
 
             i++;
         }
@@ -136,9 +136,9 @@ public class DisplayDo : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         LayoutRebuilder.ForceRebuildLayoutImmediate(Base.GetComponent<RectTransform>());
     }   
 
-    private void CreateGetPoint(BaseGet defaultGet)
+    private void CreateGetPoint(BaseGet defaultGet, int index)
     {
-        GetPoint childGet = Instantiate(_baseGetPointPrefab, Base.transform).GetComponent<GetPoint>();
+        GetPoint childGet = Instantiate(_baseGetPointPrefab[index], Base.transform).GetComponent<GetPoint>();
         childGet.DefaultGet = defaultGet;
         ChildrenPoints.Add(childGet);
 

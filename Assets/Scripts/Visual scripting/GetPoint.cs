@@ -22,7 +22,7 @@ public class GetPoint : MonoBehaviour
         Part
     }
 
-    [HideInInspector] public DisplayGet ChildGet
+    public DisplayGet ChildGet
     {
         get
         {

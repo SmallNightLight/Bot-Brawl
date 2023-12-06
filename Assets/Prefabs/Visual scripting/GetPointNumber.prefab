@@ -291,7 +291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fcee7ba08a1d765418a33dd82919ab76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7df896ec67fe39a448eef6535a6b892f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -315,7 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseColor: {r: 0.7735849, g: 0.2982672, b: 0.04743683, a: 1}
   DefaultGet: {fileID: 0}
-  IsNumber: 0
   _numberInputField: {fileID: 4927996264006683678}
   IsMoving: 0
 --- !u!114 &8441007670887271946

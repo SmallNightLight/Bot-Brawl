@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 218fc2cb37fd8f34d8e0f5775c9e4cc8, type: 3}
-  m_Name: DefaultNodeSetSetting
+  m_Script: {fileID: 11500000, guid: d6dfc926f770b1b46a8624c3134c0881, type: 3}
+  m_Name: DefaultNodeSetSettingNumber
   m_EditorClassIdentifier: 
   BaseNodeName: 
   BaseNodeColor: {r: 0, g: 0, b: 0, a: 0}
   VariableToChange: {fileID: 0}
-  DefaultVariableToChange: {fileID: 0}
+  DefaultVariableToChange: {fileID: 11400000, guid: 8d6d6029633b4444091a2e409e3dbdf8,
+    type: 2}
   Value: {fileID: 0}
-  DefaultValue: {fileID: 0}
+  DefaultValue: {fileID: 11400000, guid: dc117916310c6844db2634a60a77416c, type: 2}

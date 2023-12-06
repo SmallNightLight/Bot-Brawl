@@ -5,6 +5,34 @@ public class PartSetting
 {
     public string Name;
 
+    public object Value
+    {
+        set
+        {
+            switch (VariableType)
+            {
+                case SettingType.Bool:
+                    BoolValue = (value as bool?) ?? false;
+                    break;
+                case SettingType.Float:
+                    FloatValue = (value as float?) ?? 0f;
+                    break;
+                case SettingType.Int:
+                    IntValue = (value as int?) ?? 0;
+                    break;
+                case SettingType.ClampedInt:
+                    int v = (value as int?) ?? 0;
+                    IntValue = Mathf.Clamp(v, MinInt, MaxInt);
+                    break;
+                case SettingType.ClampedFloat:
+                    float f = (value as float?) ?? 0f;
+                    FloatValue = Mathf.Clamp(f, MinFloat, MaxFloat);
+                    break;
+            }
+        }
+    }
+
+
     public enum SettingType
     {
         Bool,

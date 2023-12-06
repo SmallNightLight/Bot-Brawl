@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DefaultNodeSetSetting", menuName = "Nodes/SetSetting")]
-public class SetSetting : BaseDo
+[CreateAssetMenu(fileName = "DefaultNodeSetSettingBool", menuName = "Nodes/SetSetting/Bool")]
+public class SetSettingBool : BaseDo
 {
     public GetSettingsVariable VariableToChange;
     public GetSettingsVariable DefaultVariableToChange;
 
-    public BaseGetSetting Value;
-    public BaseGetSetting DefaultValue;
+    public BaseGetBool Value;
+    public BaseGetBool DefaultValue;
 
     public override void Execute()
     {
@@ -25,7 +25,7 @@ public class SetSetting : BaseDo
     public override void SetInput(List<BaseGet> input)
     {
         VariableToChange = input[0] as GetSettingsVariable;
-        Value = input[1] as BaseGetSetting;
+        Value = input[1] as BaseGetBool;
     }
 
     public override string[] GetBeforeNodeText() => new string[] { "Set", "to" };

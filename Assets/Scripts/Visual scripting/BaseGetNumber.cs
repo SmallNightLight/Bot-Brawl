@@ -1,3 +1,6 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "DefaultGetNumber", menuName = "Nodes/Get/Number")]
 public class BaseGetNumber : BaseGet
 {
     public float Value;

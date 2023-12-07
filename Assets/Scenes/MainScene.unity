@@ -2072,6 +2072,11 @@ MonoBehaviour:
   _displayBotPrefab: {fileID: 6843168356775840581, guid: 035f4ab999bac8a4abbf58b0548e24e9,
     type: 3}
   _botParent: {fileID: 1787842698}
+  _uiObejcts:
+  - {fileID: 1559796625}
+  - {fileID: 594307244}
+  - {fileID: 538645949}
+  - {fileID: 345243156}
 --- !u!1 &1559796625
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,5 +29,7 @@ public class CannonObjectPart : ObjectPart
         GameObject bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
 
         bullet.GetComponent<Rigidbody>().AddForce(_bulletSpawn.forward * _bulletSpeed, ForceMode.Impulse);
+
+        Destroy(bullet, 5);
     }
 }

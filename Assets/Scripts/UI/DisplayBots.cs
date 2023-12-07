@@ -32,11 +32,12 @@ public class DisplayBots : MonoBehaviour
         UpdateBotUI();
     }
 
+    [SerializeField] private List<GameObject> _uiObejcts;
+
     private void UpdateBotUI()
     {
-        // Update UI with the current bot data
-        //botImage.sprite = DataManager.Instance.BotData[currentIndex].BotImage;
-        //botNameText.text = DataManager.Instance.BotData[currentIndex].BotName;
+        foreach (var v in _uiObejcts)
+            v.SetActive(_botCount != 0);
     }
 
     public void GoNext()
@@ -59,6 +60,7 @@ public class DisplayBots : MonoBehaviour
         BotData newBotData = new BotData(name, new SerializedDictionary<Vector3Int, PartData>());
         DataManager.Instance.AllBotData[name] = newBotData;
         DataManager.Instance.CurrentBotData = newBotData;
+
     }
 
     public void SetCurrentBot()

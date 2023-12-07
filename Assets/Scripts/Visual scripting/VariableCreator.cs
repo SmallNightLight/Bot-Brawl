@@ -46,7 +46,8 @@ public class VariableCreator : MonoBehaviour
         {
             DataManager.Instance.ClearVariableNames();
 
-            Destroy(child.gameObject);
+            if (child.name != "NewVariableWindow")
+                Destroy(child.gameObject);
         }
 
         AddSettingVariables();

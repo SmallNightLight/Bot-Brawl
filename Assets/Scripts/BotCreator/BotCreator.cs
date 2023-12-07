@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using UnityEngine;
 
 public class BotCreator : MonoBehaviour
@@ -320,6 +321,14 @@ public class BotCreator : MonoBehaviour
     {
         if (_selectedPartNew != null)
             Remove(_selectedPartNew.Position);
+    }
+
+    public void HideAll()
+    {
+        foreach(var unit in _parts)
+        {
+            unit.Value.SetActive(false);
+        }
     }
 
     public void Remove(Vector3Int partPosition)

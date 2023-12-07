@@ -8,9 +8,13 @@ public class Bot : MonoBehaviour
     private BotData _botData;
     [SerializeField] private int _yOffset = 0;
 
+    public bool Active;
     public bool IsInFight = true;
     public bool IsMovingOut;
     [SerializeField] private float _baseMovingSpeed;
+
+    [SerializeField] private bool _setupOnStart = true;
+
 
     static Vector3Int[] _directions =
     { 
@@ -24,17 +28,34 @@ public class Bot : MonoBehaviour
 
     private void Start()
     {
+        if (_setupOnStart)
+            Setup();
+    }
+
+    public void Setup()
+    {
+        Active = true;
+
         if (_botData == null)
             _botData = DataManager.Instance.CurrentBotData;
 
 #if UNITY_EDITOR
         CheckBotData(_botData);
 #endif
+
         SetupBot(_botData);
 
-        if(IsInFight)
+        if (IsInFight)
             foreach (BaseFunction function in _botData.SetupFunctions)
                 function.Execute();
+    }
+
+    public void RemoveBot()
+    {
+        Active = false;
+
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
     }
 
     public void SetBotData(BotData data)
@@ -44,9 +65,19 @@ public class Bot : MonoBehaviour
 
     private void Update()
     {
+        if (!Active) 
+            return;
+
         if (IsInFight)
+        {
             foreach (BaseFunction function in _botData.UpdateFunctions)
                 function.Execute();
+
+            //Check health
+
+           
+
+        }
         else
         {
             if (IsMovingOut)
@@ -66,6 +97,8 @@ public class Bot : MonoBehaviour
     {
         Dictionary<Vector3Int, GameObject> partGameObjects = new Dictionary<Vector3Int, GameObject>();
 
+        bool firstPiece = false;
+
         foreach (var part in botData.GetParts())
         {
             Vector3Int partPosition = part.Key;
@@ -81,6 +114,12 @@ public class Bot : MonoBehaviour
             }
 
             partGameObjects.Add(partPosition, partObject);
+
+            if (!firstPiece)
+            {
+                firstPiece = true;
+                TopDownCamera.Instance?.AddTarget(partObject.transform);
+            }
         }
 
         foreach (var part in partGameObjects)

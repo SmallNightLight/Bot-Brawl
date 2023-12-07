@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         _bot1.IsMovingOut = true;
         _bot2.IsMovingOut = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         _currentCamera = 0;
         SetCamera(_currentCamera);

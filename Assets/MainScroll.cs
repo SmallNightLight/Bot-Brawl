@@ -1,3 +1,4 @@
+using ScriptableArchitecture.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,12 @@ public class MainScroll : MonoBehaviour
 
     private float targetZoom = 1f;
 
+    [SerializeField] private BoolReference _isOn;
+
     void Update()
     {
-        HandleMouseInput();
+        if (_isOn.Value)
+            HandleMouseInput();
     }
 
     void HandleMouseInput()

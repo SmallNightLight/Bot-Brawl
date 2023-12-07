@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FlameThrowerObjectPart : ObjectPart
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Animator _animator;
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        _animator.SetBool("IsOn", PartData.GetBool("IsOn"));
     }
 }

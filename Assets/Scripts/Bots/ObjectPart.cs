@@ -6,6 +6,8 @@ public abstract class ObjectPart : MonoBehaviour
 {
     public PartData PartData;
 
+    [SerializeField] private bool _dealsDamage;
+
     public virtual void SetPartData(PartData partData)
     { 
         PartData = partData;

@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 88937610}
   - component: {fileID: 88937609}
   - component: {fileID: 88937608}
+  - component: {fileID: 88937607}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -571,6 +572,18 @@ RectTransform:
   m_AnchoredPosition: {x: 29.6, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &88937607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88937605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ea84273aaf4714c8cfa80e50b6b233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &88937608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,42 +663,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 321493647}
-        m_TargetAssemblyTypeName: Bot, Assembly-CSharp
-        m_MethodName: RemoveBot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1136017306}
-        m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
-        m_MethodName: ResetPosition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 956121751}
-        m_TargetAssemblyTypeName: BotCreator, Assembly-CSharp
-        m_MethodName: SetupBot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1610983432}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -1234,18 +1211,6 @@ MonoBehaviour:
           mscorlib
         m_MethodName: Set
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 809367262}
-        m_TargetAssemblyTypeName: VariableCreator, Assembly-CSharp
-        m_MethodName: ReloadSettingsVariables
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8312,6 +8277,3 @@ SceneRoots:
   - {fileID: 1519467583179010551}
   - {fileID: 1476650190}
   - {fileID: 1536617214}
-  - {fileID: 2016309405}
-  - {fileID: 2057580424}
-  - {fileID: 1437303219}

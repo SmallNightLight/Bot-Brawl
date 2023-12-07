@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
   - {fileID: 241168285932116608, guid: c2074752f3671c840b3ec4dc9722bb09, type: 3}
   - {fileID: 6581076976281818894, guid: ba9a2897060c0ae4bb2ef8289016f706, type: 3}
   - {fileID: 6581076976281818894, guid: 171c227bf46d7534294930b7bc4e4ac6, type: 3}
-  _namePrefab: {fileID: 546255986441461466, guid: 5b59c5fe589b6f04bb8d272a8fda95cf,
+  _namePrefab: {fileID: 1080274809120532923, guid: 5b59c5fe589b6f04bb8d272a8fda95cf,
     type: 3}
   _windowContext: {fileID: 3374091988014933581}
   image: {fileID: 1530023173284612700}

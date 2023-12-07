@@ -8,6 +8,10 @@ public class Bot : MonoBehaviour
     private BotData _botData;
     [SerializeField] private int _yOffset = 0;
 
+    public bool IsInFight = true;
+    public bool IsMovingOut;
+    [SerializeField] private float _baseMovingSpeed;
+
     static Vector3Int[] _directions =
     { 
         new Vector3Int(1, 0, 0),
@@ -20,21 +24,42 @@ public class Bot : MonoBehaviour
 
     private void Start()
     {
-        _botData = DataManager.Instance.CurrentBotData;
+        if (_botData == null)
+            _botData = DataManager.Instance.CurrentBotData;
 
 #if UNITY_EDITOR
         CheckBotData(_botData);
 #endif
         SetupBot(_botData);
 
-        foreach (BaseFunction function in _botData.SetupFunctions)
-            function.Execute();
+        if(IsInFight)
+            foreach (BaseFunction function in _botData.SetupFunctions)
+                function.Execute();
+    }
+
+    public void SetBotData(BotData data)
+    {
+        _botData = data;
     }
 
     private void Update()
     {
-        foreach (BaseFunction function in _botData.UpdateFunctions)
-            function.Execute();
+        if (IsInFight)
+            foreach (BaseFunction function in _botData.UpdateFunctions)
+                function.Execute();
+        else
+        {
+            if (IsMovingOut)
+            {
+                foreach (WheelObjectPart wheel in GetComponentsInChildren<WheelObjectPart>())
+                    wheel.Accelerate(3);
+            }
+            else
+            {
+                foreach (WheelObjectPart wheel in GetComponentsInChildren<WheelObjectPart>())
+                    wheel.Accelerate(0);
+            }
+        }
     }
 
     public void SetupBot(BotData botData)
@@ -48,7 +73,7 @@ public class Bot : MonoBehaviour
 
             GameObject partObject = Instantiate(partData.BasePart.Value.PartPrefab, transform);
             partObject.transform.rotation = Quaternion.Euler(partData.Rotation.x, partData.Rotation.y, partData.Rotation.z);
-            partObject.transform.position = partPosition + new Vector3Int(0, _yOffset, 0);
+            partObject.transform.position =  transform.position + partPosition + new Vector3Int(0, _yOffset, 0);
 
             if (partObject.TryGetComponent(out ObjectPart objectPartScript))
             {

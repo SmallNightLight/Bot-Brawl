@@ -18,9 +18,12 @@ public class WheelObjectPart : ObjectPart
 
     void FixedUpdate()
     {
-        Steer(_input.x);
-        Accelerate(_input.y);
-        UpdateMeshPosition();
+        if (GetComponentInParent<Bot>().IsInFight)
+        {
+            Steer(_input.x);
+            Accelerate(_input.y);
+            UpdateMeshPosition();
+        }
     }
 
     private void Steer(float horizontalDirection)
@@ -29,7 +32,7 @@ public class WheelObjectPart : ObjectPart
         _wheelCollider.steerAngle = _turnAngle;
     }
 
-    private void Accelerate(float powerInput)
+    public void Accelerate(float powerInput)
     {
         if (powerInput == 0)
             _wheelCollider.brakeTorque = 100;

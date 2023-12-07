@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 1393988711417029162}
   - component: {fileID: 6355358702631881255}
   - component: {fileID: 8352230134117631780}
+  - component: {fileID: 1859394598066023010}
   m_Layer: 0
   m_Name: PartFlamethrower
   m_TagString: Untagged
@@ -133,6 +134,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &1859394598066023010
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288977799406177123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd2b8fe048aa1f74889d3f9dcf2cb0a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3590088965776011805
 GameObject:
   m_ObjectHideFlags: 0

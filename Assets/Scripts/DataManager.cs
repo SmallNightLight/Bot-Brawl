@@ -54,6 +54,8 @@ public class DataManager : MonoBehaviour
     private Dictionary<string, BasePartDataReference> BasePartDataLookup = new Dictionary<string, BasePartDataReference>();
 
     public BotData CurrentBotData;
+    public BotData OpponentBotData;
+
     public Dictionary<string, BotData> AllBotData = new Dictionary<string, BotData>();
 
 
@@ -264,6 +266,8 @@ public class DataManager : MonoBehaviour
 
                 if (CurrentBotData == null || CurrentBotData.BotName == "")
                     CurrentBotData = botData;
+                else if ((OpponentBotData == null || OpponentBotData.BotName == "") && CurrentBotData != null)
+                    OpponentBotData = botData;
             }
         }
     }

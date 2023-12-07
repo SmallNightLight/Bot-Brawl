@@ -20,26 +20,26 @@ public class WheelObjectPart : ObjectPart
     {
         if (GetComponentInParent<Bot>().IsInFight)
         {
-            Steer(_input.x);
-            Accelerate(_input.y);
+            Steer();
+            Accelerate();
             UpdateMeshPosition();
         }
     }
 
-    private void Steer(float horizontalDirection)
+    private void Steer()
     {
-        _turnAngle = horizontalDirection * PartData.GetFloat("MaxAngle");
+        _turnAngle = PartData.GetFloat("Angle");
         _wheelCollider.steerAngle = _turnAngle;
     }
 
-    public void Accelerate(float powerInput)
+    public void Accelerate()
     {
-        if (powerInput == 0)
-            _wheelCollider.brakeTorque = 100;
+        if (PartData.GetBool("IsPowered"))
+            _wheelCollider.motorTorque = 300 * (PartData.GetBool("Inverted") ? -1 : 1);
         else
-            _wheelCollider.brakeTorque = 0;
+            _wheelCollider.motorTorque = 0;
 
-        _wheelCollider.motorTorque = powerInput * 300 * (PartData.GetBool("Inverted") ? -1 : 1);
+        
     }
 
     private void UpdateMeshPosition()

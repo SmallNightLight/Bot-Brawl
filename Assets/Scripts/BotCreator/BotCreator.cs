@@ -85,7 +85,7 @@ public class BotCreator : MonoBehaviour
         _selectedPartNew.Rotation = selectedUnit.transform.eulerAngles;
     }
     
-    private void SetupBot()
+    public void SetupBot()
     {
         if (_botData.GetPartCount() == 0)
         {

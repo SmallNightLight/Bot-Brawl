@@ -35,10 +35,23 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private PartSettingsWindow partSettings;
 
+    private Vector3 _savedPosition;
+    private Quaternion _savedRotation;
+
+
     private void Start()
     {
         _camera = GetComponent<Camera>();
         _currentDistance = _distance;
+
+        _savedPosition = transform.position;
+        _savedRotation = transform.rotation;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _savedPosition;
+        transform.rotation = _savedRotation;
     }
 
     private void Update()
@@ -69,11 +82,17 @@ public class CameraMovement : MonoBehaviour
                 {
                     Debug.LogError("Didn't add a unit component to unit: " + hit.collider.gameObject.name);
                 }
-        
-                if (Input.GetMouseButtonDown(0))
-                    _placingPartEvent.Raise(placingInfo);
-                else
-                    _previewPartEvent.Raise(placingInfo);
+
+                if (PartSettingsWindow.IsActive)
+                    return;
+
+                if (true)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                        _placingPartEvent.Raise(placingInfo);
+                    else
+                        _previewPartEvent.Raise(placingInfo);
+                }
             }
             else
             {

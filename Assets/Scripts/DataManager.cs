@@ -230,6 +230,11 @@ public class DataManager : MonoBehaviour
         _variableNames.Add(name);
     }
 
+    public void ClearVariableNames()
+    {
+        _variableNames.Clear();
+    }
+
     public bool HasVariable(string name)
     {
         return _variableNames.Contains(name);

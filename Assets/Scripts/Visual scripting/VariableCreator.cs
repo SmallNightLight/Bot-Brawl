@@ -40,6 +40,18 @@ public class VariableCreator : MonoBehaviour
         ResetValues();
     }
 
+    public void ReloadSettingsVariables()
+    {
+        foreach(Transform child in _variableParent.transform)
+        {
+            DataManager.Instance.ClearVariableNames();
+
+            Destroy(child.gameObject);
+        }
+
+        AddSettingVariables();
+    }
+
     private void AddSettingVariables()
     {
         foreach(var v in DataManager.Instance.CurrentBotData.GetParts())

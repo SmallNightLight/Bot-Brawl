@@ -49,8 +49,8 @@ MonoBehaviour:
     MinInt: 0
     MaxInt: 0
     FloatValue: 0
-    MinFloat: 0
-    MaxFloat: 90
+    MinFloat: -180
+    MaxFloat: 180
     Vector3Value: {x: 0, y: 0, z: 0}
     Vector3IntValue: {x: 0, y: 0, z: 0}
   - Name: Inverted

@@ -54,8 +54,10 @@ public class Bot : MonoBehaviour
     {
         Active = false;
 
-        foreach (Transform child in transform)
-            Destroy(child.gameObject);
+        foreach (var v in _partGameObjects)
+        {
+            Destroy(v.Value);
+        }
     }
 
     public void SetBotData(BotData data)
@@ -82,20 +84,16 @@ public class Bot : MonoBehaviour
         {
             if (IsMovingOut)
             {
-                foreach (WheelObjectPart wheel in GetComponentsInChildren<WheelObjectPart>())
-                    wheel.Accelerate(3);
-            }
-            else
-            {
-                foreach (WheelObjectPart wheel in GetComponentsInChildren<WheelObjectPart>())
-                    wheel.Accelerate(0);
+                transform.Translate(Vector3.forward * _baseMovingSpeed * Time.deltaTime);
             }
         }
     }
 
+    private Dictionary<Vector3Int, GameObject> _partGameObjects = new Dictionary<Vector3Int, GameObject>();
+
     public void SetupBot(BotData botData)
     {
-        Dictionary<Vector3Int, GameObject> partGameObjects = new Dictionary<Vector3Int, GameObject>();
+        _partGameObjects.Clear();
 
         bool firstPiece = false;
 
@@ -113,7 +111,7 @@ public class Bot : MonoBehaviour
                 objectPartScript.SetPartData(partData);
             }
 
-            partGameObjects.Add(partPosition, partObject);
+            _partGameObjects.Add(partPosition, partObject);
 
             if (!firstPiece)
             {
@@ -122,7 +120,7 @@ public class Bot : MonoBehaviour
             }
         }
 
-        foreach (var part in partGameObjects)
+        foreach (var part in _partGameObjects)
         {
             Vector3Int partPosition = part.Key;
             GameObject partObject = part.Value;
@@ -131,7 +129,7 @@ public class Bot : MonoBehaviour
             foreach (var direction in _directions)
             {
                 Vector3Int otherPartPosition = partPosition + direction;
-                if (partGameObjects.TryGetValue(otherPartPosition, out GameObject otherObject))
+                if (_partGameObjects.TryGetValue(otherPartPosition, out GameObject otherObject))
                 {
                     ObjectPart otherOjectPartScript = otherObject.GetComponent<ObjectPart>();
 
@@ -145,6 +143,7 @@ public class Bot : MonoBehaviour
             }
         }
     }
+
 
 #if UNITY_EDITOR
     public void CheckBotData(BotData botData)

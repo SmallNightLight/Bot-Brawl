@@ -15,6 +15,8 @@ public class PartSettingsWindow : MonoBehaviour
 
     [SerializeField] Image image;
 
+    public static bool IsActive;
+
     public void SetPartData(PartData partData)
     {
         _partData = partData;
@@ -28,11 +30,13 @@ public class PartSettingsWindow : MonoBehaviour
                 Destroy(child.gameObject);
 
         image.enabled = false;
+        IsActive = false;
     }
     
     void Start()
     {
         image.enabled = false;
+        IsActive = false;
     }
 
     private void InitWindow()
@@ -43,6 +47,7 @@ public class PartSettingsWindow : MonoBehaviour
             return;
             
         image.enabled = true;
+        IsActive = true;
 
         TMP_InputField inputName = Instantiate(_namePrefab, _windowContext).GetComponentInChildren<TMP_InputField>();
         inputName.onValueChanged.AddListener(name => _partData.CustomName = name);

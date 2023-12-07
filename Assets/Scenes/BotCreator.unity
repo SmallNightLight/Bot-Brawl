@@ -1170,9 +1170,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4666,6 +4666,9 @@ MonoBehaviour:
   _unitLayer:
     serializedVersion: 2
     m_Bits: 128
+  _uiLayer:
+    serializedVersion: 2
+    m_Bits: 32
   _placingPartEvent: {fileID: 11400000, guid: c2222f142f20637419742e922f9c98df, type: 2}
   _previewPartEvent: {fileID: 11400000, guid: cc7456353838c55409bfd685f755ba13, type: 2}
   _selectedPartData: {fileID: 11400000, guid: b6a2142bca302e94c81455e6da59d0db, type: 2}

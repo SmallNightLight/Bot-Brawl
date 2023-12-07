@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartData: {fileID: 0}
   _dealsDamage: 0
+  _animator: {fileID: 1859394598066023010}
 --- !u!65 &6355358702631881255
 BoxCollider:
   m_ObjectHideFlags: 0

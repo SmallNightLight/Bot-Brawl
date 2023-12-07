@@ -327,7 +327,7 @@ public class BotCreator : MonoBehaviour
     {
         foreach(var unit in _parts)
         {
-            unit.Value.SetActive(false);
+            Destroy(unit.Value);
         }
     }
 

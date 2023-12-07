@@ -6,9 +6,15 @@ public class FlameThrowerObjectPart : ObjectPart
 {
     [SerializeField] private Animator _animator;
 
+    private void Start()
+    {
+        _animator.SetBool("IsOn", false);
+    }
+
 
     void Update()
     {
-        _animator.SetBool("IsOn", PartData.GetBool("IsOn"));
+        if (IsActive)
+            _animator.SetBool("IsOn", PartData.GetBool("IsOn"));
     }
 }

@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CannonObjectPart : ObjectPart
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Animator _animator;
+
+    [SerializeField] private GameObject _bullet;
+
+    [SerializeField] private Transform _bulletSpawn;
+    [SerializeField] private float _bulletSpeed = 10f;
+
+    private void Start()
     {
-        
+        _animator.SetBool("IsOn", false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if (IsActive)
+            _animator.SetBool("IsOn", true);
+    }
+
+    public void Shoot()
+    {
+        GameObject bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+
+        bullet.GetComponent<Rigidbody>().AddForce(_bulletSpawn.forward * _bulletSpeed, ForceMode.Impulse);
     }
 }

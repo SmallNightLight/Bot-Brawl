@@ -1,3 +1,4 @@
+using ScriptableArchitecture.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -65,6 +66,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        _bot1Main.Value = _bot1.transform.GetChild(0).transform;
+
         foreach (var animator in _gateAnimators)
             animator.SetTrigger("Open");
 
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour
         _bot1.IsMovingOut = true;
         _bot2.IsMovingOut = true;
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
 
         _currentCamera = 0;
         SetCamera(_currentCamera);
@@ -81,10 +84,18 @@ public class GameManager : MonoBehaviour
         _bot1.IsMovingOut = false;
         _bot2.IsMovingOut = false;
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
 
         _inFight = true;
         _bot1.IsInFight = true;
         _bot2.IsInFight = true;
+
+        foreach(var element in _bot1.GetComponentsInChildren<ObjectPart>())
+            element.IsActive = true;
+
+        foreach (var element in _bot2.GetComponentsInChildren<ObjectPart>())
+            element.IsActive = true;
     }
+
+    [SerializeField] private TransformReference _bot1Main;
 }

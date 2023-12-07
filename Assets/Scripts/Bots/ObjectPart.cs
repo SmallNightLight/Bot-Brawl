@@ -8,6 +8,8 @@ public abstract class ObjectPart : MonoBehaviour
 
     [SerializeField] private bool _dealsDamage;
 
+    public bool IsActive;
+
     public virtual void SetPartData(PartData partData)
     { 
         PartData = partData;

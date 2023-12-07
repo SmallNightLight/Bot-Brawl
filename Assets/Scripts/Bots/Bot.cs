@@ -45,6 +45,12 @@ public class Bot : MonoBehaviour
 
         SetupBot(_botData);
 
+        if (!_setupOnStart)
+        {
+            foreach (var element in GetComponentsInChildren<ObjectPart>())
+                element.IsActive = true;
+        }
+
         if (IsInFight)
             foreach (BaseFunction function in _botData.SetupFunctions)
                 function.Execute();

@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private bool _justMoving;
+
     [SerializeField] private TransformReference _target;
 
     [Header("Selection")]
@@ -62,42 +64,45 @@ public class CameraMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _unitLayer))
+        if (!_justMoving)
         {
-            if (_isPlacing.Value)
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _unitLayer))
             {
-                PlacingInfo placingInfo = new PlacingInfo();
-                placingInfo.AttachPoint = Vector3Int.RoundToInt(hit.normal + hit.collider.transform.position);
-                placingInfo.Normal = Vector3Int.RoundToInt(hit.normal);
-        
-                try
+                if (_isPlacing.Value)
                 {
-                    PartData otherPartData = hit.collider.gameObject.GetComponent<Unit>().UnitPartData;
-                    if (otherPartData == null)
-                        Debug.LogError("No PartData selected for unit: " + hit.collider.gameObject.name);
-        
-                    placingInfo.OtherPart = otherPartData;
-                }
-                catch
-                {
-                    Debug.LogError("Didn't add a unit component to unit: " + hit.collider.gameObject.name);
-                }
+                    PlacingInfo placingInfo = new PlacingInfo();
+                    placingInfo.AttachPoint = Vector3Int.RoundToInt(hit.normal + hit.collider.transform.position);
+                    placingInfo.Normal = Vector3Int.RoundToInt(hit.normal);
 
-                if (PartSettingsWindow.IsActive)
-                    return;
+                    try
+                    {
+                        PartData otherPartData = hit.collider.gameObject.GetComponent<Unit>().UnitPartData;
+                        if (otherPartData == null)
+                            Debug.LogError("No PartData selected for unit: " + hit.collider.gameObject.name);
 
-                if (true)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                        _placingPartEvent.Raise(placingInfo);
-                    else
-                        _previewPartEvent.Raise(placingInfo);
+                        placingInfo.OtherPart = otherPartData;
+                    }
+                    catch
+                    {
+                        Debug.LogError("Didn't add a unit component to unit: " + hit.collider.gameObject.name);
+                    }
+
+                    if (PartSettingsWindow.IsActive)
+                        return;
+
+                    if (true)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                            _placingPartEvent.Raise(placingInfo);
+                        else
+                            _previewPartEvent.Raise(placingInfo);
+                    }
                 }
-            }
-            else
-            {
-                if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.TryGetComponent(out Unit selectedUnit))
-                    _selectedPartData.Raise(selectedUnit.UnitPartData);
+                else
+                {
+                    if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.TryGetComponent(out Unit selectedUnit))
+                        _selectedPartData.Raise(selectedUnit.UnitPartData);
+                }
             }
         }
             
@@ -152,10 +157,14 @@ public class CameraMovement : MonoBehaviour
 
         _currentDistance = Mathf.Lerp(_currentDistance, _distance, _scrollSmoothness * Time.deltaTime);
 
-        _camera.transform.position = _target.Value.position + _offset;
+        if (_target.Value == null)
+            _camera.transform.position = _offset;
+        else
+            _camera.transform.position = _target.Value.position + _offset;
+
         _camera.transform.Translate(new Vector3(0, 0, -_currentDistance));
 
-        if (cameraMovement)
+        if (!_justMoving && cameraMovement)
         {
             partSettings.Clear();
         }

@@ -1,5 +1,6 @@
 using ScriptableArchitecture.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Camera))]
 public class CameraMovement : MonoBehaviour
@@ -39,6 +40,7 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 _savedPosition;
     private Quaternion _savedRotation;
+    private bool _mouseEnteredCanvas;
 
 
     private void Start()
@@ -58,6 +60,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        _mouseEnteredCanvas = EventSystem.current.IsPointerOverGameObject() ? true : false;
         bool cameraMovement = false;
         //Selecting objects
 
@@ -101,7 +104,7 @@ public class CameraMovement : MonoBehaviour
                 else
                 {
                     if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.TryGetComponent(out Unit selectedUnit))
-                        _selectedPartData.Raise(selectedUnit.UnitPartData);
+                        if (!_mouseEnteredCanvas) _selectedPartData.Raise(selectedUnit.UnitPartData);
                 }
             }
         }

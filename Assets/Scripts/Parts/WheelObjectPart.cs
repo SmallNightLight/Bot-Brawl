@@ -7,14 +7,7 @@ public class WheelObjectPart : ObjectPart
     [SerializeField] private WheelCollider _wheelCollider;
     [SerializeField] private Transform _meshTransform;
 
-    private Vector2 _input;
     private float _turnAngle;
-
-    void Update()
-    {
-        //Replace this with other movement in the future
-        _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }
 
     void FixedUpdate()
     {
@@ -35,11 +28,16 @@ public class WheelObjectPart : ObjectPart
     public void Accelerate()
     {
         if (PartData.GetBool("IsPowered"))
+        {
             _wheelCollider.motorTorque = 300 * (PartData.GetBool("Inverted") ? -1 : 1);
+            _wheelCollider.brakeTorque = 0;
+        }
         else
+        {
             _wheelCollider.motorTorque = 0;
-
-        
+            _wheelCollider.brakeTorque = Mathf.Infinity;
+        }
+            
     }
 
     private void UpdateMeshPosition()
